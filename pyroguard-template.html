@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PyroGuard – Sécurité Incendie</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 2C16 2 8 10 8 18C8 22.4 11.6 26 16 26C20.4 26 24 22.4 24 18C24 10 16 2 16 2Z" fill="#D62828"/>
+      <path d="M16 10C16 10 12 14.5 12 18C12 20.2 13.8 22 16 22C18.2 22 20 20.2 20 18C20 14.5 16 10 16 10Z" fill="#FF6B6B"/>
+      <path d="M16 15C16 15 14 17 14 18.5C14 19.3 14.9 20 16 20C17.1 20 18 19.3 18 18.5C18 17 16 15 16 15Z" fill="#FFE0E0"/>
+    </svg>
+    <span class="nav-logo-text">PYRO<span>GUARD</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Nos services</a>
+    <a href="#produits">Produits</a>
+    <a href="#processus">Démarche</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="#contact">Demande de devis</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Nos services</a>
+  <a href="#produits" onclick="toggleMenu()">Produits</a>
+  <a href="#processus" onclick="toggleMenu()">Démarche</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#contact" onclick="toggleMenu()" style="color:var(--red);margin-top:16px">→ Demande de devis</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content reveal">
+    <div class="hero-eyebrow">Expert Sécurité Incendie depuis 1987</div>
+    <h1>Protéger<br>ce qui compte,<br><em>avant le feu.</em></h1>
+    <p class="hero-desc">Audit, installation, maintenance et formation : PyroGuard est votre partenaire global en sécurité incendie pour les établissements recevant du public, l'industrie et le tertiaire.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Demander un audit
+      </a>
+      <a href="#services" class="btn-ghost">Découvrir nos solutions →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">38<span>ans</span></div>
+        <div class="hero-stat-label">d'expertise</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">12<span>K+</span></div>
+        <div class="hero-stat-label">sites sécurisés</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">350<span>+</span></div>
+        <div class="hero-stat-label">techniciens</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated flame SVG -->
+  <div class="hero-visual" aria-hidden="true">
+    <svg viewBox="0 0 440 560" xmlns="http://www.w3.org/2000/svg">
+      <!-- Glow circle -->
+      <ellipse cx="220" cy="430" rx="160" ry="40" fill="rgba(214,40,40,0.07)"/>
+      <!-- Shield shape -->
+      <path d="M220 60 L380 130 L380 290 C380 400 220 480 220 480 C220 480 60 400 60 290 L60 130 Z" fill="rgba(214,40,40,0.05)" stroke="rgba(214,40,40,0.2)" stroke-width="1.5"/>
+      <!-- Outer flame -->
+      <g class="flame-outer">
+        <path d="M220 460 C120 420 90 350 100 270 C110 200 145 165 160 130 C155 170 165 195 175 210 C170 170 195 130 200 90 C210 135 220 165 215 200 C235 160 240 125 245 90 C255 135 270 175 265 215 C275 195 285 175 280 130 C295 165 320 205 325 275 C335 355 310 425 220 460Z" fill="#D62828" opacity=".85"/>
+      </g>
+      <!-- Mid flame -->
+      <g class="flame-mid">
+        <path d="M220 440 C150 405 130 345 138 278 C145 220 168 188 180 165 C176 198 185 218 192 232 C188 195 205 160 208 130 C216 168 222 192 218 222 C233 186 237 155 242 130 C250 163 262 195 258 228 C265 212 272 196 268 168 C282 192 300 228 304 288 C312 360 288 410 220 440Z" fill="#FF6B6B" opacity=".7"/>
+      </g>
+      <!-- Inner flame -->
+      <g class="flame-inner">
+        <path d="M220 420 C175 392 162 346 168 296 C173 254 188 230 196 214 C194 236 200 250 205 260 C202 232 212 204 214 182 C219 204 223 222 220 240 C228 218 230 196 233 180 C239 202 246 228 242 252 C247 240 252 228 250 212 C258 232 268 260 270 300 C274 350 258 395 220 420Z" fill="#FFB347" opacity=".55"/>
+      </g>
+      <!-- Core glow -->
+      <ellipse cx="220" cy="350" rx="22" ry="30" fill="rgba(255,220,180,0.3)"/>
+      <!-- Shield label -->
+      <text x="220" y="510" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="700" fill="rgba(214,40,40,0.4)" letter-spacing="0.12em">PROTECTION CERTIFIÉE</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ALERT BAND -->
+<div class="band">
+  <div class="band-text"><strong>Réglementation PFAS 2025</strong> — Vos extincteurs sont-ils conformes ? Découvrez nos solutions sans fluor</div>
+  <a href="#contact" class="band-link">Vérifier ma conformité →</a>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div class="section-tag">Nos services</div>
+    <h2 class="section-h2">L'offre globale, de l'audit à la maintenance</h2>
+    <p class="section-lead">Un interlocuteur unique pour tous vos besoins en sécurité incendie, avec des équipes certifiées sur l'ensemble du territoire.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+      </div>
+      <div class="service-title">Audit & Conseil</div>
+      <div class="service-desc">Diagnostic complet de vos installations, analyse des risques et préconisations réglementaires adaptées à votre activité.</div>
+      <div class="service-arrow">Découvrir →</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <div class="service-title">Installation</div>
+      <div class="service-desc">Pose et mise en service de systèmes de détection, d'extinction automatique, de désenfumage et d'éclairage de secours.</div>
+      <div class="service-arrow">Découvrir →</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <div class="service-title">Vérification & Maintenance</div>
+      <div class="service-desc">Contrats de maintenance préventive et corrective, visites réglementaires et télésurveillance 24h/24.</div>
+      <div class="service-arrow">Découvrir →</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+      </div>
+      <div class="service-title">Formation</div>
+      <div class="service-desc">Exercices d'évacuation, maniement des extincteurs, équipier de première intervention — formations certifiées Qualiopi.</div>
+      <div class="service-arrow">Découvrir →</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+      </div>
+      <div class="service-title">Espace Client</div>
+      <div class="service-desc">Accédez à vos rapports d'intervention, certificats de conformité et planifications en ligne depuis votre tableau de bord.</div>
+      <div class="service-arrow">Accéder →</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      </div>
+      <div class="service-title">Urgence 24h/24</div>
+      <div class="service-desc">Astreinte technique 7 jours sur 7. Intervention sous 4 heures sur l'ensemble du réseau national PyroGuard.</div>
+      <div class="service-arrow">Nous appeler →</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="pourquoi">
+  <div class="reveal">
+    <div class="section-tag">Pourquoi PyroGuard</div>
+    <h2 class="section-h2">La différence qui change tout</h2>
+    <p class="section-lead">Fabricant français, réseau national, certifications Apsad — une offre sans compromis sur la qualité.</p>
+  </div>
+  <div class="why-grid reveal">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <div class="why-title">Fabrication française</div>
+      <div class="why-desc">Nos extincteurs et systèmes sont fabriqués en France, garantissant traçabilité et maîtrise de la qualité.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <div class="why-title">Certifications Apsad</div>
+      <div class="why-desc">Toutes nos installations répondent aux règles Apsad R1 à R7, avec rapports conformes pour vos assurances.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <div class="why-title">Réseau de proximité</div>
+      <div class="why-desc">Plus de 60 agences en France métropolitaine pour des délais d'intervention maîtrisés partout sur le territoire.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <div class="why-title">Interlocuteur unique</div>
+      <div class="why-desc">Un seul contrat, un seul référent pour l'ensemble de vos équipements. Simplifié, traçable, efficace.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUITS -->
+<section id="produits">
+  <div class="products-inner">
+    <div class="reveal">
+      <div class="section-tag">Nos produits</div>
+      <h2 class="section-h2">Des équipements pour chaque risque</h2>
+      <p class="section-lead">Du détecteur de fumée au système d'extinction automatique à gaz, notre gamme couvre la totalité des besoins réglementaires.</p>
+    </div>
+    <div class="products-list reveal">
+      <div class="product-row">
+        <div class="product-num">01</div>
+        <div class="product-body">
+          <div class="product-name">Extincteurs & équipements de première intervention</div>
+          <div class="product-desc">Eau, poudre, CO₂, sans fluor — gamme certifiée CE et NF en conformité PFAS 2025.</div>
+        </div>
+      </div>
+      <div class="product-row">
+        <div class="product-num">02</div>
+        <div class="product-body">
+          <div class="product-name">Détection incendie (SSI catégorie A à alarme type 4)</div>
+          <div class="product-desc">Centrales, détecteurs optiques, ioniques et thermovélocimétriques, déclencheurs manuels.</div>
+        </div>
+      </div>
+      <div class="product-row">
+        <div class="product-num">03</div>
+        <div class="product-body">
+          <div class="product-name">Systèmes hydrants & RIA</div>
+          <div class="product-desc">Robinets d'incendie armés, poteaux incendie, émulseurs pour risques industriels et liquides.</div>
+        </div>
+      </div>
+      <div class="product-row">
+        <div class="product-num">04</div>
+        <div class="product-body">
+          <div class="product-name">Désenfumage & portes coupe-feu</div>
+          <div class="product-desc">Volets motorisés, trappes de désenfumage, portes EI30/EI60, bloque-portes électromagnétiques.</div>
+        </div>
+      </div>
+      <div class="product-row">
+        <div class="product-num">05</div>
+        <div class="product-body">
+          <div class="product-name">Éclairage de secours & signalisation</div>
+          <div class="product-desc">BAES autonome, SATI centralisé, plans d'évacuation, panneaux et consignes de sécurité.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section class="process" id="processus">
+  <div class="reveal" style="text-align:center">
+    <div class="section-tag">Notre démarche</div>
+    <h2 class="section-h2" style="max-width:100%;text-align:center">Comment ça se passe ?</h2>
+  </div>
+  <div class="process-steps reveal">
+    <div class="step">
+      <div class="step-circle">1</div>
+      <div class="step-title">Demande de contact</div>
+      <div class="step-desc">Formulaire en ligne ou appel — réponse garantie sous 24h ouvrées.</div>
+    </div>
+    <div class="step">
+      <div class="step-circle">2</div>
+      <div class="step-title">Audit sur site</div>
+      <div class="step-desc">Visite gratuite par un technicien certifié. Diagnostic complet de vos installations.</div>
+    </div>
+    <div class="step">
+      <div class="step-circle">3</div>
+      <div class="step-title">Devis personnalisé</div>
+      <div class="step-desc">Préconisations chiffrées, planning d'intervention, contrat de maintenance adapté.</div>
+    </div>
+    <div class="step">
+      <div class="step-circle">4</div>
+      <div class="step-title">Installation & suivi</div>
+      <div class="step-desc">Techniciens certifiés, rapports conformes, espace client pour vos documents.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section>
+  <div class="reveal">
+    <div class="section-tag">Ils nous font confiance</div>
+    <h2 class="section-h2">Ce que disent nos clients</h2>
+  </div>
+  <div class="testimonials-track reveal">
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-text">Passage de 3 sites industriels sous contrat PyroGuard. Le suivi est exemplaire, les rapports Apsad toujours disponibles en ligne. Nos assureurs apprécient la rigueur.</div>
+      <div class="testi-author">
+        <div class="testi-avatar">JM</div>
+        <div>
+          <div class="testi-name">Jean-Marc Berthier</div>
+          <div class="testi-role">Directeur technique — Groupe Berthier Industries</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-text">Formation évacuation très sérieuse, nos équipes se sentent vraiment préparées. Le formateur a su adapter le contenu à notre secteur hospitalier.</div>
+      <div class="testi-author">
+        <div class="testi-avatar">SL</div>
+        <div>
+          <div class="testi-name">Sophie Lelandais</div>
+          <div class="testi-role">Responsable sécurité — Clinique Saint-Éloi</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-text">Intervention d'urgence à 22h un samedi — technicien sur place en 3h. C'est ce genre de réactivité qui fait la différence quand on gère un ERP.</div>
+      <div class="testi-author">
+        <div class="testi-avatar">AR</div>
+        <div>
+          <div class="testi-name">Antoine Renard</div>
+          <div class="testi-role">Gérant — Hôtel Les Pins Dorés</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="reveal">
+    <div class="section-tag">Contact</div>
+    <h2 class="section-h2">Parlons de votre sécurité</h2>
+    <p class="section-lead">Audit gratuit, devis sans engagement. Notre équipe vous répond sous 24h.</p>
+  </div>
+  <div class="contact-inner">
+    <div class="contact-info reveal">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Téléphone</div>
+          <div class="contact-value">+33 1 42 XX XX XX<br><span style="font-size:13px;color:var(--ash)">Urgences 24h/24 : +33 800 XXX XXX</span></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">contact@pyroguard.fr</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Siège social</div>
+          <div class="contact-value">12 rue de la Protection, 75001 Paris<br><span style="font-size:13px;color:var(--ash)">+ 60 agences en France</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-field">
+          <label>Prénom</label>
+          <input type="text" placeholder="Jean">
+        </div>
+        <div class="form-field">
+          <label>Nom</label>
+          <input type="text" placeholder="Dupont">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Email professionnel</label>
+          <input type="email" placeholder="j.dupont@société.fr">
+        </div>
+        <div class="form-field">
+          <label>Téléphone</label>
+          <input type="tel" placeholder="+33 6 XX XX XX XX">
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Type d'établissement</label>
+        <select>
+          <option value="">Sélectionner...</option>
+          <option>ERP (hôtel, restaurant, commerce...)</option>
+          <option>Industrie / entrepôt</option>
+          <option>Tertiaire / bureau</option>
+          <option>Établissement de santé</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Besoin</label>
+        <textarea placeholder="Décrivez votre situation ou votre besoin (nombre de sites, urgence, type d'équipements...)"></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%;justify-content:center;font-size:15px;padding:15px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        Envoyer ma demande
+      </button>
+      <p style="font-size:12px;color:rgba(255,255,255,.25);text-align:center;margin-top:14px">Réponse garantie sous 24h ouvrées · Audit sur site gratuit et sans engagement</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px">
+          <path d="M16 2C16 2 8 10 8 18C8 22.4 11.6 26 16 26C20.4 26 24 22.4 24 18C24 10 16 2 16 2Z" fill="#D62828"/>
+          <path d="M16 10C16 10 12 14.5 12 18C12 20.2 13.8 22 16 22C18.2 22 20 20.2 20 18C20 14.5 16 10 16 10Z" fill="#FF6B6B"/>
+        </svg>
+        <span class="nav-logo-text">PYRO<span>GUARD</span></span>
+      </a>
+      <p>Votre partenaire global en sécurité incendie depuis 1987. Fabricant français, réseau national, certifications Apsad.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#">Audit & Conseil</a>
+      <a href="#">Installation</a>
+      <a href="#">Maintenance</a>
+      <a href="#">Formation</a>
+      <a href="#">Urgences 24h/24</a>
+    </div>
+    <div class="footer-col">
+      <h4>Produits</h4>
+      <a href="#">Extincteurs</a>
+      <a href="#">Détection incendie</a>
+      <a href="#">Systèmes hydrants</a>
+      <a href="#">Désenfumage</a>
+      <a href="#">Éclairage de secours</a>
+    </div>
+    <div class="footer-col">
+      <h4>Groupe</h4>
+      <a href="#">Qui sommes-nous</a>
+      <a href="#">Fabrication française</a>
+      <a href="#">Certifications</a>
+      <a href="#">Recrutement</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 PyroGuard — Template créé par Claude. Tous droits réservés.</p>
+    <div class="certifs">
+      <div class="certif-badge">APSAD R1</div>
+      <div class="certif-badge">NF SERVICE</div>
+      <div class="certif-badge">QUALIOPI</div>
+      <div class="certif-badge">ISO 9001</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+    }
+  });
+},{threshold:0.12});
+revealEls.forEach(el => observer.observe(el));
+
+// Mobile menu
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
+}
+
+// Close mobile menu on outside click
+document.getElementById('mobileMenu').addEventListener('click', function(e){
+  if(e.target === this) toggleMenu();
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  nav.style.background = window.scrollY > 60
+    ? 'rgba(26,26,26,0.99)'
+    : 'rgba(26,26,26,0.96)';
+});
+
+// Animated stats counter on hero
+function animateCounter(el, target, suffix){
+  let start = 0;
+  const duration = 1800;
+  const step = timestamp => {
+    if(!start) start = timestamp;
+    const prog = Math.min((timestamp - start)/duration, 1);
+    const eased = 1 - Math.pow(1 - prog, 3);
+    el.textContent = Math.round(eased * target) + suffix;
+    if(prog < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+const heroObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      setTimeout(() => animateCounter(document.getElementById('stat1'), 38, 'ans'), 400);
+      setTimeout(() => animateCounter(document.getElementById('stat2'), 12, 'K+'), 600);
+      setTimeout(() => animateCounter(document.getElementById('stat3'), 350, '+'), 800);
+      heroObserver.disconnect();
+    }
+  });
+},{threshold:0.5});
+
+// Add IDs to stat nums for counter animation
+const statNums = document.querySelectorAll('.hero-stat-num');
+if(statNums[0]) statNums[0].id='stat1';
+if(statNums[1]) statNums[1].id='stat2';
+if(statNums[2]) statNums[2].id='stat3';
+if(statNums[0]) heroObserver.observe(statNums[0]);
+
+// Smooth form submit feedback
+document.querySelector('.contact-form .btn-primary').addEventListener('click', function(){
+  this.textContent = '✓ Demande envoyée — réponse sous 24h';
+  this.style.background = '#1a6e3a';
+  this.disabled = true;
+});
+</script>
+</body>
+</html>
