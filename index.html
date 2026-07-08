@@ -3,25 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PyroGuard – Sécurité Incendie</title>
+<title>PyroGuard | Extincteurs, Alarmes Incendie & Maintenance au Maroc</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="navbar">
-  <a class="nav-logo" href="#">
+  <a class="nav-logo" href="./index.html">
     <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16 2C16 2 8 10 8 18C8 22.4 11.6 26 16 26C20.4 26 24 22.4 24 18C24 10 16 2 16 2Z" fill="#D62828"/>
-      <path d="M16 10C16 10 12 14.5 12 18C12 20.2 13.8 22 16 22C18.2 22 20 20.2 20 18C20 14.5 16 10 16 10Z" fill="#FF6B6B"/>
-      <path d="M16 15C16 15 14 17 14 18.5C14 19.3 14.9 20 16 20C17.1 20 18 19.3 18 18.5C18 17 16 15 16 15Z" fill="#FFE0E0"/>
+      <path d="M16 2C16 2 8 10 8 18C8 22.4 11.6 26 16 26C20.4 26 24 22.4 24 18C24 10 16 2 16 2Z" fill="#D62828" />
+      <path d="M16 10C16 10 12 14.5 12 18C12 20.2 13.8 22 16 22C18.2 22 20 20.2 20 18C20 14.5 16 10 16 10Z"
+        fill="#FF6B6B" />
+      <path d="M16 15C16 15 14 17 14 18.5C14 19.3 14.9 20 16 20C17.1 20 18 19.3 18 18.5C18 17 16 15 16 15Z"
+        fill="#FFE0E0" />
     </svg>
     <span class="nav-logo-text">PYRO<span>GUARD</span></span>
   </a>
   <div class="nav-links">
-    <a href="#services">Nos services</a>
-    <a href="#produits">Produits</a>
+    <div class="dropdown">
+      <a href="#services" class="dropdown-btn">Nos services</a>
+      <div class="dropdown-menu">
+        <a href="#audit" class="dropdown-item">Audit incendie</a>
+        <a href="#installation" class="dropdown-item">Installation</a>
+        <a href="#maintenance" class="dropdown-item">Maintenance</a>
+        <a href="#formation" class="dropdown-item">Formation</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#produits" class="dropdown-btn">Produits</a>
+      <div class="dropdown-menu">
+
+        <div class="dropdown-item">
+          <a href="">Extincteurs <i class="fa-solid fa-angle-right" ></i></a>
+          <div class="submenu">
+            <a href="pages/Extincteurs_pages/Extincteur_eau.html">Extincteur à eau</a>
+            <a href="#">Extincteur à poudre</a>
+            <a href="#">Extincteur CO2</a>
+            <a href="#">Extincteurs sans fluor</a>
+          </div>
+        </div>
+
+        <div class="dropdown-item">
+          <a href=""> Matériel incendie et secours <i class="fa-solid fa-angle-right" ></i></a>
+          <div class="submenu">
+            <a href="#">Protection des extincteurs</a>
+            <a href="#">Couverture anti feu</a>
+            <a href="#">Bac à sable</a>
+            <a href="#">Gondoles et armoires à solvants</a>
+            <a href="#">Registre et boite à registre</a>
+            <a href="#">Douches portatives</a>
+          </div>
+        </div>
+
+        <div class="dropdown-item">
+          <a href="">Signalisation <i class="fa-solid fa-angle-right"></i></a>
+          <div class="submenu">
+            <a href="#">Plan d'évacuation</a>
+            <a href="#">Consignes de sécurité</a>
+            <a href="#">Panneaux</a>
+          </div>
+        </div>
+
+        <div class="dropdown-item">
+          <a href=""> Éclairage de secours </a>
+        </div>
+
+        <div class="dropdown-item">
+          <a href="">Systèmes Hydrants <i class="fa-solid fa-angle-right"></i> </a>
+          <div class="submenu">
+            <a href="#">RIA</a>
+            <a href="#">Poteaux incendie</a>
+            <a href="#">Emulseurs</a>
+          </div>
+        </div>
+
+        <div class="dropdown-item">
+          <a href="">Extinction automatique</a>
+        </div>
+        <div class="dropdown-item">
+          <a href="">Détecteur de fumée </a>
+        </div>
+        <div class="dropdown-item">
+          <a href="">Détection incendie (SSI) <i class="fa-solid fa-angle-right" ></i></a>
+          <div class="submenu">
+            <a href="#">Détection incendie catégorie A</a>
+            <a href="#">Détection incendie categorie B</a>
+            <a href="#">Detection incendie alarme type 2b</a>
+            <a href="#">Detection incendie alarme type 3</a>
+            <a href="#">Detection incendie alarme type 4</a>
+          </div>
+        </div>
+
+        <div class="dropdown-item">
+          <a href="">Désenfumage et portes coupe-feu <i class="fa-solid fa-angle-right" ></i> </a>
+          <div class="submenu">
+            <a href="#">Désenfumage</a>
+            <a href="#">Portes coupe-feu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <a href="#processus">Démarche</a>
     <a href="#contact">Contact</a>
   </div>
@@ -423,76 +508,7 @@
     </div>
   </div>
 </footer>
-
-<script>
-// Scroll reveal
-const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if(e.isIntersecting){
-      e.target.classList.add('visible');
-    }
-  });
-},{threshold:0.12});
-revealEls.forEach(el => observer.observe(el));
-
-// Mobile menu
-function toggleMenu(){
-  document.getElementById('mobileMenu').classList.toggle('open');
-  document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
-}
-
-// Close mobile menu on outside click
-document.getElementById('mobileMenu').addEventListener('click', function(e){
-  if(e.target === this) toggleMenu();
-});
-
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-  const nav = document.getElementById('navbar');
-  nav.style.background = window.scrollY > 60
-    ? 'rgba(26,26,26,0.99)'
-    : 'rgba(26,26,26,0.96)';
-});
-
-// Animated stats counter on hero
-function animateCounter(el, target, suffix){
-  let start = 0;
-  const duration = 1800;
-  const step = timestamp => {
-    if(!start) start = timestamp;
-    const prog = Math.min((timestamp - start)/duration, 1);
-    const eased = 1 - Math.pow(1 - prog, 3);
-    el.textContent = Math.round(eased * target) + suffix;
-    if(prog < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
-
-const heroObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if(e.isIntersecting){
-      setTimeout(() => animateCounter(document.getElementById('stat1'), 38, 'ans'), 400);
-      setTimeout(() => animateCounter(document.getElementById('stat2'), 12, 'K+'), 600);
-      setTimeout(() => animateCounter(document.getElementById('stat3'), 350, '+'), 800);
-      heroObserver.disconnect();
-    }
-  });
-},{threshold:0.5});
-
-// Add IDs to stat nums for counter animation
-const statNums = document.querySelectorAll('.hero-stat-num');
-if(statNums[0]) statNums[0].id='stat1';
-if(statNums[1]) statNums[1].id='stat2';
-if(statNums[2]) statNums[2].id='stat3';
-if(statNums[0]) heroObserver.observe(statNums[0]);
-
-// Smooth form submit feedback
-document.querySelector('.contact-form .btn-primary').addEventListener('click', function(){
-  this.textContent = '✓ Demande envoyée — réponse sous 24h';
-  this.style.background = '#1a6e3a';
-  this.disabled = true;
-});
-</script>
+<script src="/assets/js/script.js"></script>
 </body>
+
 </html>
