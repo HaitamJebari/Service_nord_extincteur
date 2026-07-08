@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PyroGuard – Sécurité Incendie</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 
@@ -42,8 +42,11 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid-lines"></div>
+  <div class="hero-bg">
+    <video autoplay muted loop playsinline>
+      <source src="assets/videos/main_vd.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="hero-content reveal">
     <div class="hero-eyebrow">Expert Sécurité Incendie depuis 1987</div>
     <h1>Protéger<br>ce qui compte,<br><em>avant le feu.</em></h1>
@@ -71,31 +74,6 @@
     </div>
   </div>
 
-  <!-- Animated flame SVG -->
-  <div class="hero-visual" aria-hidden="true">
-    <svg viewBox="0 0 440 560" xmlns="http://www.w3.org/2000/svg">
-      <!-- Glow circle -->
-      <ellipse cx="220" cy="430" rx="160" ry="40" fill="rgba(214,40,40,0.07)"/>
-      <!-- Shield shape -->
-      <path d="M220 60 L380 130 L380 290 C380 400 220 480 220 480 C220 480 60 400 60 290 L60 130 Z" fill="rgba(214,40,40,0.05)" stroke="rgba(214,40,40,0.2)" stroke-width="1.5"/>
-      <!-- Outer flame -->
-      <g class="flame-outer">
-        <path d="M220 460 C120 420 90 350 100 270 C110 200 145 165 160 130 C155 170 165 195 175 210 C170 170 195 130 200 90 C210 135 220 165 215 200 C235 160 240 125 245 90 C255 135 270 175 265 215 C275 195 285 175 280 130 C295 165 320 205 325 275 C335 355 310 425 220 460Z" fill="#D62828" opacity=".85"/>
-      </g>
-      <!-- Mid flame -->
-      <g class="flame-mid">
-        <path d="M220 440 C150 405 130 345 138 278 C145 220 168 188 180 165 C176 198 185 218 192 232 C188 195 205 160 208 130 C216 168 222 192 218 222 C233 186 237 155 242 130 C250 163 262 195 258 228 C265 212 272 196 268 168 C282 192 300 228 304 288 C312 360 288 410 220 440Z" fill="#FF6B6B" opacity=".7"/>
-      </g>
-      <!-- Inner flame -->
-      <g class="flame-inner">
-        <path d="M220 420 C175 392 162 346 168 296 C173 254 188 230 196 214 C194 236 200 250 205 260 C202 232 212 204 214 182 C219 204 223 222 220 240 C228 218 230 196 233 180 C239 202 246 228 242 252 C247 240 252 228 250 212 C258 232 268 260 270 300 C274 350 258 395 220 420Z" fill="#FFB347" opacity=".55"/>
-      </g>
-      <!-- Core glow -->
-      <ellipse cx="220" cy="350" rx="22" ry="30" fill="rgba(255,220,180,0.3)"/>
-      <!-- Shield label -->
-      <text x="220" y="510" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="700" fill="rgba(214,40,40,0.4)" letter-spacing="0.12em">PROTECTION CERTIFIÉE</text>
-    </svg>
-  </div>
 </section>
 
 <!-- ALERT BAND -->
