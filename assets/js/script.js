@@ -1,3 +1,44 @@
+
+(() => {
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ 
+  const targets = document.querySelectorAll(
+    [
+      ".product-image-box",
+      ".section-tag",
+      ".product-info h3",
+      ".product-desc",
+      ".spec-item",
+      ".product-features li",
+      ".product-detail .nav-cta",
+      ".footer-inner > *",
+      ".footer-bottom"
+    ].join(", ")
+  );
+ 
+  if (!targets.length) return;
+ 
+  // No JS-driven motion needed: show everything immediately.
+  if (prefersReduced || !("IntersectionObserver" in window)) {
+    targets.forEach((el) => el.classList.add("reveal-in"));
+    return;
+  }
+ 
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal-in");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+  );
+ 
+  targets.forEach((el) => io.observe(el));
+})();
+
 // Scroll reveal
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {

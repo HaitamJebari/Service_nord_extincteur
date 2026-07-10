@@ -1,0 +1,455 @@
+
+/* HERO SECTION */
+.hero {
+    padding: 160px 5% 80px;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)), url('https://images.unsplash.com/photo-1599708145755-662366292394?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    /* position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none; */
+}
+.hero-effects{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+.hero-eyebrow {
+  color: var(--red);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: var(--barlow);
+  font-size: clamp(40px, 8vw, 80px);
+  line-height: 0.9;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--red);
+}
+
+.hero-bgPoudre{
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+}
+
+
+
+.smoke{
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.16;
+
+    animation:smoke 20s ease-in-out infinite;
+}
+
+.smoke1{
+
+    background:#ffffff;
+
+    top:-250px;
+    left:-220px;
+
+}
+
+.smoke2{
+
+    background:#999;
+
+    bottom:-250px;
+    right:-250px;
+
+    animation-duration:28s;
+    animation-direction:reverse;
+
+}
+
+@keyframes smoke{
+
+    0%{
+        transform:
+        translate(0,0)
+        scale(1);
+    }
+
+    50%{
+        transform:
+        translate(120px,-70px)
+        scale(1.25);
+    }
+
+    100%{
+        transform:
+        translate(0,0)
+        scale(1);
+    }
+
+}
+
+.red-glow{
+
+    position:absolute;
+
+    width:900px;
+    height:900px;
+
+    right:-350px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    border-radius:50%;
+
+    background:radial-gradient(circle,
+    rgba(214,40,40,.55),
+    rgba(214,40,40,.15),
+    transparent 70%);
+
+    filter:blur(90px);
+
+    animation:pulse 8s ease-in-out infinite;
+
+}
+
+@keyframes pulse{
+
+    0%,100%{
+
+        transform:
+        translateY(-50%)
+        scale(1);
+
+        opacity:.6;
+
+    }
+
+    50%{
+
+        transform:
+        translateY(-50%)
+        scale(1.15);
+
+        opacity:1;
+
+    }
+
+}
+
+.embers{
+    position:absolute;
+    inset:0;
+}
+
+.embers span{
+
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:#ff8a00;
+
+    box-shadow:
+    0 0 8px #ff8a00,
+    0 0 16px #ff5e00,
+    0 0 24px #ff3d00;
+
+    animation:ember 10s linear infinite;
+
+}
+
+@keyframes ember{
+
+    0%{
+
+        transform:
+        translateY(0)
+        scale(1);
+
+        opacity:0;
+
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+
+        transform:
+        translateY(-900px)
+        translateX(80px)
+        scale(.2);
+
+        opacity:0;
+
+    }
+
+}
+
+
+.embers span:nth-child(1){left:5%;bottom:-20px;animation-delay:0s;}
+.embers span:nth-child(2){left:15%;bottom:-40px;animation-delay:1s;}
+.embers span:nth-child(3){left:25%;bottom:-10px;animation-delay:2s;}
+.embers span:nth-child(4){left:38%;bottom:-25px;animation-delay:3s;}
+.embers span:nth-child(5){left:48%;bottom:-15px;animation-delay:4s;}
+.embers span:nth-child(6){left:58%;bottom:-35px;animation-delay:5s;}
+.embers span:nth-child(7){left:68%;bottom:-20px;animation-delay:6s;}
+.embers span:nth-child(8){left:76%;bottom:-40px;animation-delay:7s;}
+.embers span:nth-child(9){left:84%;bottom:-15px;animation-delay:8s;}
+.embers span:nth-child(10){left:90%;bottom:-25px;animation-delay:9s;}
+.embers span:nth-child(11){left:55%;bottom:-20px;animation-delay:10s;}
+.embers span:nth-child(12){left:30%;bottom:-35px;animation-delay:11s;}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+    135deg,
+    rgba(214,40,40,.08),
+    transparent 35%,
+    transparent 65%,
+    rgba(255,120,120,.05));
+
+    background-size:250% 250%;
+
+    animation:gradientMove 18s linear infinite;
+
+    z-index:0;
+
+}
+
+@keyframes gradientMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    100%{
+        background-position:100% 50%;
+    }
+
+}
+
+.hero-content{
+    position:relative;
+    z-index:10;
+}
+
+ 
+@media (prefers-reduced-motion: reduce) {
+  .product-image-box,
+  .section-tag,
+  .product-info h3,
+  .product-desc,
+  .spec-item,
+  .product-features li,
+  .product-detail {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+ 
+
+ 
+/* ---------- Hero copy: staggered rise, eyebrow -> headline -> lead ---------- */
+.hero-content > * {
+  opacity: 0;
+  animation: pgRiseIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-content > *:nth-child(1) { animation-delay: 0.55s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.7s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.88s; }
+@keyframes pgRiseIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+ 
+/* ---------- Hero atmosphere: the "ignition" moment ---------- */
+
+.hero-effects {
+  opacity: 0;
+  animation: pgEffectsIn 2s ease 0.25s forwards;
+}
+@keyframes pgEffectsIn {
+  to { opacity: 1; }
+}
+ 
+/* ---------- Scroll reveal: product detail ---------- */
+.product-image-box,
+.section-tag,
+.product-info h3,
+.product-desc,
+.spec-item,
+.product-features li {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+ 
+.product-image-box.reveal-in,
+.section-tag.reveal-in,
+.product-info h3.reveal-in,
+.product-desc.reveal-in,
+.spec-item.reveal-in,
+.product-features li.reveal-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+ 
+.product-image-box                { transition-delay: 0s; }
+.section-tag                      { transition-delay: 0.08s; }
+.product-info h3                  { transition-delay: 0.16s; }
+.product-desc                     { transition-delay: 0.24s; }
+.spec-item:nth-child(1)           { transition-delay: 0.32s; }
+.spec-item:nth-child(2)           { transition-delay: 0.38s; }
+.spec-item:nth-child(3)           { transition-delay: 0.44s; }
+.spec-item:nth-child(4)           { transition-delay: 0.5s; }
+.product-features li:nth-child(1) { transition-delay: 0.56s; }
+.product-features li:nth-child(2) { transition-delay: 0.62s; }
+.product-features li:nth-child(3) { transition-delay: 0.68s; }
+.product-features li:nth-child(4) { transition-delay: 0.74s; }
+ 
+
+/* CTA fades only (no transform) so it never fights its own hover lift */
+.product-detail .nav-cta {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  transition-delay: 0.82s;
+}
+.product-detail .nav-cta.reveal-in {
+  opacity: 1;
+}
+
+/* SECTIONS */
+section {
+  padding: 100px 5%;
+}
+
+.section-tag {
+  color: var(--red);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.section-h2 {
+  font-family: var(--barlow);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.section-lead {
+  color: var(--ash);
+  font-size: 18px;
+  max-width: 700px;
+  margin-bottom: 50px;
+}
+
+/* PRODUCT DETAIL */
+.product-detail-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.product-image-box {
+  background: #151515;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.product-image-box img {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+}
+
+.product-info h3 {
+  font-family: var(--barlow);
+  font-size: 32px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.product-specs {
+  margin: 30px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.spec-item {
+  border-left: 2px solid var(--red);
+  padding-left: 15px;
+}
+
+.spec-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--ash);
+  display: block;
+}
+
+.spec-value {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.product-features {
+  list-style: none;
+  margin-bottom: 40px;
+}
+
+.product-features li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  color: var(--ash);
+}
+
+.product-features li i {
+  color: var(--red);
+} 
