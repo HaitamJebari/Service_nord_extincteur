@@ -11,6 +11,33 @@
 </head>
 <body>
 
+<!-- PRELOADER -->
+<div id="pgLoader" aria-hidden="true">
+  <svg style="position:absolute;width:0;height:0" aria-hidden="true">
+    <symbol id="pgFlameShape" viewBox="0 0 32 32">
+      <path d="M16 2C16 2 8 10 8 18C8 22.4 11.6 26 16 26C20.4 26 24 22.4 24 18C24 10 16 2 16 2Z" fill="#D62828"/>
+      <path d="M16 10C16 10 12 14.5 12 18C12 20.2 13.8 22 16 22C18.2 22 20 20.2 20 18C20 14.5 16 10 16 10Z" fill="#FF6B6B"/>
+      <path d="M16 15C16 15 14 17 14 18.5C14 19.3 14.9 20 16 20C17.1 20 18 19.3 18 18.5C18 17 16 15 16 15Z" fill="#FFE0E0"/>
+    </symbol>
+  </svg>
+  <div class="pg-loader-inner">
+    <div class="pg-loader-word">Service <span>Nord</span> Extincteur</div>
+    <div class="pg-loader-flame">
+      <div class="pg-loader-embers">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <svg class="pg-flame-svg pg-flame-dim" viewBox="0 0 32 32"><use href="#pgFlameShape"></use></svg>
+      <div class="pg-flame-fill-clip">
+        <svg class="pg-flame-svg pg-flame-bright" viewBox="0 0 32 32"><use href="#pgFlameShape"></use></svg>
+      </div>
+    </div>
+    <div class="pg-loader-percent-row">
+      <span class="pg-loader-percent" id="pgLoaderPercent">0</span><span class="pg-loader-percent-sign">%</span>
+    </div>
+    <div class="pg-loader-caption">On sécurise votre pages…</div>
+  </div>
+</div>
+
 <!-- NAV -->
 <nav id="navbar">
   <a class="nav-logo" href="./index.html">
