@@ -9,11 +9,25 @@
     background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)), url('https://images.unsplash.com/photo-1599708145755-662366292394?q=80&w=2070&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
-    /* position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none; */
 }
+
+
+.hero-content{
+    position:relative;
+    z-index:10;
+}
+.hero-content > * {
+  opacity: 0;
+  animation: pgRiseIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-content > *:nth-child(1) { animation-delay: 0.55s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.7s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.88s; }
+@keyframes pgRiseIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+ 
 .hero-effects{
     position:absolute;
     inset:0;
@@ -262,11 +276,6 @@
 
 }
 
-.hero-content{
-    position:relative;
-    z-index:10;
-}
-
  
 @media (prefers-reduced-motion: reduce) {
   .product-image-box,
@@ -284,19 +293,7 @@
  
 
  
-/* ---------- Hero copy: staggered rise, eyebrow -> headline -> lead ---------- */
-.hero-content > * {
-  opacity: 0;
-  animation: pgRiseIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-.hero-content > *:nth-child(1) { animation-delay: 0.55s; }
-.hero-content > *:nth-child(2) { animation-delay: 0.7s; }
-.hero-content > *:nth-child(3) { animation-delay: 0.88s; }
-@keyframes pgRiseIn {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
- 
+
 /* ---------- Hero atmosphere: the "ignition" moment ---------- */
 
 .hero-effects {
