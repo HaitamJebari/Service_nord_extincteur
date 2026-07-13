@@ -208,6 +208,75 @@ document.querySelector('.contact-form .btn-primary').addEventListener('click', f
 
 
 
+ const timelineData = [
+        { year: '1972', title: 'Création d\'Eurofeu', description: 'Fondation par Nicole et Michel Lahouati. Société de négoce de matériel incendie, 150 m² à Le Mesnil-Thomas (28).' },
+        { year: '1976', title: 'Signalisation & Plans', description: 'Eurofeu devient SAS. Création de la marque Eurosignal pour la fabrication de panneaux et plans d\'évacuation.' },
+        { year: '1981', title: 'Premier Extincteur', description: 'Premier extincteur fabriqué à Mesnil-Thomas dans un nouvel atelier de 1 500 m². Naissance de la gamme propre.' },
+        { year: '1986', title: 'Réseau de Distribution', description: 'Création d\'un réseau dédié aux petites entreprises (LRS — Le Réseau Sécurité).' },
+        { year: '1995', title: 'Intégration Chevalier Bertrand', description: 'Intégration du fournisseur d\'embouts d\'extincteurs Chevalier Bertrand. Maîtrise complète du circuit de fabrication.' },
+        { year: '1996', title: 'Certification ISO 9001', description: 'Certification qualité ISO 9001 pour l\'unité de production. Engagement fort envers la qualité.' },
+        { year: '1998', title: 'Département Formation', description: 'Création du département formation pour répondre à la demande croissante de formations incendie et sécurité.' },
+        { year: '2003', title: 'Nouveau Site Industriel', description: 'Déménagement sur le site industriel La Forêt : 21 500 m² d\'usine/entrepôt et 1 600 m² de bureaux.' },
+        { year: '2007', title: 'Création Eurofeu Services', description: 'Fusion de plusieurs entités régionales et création d\'Eurofeu Services, réseau national de vente directe.' },
+        { year: '2013', title: 'Certification ISO 14001', description: 'Engagement environnemental renforcé avec la validation de la norme ISO 14001.' },
+        { year: '2014', title: 'Label Origine France Garantie', description: 'Eurofeu, 1er fabricant d\'extincteurs à obtenir le label "ORIGINE FRANCE GARANTIE".' },
+        { year: '2020', title: 'Nouveau Présidence', description: 'Prise de présidence par Éric Hentges avec le soutien du fonds d\'investissement français CAPZA.' },
+        { year: '2022', title: '50 ans d\'Eurofeu', description: 'Célébration des 50 ans. Refonte complète de la charte graphique. Acquisition d\'AMI2S pour son expertise SSI.' },
+        { year: '2024', title: 'IK Partners Actionnaire', description: 'CAPZA réduit sa participation. IK Partners devient actionnaire majoritaire, ouvrant de nouvelles perspectives de croissance.' }
+    ];
+
+    const timelineList = document.getElementById('timeline-list');
+
+    timelineData.forEach((item, index) => {
+        const isLeft = index % 2 === 0;
+        const itemElement = document.createElement('div');
+        itemElement.className = `timeline-item ${isLeft ? 'left' : 'right'}`;
+        
+        itemElement.innerHTML = `
+            <div class="timeline-content">
+                <div class="card">
+                    <div class="card-year gradient-text">${item.year}</div>
+                    <div class="card-title">${item.title}</div>
+                    <p class="card-description">${item.description}</p>
+                </div>
+            </div>
+            <div class="timeline-dot"></div>
+            <div class="spacer"></div>
+        `;
+        
+        timelineList.appendChild(itemElement);
+    });
+
+    lucide.createIcons();
+
+    // Enhanced Animation Logic
+    const animateOnScroll = () => {
+        const items = document.querySelectorAll('.timeline-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // We keep observing if we want it to re-animate, 
+                    // but usually once is better for UX
+                    // observer.unobserve(entry.target); 
+                } else {
+                    // Optional: remove class to re-animate when scrolling back up
+                    // entry.target.classList.remove('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.2, // Trigger when 20% of the item is visible
+            rootMargin: '0px 0px -50px 0px' // Slight offset for better feel
+        });
+
+        items.forEach(item => {
+            observer.observe(item);
+        });
+    };
+
+    // Run animation logic
+    document.addEventListener('DOMContentLoaded', animateOnScroll);
 
 
 

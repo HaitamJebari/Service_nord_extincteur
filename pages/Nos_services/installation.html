@@ -7,7 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/all.css">
-    <link rel="stylesheet" href="../css/cssPages.css"></head>
+    <link rel="stylesheet" href="../css/cssPages.css">
+    <link rel="stylesheet" href="./css/cssServices.css">
+</head>
 <body>
 
 <!-- NAV -->
@@ -108,7 +110,7 @@
       </div>
     </div>
 
-    <a href="#processus">Démarche</a>
+    <a href="../Qui_sommes_nous/Qui_sommes_nous.html">Qui sommes-nous ?</a>
     <a href="#contact">Contact</a>
   </div>
   <a class="nav-cta" href="#contact">Demande de devis</a>
@@ -121,22 +123,32 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#services" onclick="toggleMenu()">Nos services</a>
   <a href="#produits" onclick="toggleMenu()">Produits</a>
-  <a href="#processus" onclick="toggleMenu()">Démarche</a>
+  <a href="../Qui_sommes_nous/Qui_sommes_nous.html">Qui sommes-nous ?</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
   <a href="#contact" onclick="toggleMenu()" style="color:var(--red);margin-top:16px">→ Demande de devis</a>
 </div>
 
-<section class="hero">
-  <div class="hero-bg">
-    <img src="../../assets/images/hero-installation.jpg" alt="Installation">
+
+<section id="sec" class="hero">
+  <div class="hero-effects">
+
+    <div class="smoke smoke1"></div>
+    <div class="smoke smoke2"></div>
+
+    <div class="red-glow"></div>
+
+    <div class="embers">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
   </div>
   <div class="hero-content reveal">
-    <div class="hero-eyebrow">Mise en service & Pose</div>
-    <h1>Des systèmes de pointe <em>installés par des experts.</em></h1>
-    <p class="hero-desc">De la détection à l'extinction, nous installons des équipements certifiés pour une protection optimale de vos bâtiments.</p>
-    <div class="hero-actions">
-      <a href="../index.html#contact" class="btn-primary">Demander une étude</a>
-    </div>
+    <div class="hero-eyebrow">Produits & Équipements</div>
+    <h1>Installation<em></em></h1>
+    <p class="section-lead">Nous réalisons un diagnostic précis de vos installations pour
+       garantir votre conformité réglementaire et la sécurité de vos collaborateurs.</p>
   </div>
 </section>
 
@@ -242,6 +254,6 @@
   </div>
 </footer>
 
-<script src="../assets/js/script.js"></script>
+<script src="../../assets/js/script.js"></script>
 </body>
 </html>

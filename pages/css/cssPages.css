@@ -1,21 +1,33 @@
-
-/* HERO SECTION */
+/* ── HERO ── */
 .hero {
-    padding: 160px 5% 80px;
-    min-height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)), url('https://images.unsplash.com/photo-1599708145755-662366292394?q=80&w=2070&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: var(--nav-h) 5vw 0;
+  overflow: hidden;
+  background: var(--charcoal);
 }
 
-
-.hero-content{
-    position:relative;
-    z-index:10;
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
 .hero-content > * {
   opacity: 0;
   animation: pgRiseIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -27,33 +39,49 @@
   from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
 }
- 
+
 .hero-effects{
     position:absolute;
     inset:0;
     overflow:hidden;
     pointer-events:none;
 }
+
 .hero-eyebrow {
-  color: var(--red);
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(214, 40, 40, 0.15);
+  border: 1px solid rgba(214, 40, 40, 0.35);
+  border-radius: 3px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--red-light);
+  letter-spacing: .08em;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
 .hero h1 {
-  font-family: var(--barlow);
-  font-size: clamp(40px, 8vw, 80px);
-  line-height: 0.9;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(48px, 6vw, 80px);
   font-weight: 900;
-  text-transform: uppercase;
-  margin-bottom: 30px;
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 24px;
 }
 
 .hero h1 em {
   font-style: normal;
   color: var(--red);
+}
+
+.hero-desc {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin-bottom: 40px;
 }
 
 .hero-bgPoudre{
@@ -62,9 +90,6 @@
     z-index: -2;
     overflow: hidden;
 }
-
-
-
 .smoke{
     position:absolute;
 

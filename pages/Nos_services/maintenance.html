@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maintenance | PyroGuard</title>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/all.css">
-    <link rel="stylesheet" href="../css/cssPages.css"></head>
+    <link rel="stylesheet" href="../css/cssPages.css">
+    <link rel="stylesheet" href="./css/cssServices.css">
+</head>
 <body>
 
 <!-- NAV -->
@@ -108,7 +109,7 @@
       </div>
     </div>
 
-    <a href="#processus">Démarche</a>
+    <a href="../Qui_nous_sommes/Qui_nous_sommes.html">Qui</a>
     <a href="#contact">Contact</a>
   </div>
   <a class="nav-cta" href="#contact">Demande de devis</a>
@@ -121,26 +122,26 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#services" onclick="toggleMenu()">Nos services</a>
   <a href="#produits" onclick="toggleMenu()">Produits</a>
-  <a href="#processus" onclick="toggleMenu()">Démarche</a>
+  <a href="../Qui_sommes_nous/Qui_sommes_nous.html">Qui sommes-nous ?</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
   <a href="#contact" onclick="toggleMenu()" style="color:var(--red);margin-top:16px">→ Demande de devis</a>
 </div>
 
-<section class="hero">
-  <div class="hero-bg">
+<section id="sec" class="hero">
+  <!-- <div class="hero-bg">
     <img src="../../assets/images/hero-maintenance.jpg" alt="Maintenance">
-  </div>
+  </div> -->
   <div class="hero-content reveal">
     <div class="hero-eyebrow">Vérification & Entretien</div>
     <h1>Garantir le fonctionnement <em>à chaque instant.</em></h1>
     <p class="hero-desc">La maintenance est le cœur de votre sécurité. Nos contrats assurent la pérennité et la fiabilité de vos équipements.</p>
-    <div class="hero-actions">
+    <!-- <div class="hero-actions">
       <a href="../index.html#contact" class="btn-primary">Demander une étude</a>
-    </div>
+    </div> -->
   </div>
 </section>
 
-<section class="details">
+<section id="sec" class="details">
   <div class="reveal">
     <div class="section-tag">Notre Expertise</div>
     <h2 class="section-h2">Un suivi rigoureux et certifié</h2>
@@ -167,7 +168,7 @@
   </div>
 </section>
 
-<section class="process">
+<section id="sec" class="process">
   <div class="reveal">
     <div class="section-tag">Notre Démarche</div>
     <h2 class="section-h2">Comment nous travaillons</h2>
@@ -242,6 +243,6 @@
   </div>
 </footer>
 
-<script src="../assets/js/script.js"></script>
+<script src="../../assets/js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire d'Eurofeu - Version Animée</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- Lucide Icons via CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../../assets/css/all.css">
+    <style>
+        :root {
+            --background: #ffffff;
+            --foreground: #0f172a;
+            --card: #ffffff;
+            --card-foreground: #0f172a;
+            --primary: #ef4444;
+            --primary-foreground: #ffffff;
+            --muted: #f1f5f9;
+            --muted-foreground: #64748b;
+            --border: #e2e8f0;
+            --primary-gradient: linear-gradient(135deg, hsl(349, 73%, 55%), hsl(19, 100%, 60%));
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: #020617;
+                --foreground: #f8fafc;
+                --card: #0f172a;
+                --card-foreground: #f8fafc;
+                --muted: #1e293b;
+                --muted-foreground: #94a3b8;
+                --border: #1e293b;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .section-histoire {
+            padding: 7rem 1rem;
+            position: relative;
+        }
+
+        .decoration-blob {
+            position: absolute;
+            right: -5rem;
+            top: 20%;
+            width: 25rem;
+            height: 25rem;
+            background-color: rgba(239, 68, 68, 0.07);
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        @media (min-width: 768px) {
+            .title { font-size: 4.5rem; }
+        }
+
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--muted-foreground);
+            font-size: 1.25rem;
+            max-width: 40rem;
+            margin: 0 auto;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 60rem;
+            margin: 0 auto;
+            padding-top: 2rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 1.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, 
+                rgba(239, 68, 68, 0.8) 0%, 
+                rgba(239, 68, 68, 0.3) 50%, 
+                transparent 100%);
+        }
+
+        @media (min-width: 768px) {
+            .timeline-line {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        .timeline-items {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            /* Animation base state */
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        /* Initial positions for animation */
+        .timeline-item.left { transform: translateX(-50px); }
+        .timeline-item.right { transform: translateX(50px); }
+
+        @media (max-width: 767px) {
+            .timeline-item.left, .timeline-item.right { transform: translateX(30px); }
+        }
+
+        /* Active state when visible */
+        .timeline-item.is-visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        @media (min-width: 768px) {
+            .timeline-item.left { flex-direction: row; }
+            .timeline-item.right { flex-direction: row-reverse; }
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            width: 1.25rem;
+            height: 1.25rem;
+            background-color: var(--primary);
+            border: 3px solid var(--background);
+            border-radius: 50%;
+            z-index: 20;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
+            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+        }
+
+        .timeline-item.is-visible .timeline-dot {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        @media (min-width: 768px) {
+            .timeline-dot { left: 50%; }
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-left: 3.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-content {
+                padding-left: 0;
+                width: 50%;
+                display: flex;
+            }
+            .left .timeline-content { justify-content: flex-end; padding-right: 4rem; }
+            .right .timeline-content { justify-content: flex-start; padding-left: 4rem; }
+        }
+
+        .card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 22rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: rgba(239, 68, 68, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-year {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            color: var(--foreground);
+        }
+
+        .card-description {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            line-height: 1.6;
+        }
+
+        .spacer {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .spacer {
+                display: block;
+                flex: 1;
+                width: 50%;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="../../index.html">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 2C16 2 8 10 8 18C8 22.4 11.6 26 16 26C20.4 26 24 22.4 24 18C24 10 16 2 16 2Z" fill="#D62828" />
+      <path d="M16 10C16 10 12 14.5 12 18C12 20.2 13.8 22 16 22C18.2 22 20 20.2 20 18C20 14.5 16 10 16 10Z"
+        fill="#FF6B6B" />
+      <path d="M16 15C16 15 14 17 14 18.5C14 19.3 14.9 20 16 20C17.1 20 18 19.3 18 18.5C18 17 16 15 16 15Z"
+        fill="#FFE0E0" />
+    </svg>
+    <span class="nav-logo-text">PYRO<span>GUARD</span></span>
+  </a>
+  <div class="nav-links">
+    <div class="dropdown">
+      <a href="#services" class="dropdown-btn">Nos services</a>
+      <div class="dropdown-menu">
+        <a href="../Nos_services/audit_conseil.html" class="dropdown-item">Audit incendie</a>
+        <a href="../Nos_services/installation.html" class="dropdown-item">Installation</a>
+        <a href="../Nos_services/maintenance.html" class="dropdown-item">Maintenance</a>
+        <a href="../Nos_services/formation.html" class="dropdown-item">Formation</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#produits" class="dropdown-btn">Produits</a>
+      <div class="dropdown-menu">
+
+        <div class="dropdown-item">
+          <a href="">Extincteurs <i class="fa-solid fa-angle-right" ></i></a>
+          <div class="submenu">
+            <a href="../Extincteurs_pages/Extincteur_eau.html">Extincteur à eau</a>
+            <a href="../Extincteurs_pages/Extincteur_poudre.html">Extincteur à poudre</a>
+            <a href="../Extincteurs_pages/Extincteur_co2.html">Extincteur CO2</a>
+            <a href="../Extincteurs_pages/Extincteur_sans_fluor.html">Extincteurs sans fluor</a>
+          </div>
+        </div>
+
+        <div class="dropdown-item">
+          <a href=""> Matériel incendie et secours <i class="fa-solid fa-angle-right" ></i></a>
+          <div class="submenu">
+            <a href="../Materiel_incendie_secours/Protection_extincteurs.html">Protection des extincteurs</a>
+            <a href="../Materiel_incendie_secours/Couverture_anti_feu.html">Couverture anti feu</a>
+            <a href="../Materiel_incendie_secours/Bac_sable.html">Bac à sable</a>
+            <a href="../Materiel_incendie_secours/Gondoles_armoires_solvants.html">Gondoles et armoires à solvants</a>
+            <a href="../Materiel_incendie_secours/Registre_boite_registre.html">Registre et boite à registre</a>
+            <a href="../Materiel_incendie_secours/Douches_portatives.html">Douches portatives</a>
+          </div>
+        </div>
+
+        <div class="dropdown-item">
+          <a href="">Signalisation <i class="fa-solid fa-angle-right"></i></a>
+          <div class="submenu">
+            <a href="../Signalisation/Plan_evacuation.html">Plan d'évacuation</a>
+            <a href="../Signalisation/Consignes_securite.html">Consignes de sécurité</a>
+            <a href="../Signalisation/Panneaux.html">Panneaux</a>
+          </div>
+        </div>
+
+        <div class="dropdown-item">
+          <a href="../Eclairage_de_secours/Eclairage_de_secours.html"> Éclairage de secours </a>
+        </div>
+
+        <div class="dropdown-item">
+          <a href="">Systèmes Hydrants <i class="fa-solid fa-angle-right"></i> </a>
+          <div class="submenu">
+            <a href="../Systemes_Hydrants/ria.html">RIA</a>
+            <a href="../Systemes_Hydrants/Poteaux_incendie.html">Poteaux incendie</a>
+            <a href="../Systemes_Hydrants/Emulseurs.html">Emulseurs</a>
+          </div>
+        </div>
+
+        <div class="dropdown-item">
+          <a href="../Extinction_automatique/Extinction_automatique.html">Extinction automatique</a>
+        </div>
+        <div class="dropdown-item">
+          <a href="">Détection incendie (SSI) <i class="fa-solid fa-angle-right" ></i></a>
+          <div class="submenu">
+            <a href="../Detection_incendie/categorie_a.html">Détection incendie catégorie A</a>
+            <a href="../Detection_incendie/categorie_b.html">Détection incendie categorie B</a>
+            <a href="../Detection_incendie/alarme_type_2b.html">Detection incendie alarme type 2b</a>
+            <a href="../Detection_incendie/alarme_type_3.html">Detection incendie alarme type 3</a>
+            <a href="../Detection_incendie/alarme_type_4.html">Detection incendie alarme type 4</a>
+          </div>
+        </div>
+        <div class="dropdown-item">
+          <a href="../Detecteur_de_fume/Detecteur_de_fume.html">Détecteur de fumée </a>
+        </div>
+        
+
+        <div class="dropdown-item">
+          <a href="">Désenfumage et portes coupe-feu <i class="fa-solid fa-angle-right" ></i> </a>
+          <div class="submenu">
+            <a href="../Desenfumage_coupe_feu/Desenfumage.html">Désenfumage</a>
+            <a href="../Desenfumage_coupe_feu/Portes_coupe_feu.html">Portes coupe-feu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="./Qui_sommes_nous.html">Qui sommes-nous ?</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="#contact">Demande de devis</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>   
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Nos services</a>
+  <a href="#produits" onclick="toggleMenu()">Produits</a>
+  <a href="./Qui_sommes_nous.html" onclick="toggleMenu()">Qui sommes-nous ?</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#contact" onclick="toggleMenu()" style="color:var(--red);margin-top:16px">→ Demande de devis</a>
+</div>
+
+<section class="section-histoire" id="histoire">
+    <div class="decoration-blob"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="badge">
+                <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+                Notre Histoire
+            </div>
+            <h2 class="title">
+                52 ANS<br>
+                <span class="gradient-text">D'EXCELLENCE</span>
+            </h2>
+            <p class="subtitle">
+                De 150 m² à Mesnil-Thomas à 21 500 m² de site industriel, 
+                l'histoire d'une entreprise familiale devenue leader national.
+            </p>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div class="timeline-items" id="timeline-list">
+                <!-- Items injected by JS -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px">
+          <path d="M16 2C16 2 8 10 8 18C8 22.4 11.6 26 16 26C20.4 26 24 22.4 24 18C24 10 16 2 16 2Z" fill="#D62828"/>
+          <path d="M16 10C16 10 12 14.5 12 18C12 20.2 13.8 22 16 22C18.2 22 20 20.2 20 18C20 14.5 16 10 16 10Z" fill="#FF6B6B"/>
+        </svg>
+        <span class="nav-logo-text">PYRO<span>GUARD</span></span>
+      </a>
+      <p>Votre partenaire global en sécurité incendie depuis 1987. Fabricant français, réseau national, certifications Apsad.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="./pages/Nos_services/audit_conseil.html">Audit & Conseil</a>
+      <a href="./pages/Nos_services/installation.html">Installation</a>
+      <a href="./pages/Nos_services/maintenance.html">Maintenance</a>
+      <a href="./pages/Nos_services/formation.html">Formation</a>
+    </div>
+    <div class="footer-col">
+      <h4>Produits</h4>
+      <a href="./pages/Extincteurs_pages/Extincteur_eau.html">Extincteurs</a>
+      <a href="./pages/Detection_incendie/categorie_a.html">Détection incendie</a>
+      <a href="./pages/Systemes_Hydrants/ria.html">Systèmes hydrants</a>
+      <a href="./pages/Desenfumage_coupe_feu/Desenfumage.html">Désenfumage</a>
+      <a href="./pages/Eclairage_de_secours/Eclairage_de_secours.html">Éclairage de secours</a>
+    </div>
+    <div class="footer-col">
+      <h4>Groupe</h4>
+      <a href="./pages/Qui_sommes_nous/Qui_nous_sommes.html">Qui sommes-nous</a>
+      <a href="#">Fabrication française</a>
+      <a href="#">Certifications</a>
+      <a href="#">Recrutement</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 PyroGuard — Template créé par Claude. Tous droits réservés.</p>
+    <div class="certifs">
+      <div class="certif-badge">APSAD R1</div>
+      <div class="certif-badge">NF SERVICE</div>
+      <div class="certif-badge">QUALIOPI</div>
+      <div class="certif-badge">ISO 9001</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+    const timelineData = [
+        { year: '1972', title: 'Création d\'Eurofeu', description: 'Fondation par Nicole et Michel Lahouati. Société de négoce de matériel incendie, 150 m² à Le Mesnil-Thomas (28).' },
+        { year: '1976', title: 'Signalisation & Plans', description: 'Eurofeu devient SAS. Création de la marque Eurosignal pour la fabrication de panneaux et plans d\'évacuation.' },
+        { year: '1981', title: 'Premier Extincteur', description: 'Premier extincteur fabriqué à Mesnil-Thomas dans un nouvel atelier de 1 500 m². Naissance de la gamme propre.' },
+        { year: '1986', title: 'Réseau de Distribution', description: 'Création d\'un réseau dédié aux petites entreprises (LRS — Le Réseau Sécurité).' },
+        { year: '1995', title: 'Intégration Chevalier Bertrand', description: 'Intégration du fournisseur d\'embouts d\'extincteurs Chevalier Bertrand. Maîtrise complète du circuit de fabrication.' },
+        { year: '1996', title: 'Certification ISO 9001', description: 'Certification qualité ISO 9001 pour l\'unité de production. Engagement fort envers la qualité.' },
+        { year: '1998', title: 'Département Formation', description: 'Création du département formation pour répondre à la demande croissante de formations incendie et sécurité.' },
+        { year: '2003', title: 'Nouveau Site Industriel', description: 'Déménagement sur le site industriel La Forêt : 21 500 m² d\'usine/entrepôt et 1 600 m² de bureaux.' },
+        { year: '2007', title: 'Création Eurofeu Services', description: 'Fusion de plusieurs entités régionales et création d\'Eurofeu Services, réseau national de vente directe.' },
+        { year: '2013', title: 'Certification ISO 14001', description: 'Engagement environnemental renforcé avec la validation de la norme ISO 14001.' },
+        { year: '2014', title: 'Label Origine France Garantie', description: 'Eurofeu, 1er fabricant d\'extincteurs à obtenir le label "ORIGINE FRANCE GARANTIE".' },
+        { year: '2020', title: 'Nouveau Présidence', description: 'Prise de présidence par Éric Hentges avec le soutien du fonds d\'investissement français CAPZA.' },
+        { year: '2022', title: '50 ans d\'Eurofeu', description: 'Célébration des 50 ans. Refonte complète de la charte graphique. Acquisition d\'AMI2S pour son expertise SSI.' },
+        { year: '2024', title: 'IK Partners Actionnaire', description: 'CAPZA réduit sa participation. IK Partners devient actionnaire majoritaire, ouvrant de nouvelles perspectives de croissance.' }
+    ];
+
+    const timelineList = document.getElementById('timeline-list');
+
+    timelineData.forEach((item, index) => {
+        const isLeft = index % 2 === 0;
+        const itemElement = document.createElement('div');
+        itemElement.className = `timeline-item ${isLeft ? 'left' : 'right'}`;
+        
+        itemElement.innerHTML = `
+            <div class="timeline-content">
+                <div class="card">
+                    <div class="card-year gradient-text">${item.year}</div>
+                    <div class="card-title">${item.title}</div>
+                    <p class="card-description">${item.description}</p>
+                </div>
+            </div>
+            <div class="timeline-dot"></div>
+            <div class="spacer"></div>
+        `;
+        
+        timelineList.appendChild(itemElement);
+    });
+
+    lucide.createIcons();
+
+    // Enhanced Animation Logic
+    const animateOnScroll = () => {
+        const items = document.querySelectorAll('.timeline-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // We keep observing if we want it to re-animate, 
+                    // but usually once is better for UX
+                    // observer.unobserve(entry.target); 
+                } else {
+                    // Optional: remove class to re-animate when scrolling back up
+                    // entry.target.classList.remove('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.2, // Trigger when 20% of the item is visible
+            rootMargin: '0px 0px -50px 0px' // Slight offset for better feel
+        });
+
+        items.forEach(item => {
+            observer.observe(item);
+        });
+    };
+
+    // Run animation logic
+    document.addEventListener('DOMContentLoaded', animateOnScroll);
+</script>
+<script src="../../assets/js/script.js"></script>
+
+</body>
+</html>
