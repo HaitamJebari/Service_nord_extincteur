@@ -90,6 +90,15 @@
     z-index: -2;
     overflow: hidden;
 }
+
+.dropdown-btn,
+.dropdown-item a{
+  cursor:default;
+}
+.submenu a{
+  cursor:pointer
+}
+
 .smoke{
     position:absolute;
 
