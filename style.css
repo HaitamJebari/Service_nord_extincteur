@@ -331,6 +331,7 @@ section{padding:96px 5vw}
   overflow:hidden;
   transition:background .25s;
   cursor:pointer;
+  text-decoration:none
 }
 .service-card::before{
   content:'';
