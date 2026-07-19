@@ -638,11 +638,18 @@ if (productsGrid) {
                     }
                 });
             });
-
             document.querySelectorAll('img[data-src]').forEach(img => imageObserver.observe(img));
         }
  
 
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".mobile-dropdown-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+            this.parentElement.classList.toggle("active");
+        });
+    });
+});
 
  
