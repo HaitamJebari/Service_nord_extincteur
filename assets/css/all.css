@@ -265,6 +265,9 @@ footer{
 }
 .mobile-menu a:hover{color:var(--white)}
 
+#mobileMenu a{
+      color:var(--white);
+}
 #mobileMenu .mobile-dropdown-btn {
     width:100%;
     display:flex;
@@ -272,7 +275,7 @@ footer{
     align-items:center;
     background:none;
     border:none;
-    color:#fff;
+    color:var(--white);
     font-size:22px;
     font-family:'Barlow Condensed',sans-serif;
     font-weight:700;

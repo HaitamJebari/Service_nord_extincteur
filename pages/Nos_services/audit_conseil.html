@@ -121,13 +121,43 @@
 </nav>   
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="../../index.html" onclick="toggleMenu()">Accueil</a>
-  <a href="" onclick="toggleMenu()">Nos services</a>
-  <a href="../Products/products.html" onclick="toggleMenu()">Produits</a>
-    <a href="../Qui_sommes_nous/Qui_sommes_nous.html" onclick="toggleMenu()">Qui sommes-nous ?</a>
+<div class="mobile-menu active" id="mobileMenu">
+    <a href="../../index.html" onclick="toggleMenu()">Accueil</a>
+    <div class="mobile-dropdown">
+        <button class="mobile-dropdown-btn">
+            Nos services
+            <span>+</span>
+        </button>
+        <div class="mobile-dropdown-content">
+            <a href="../Nos_services/audit_conseil.html" onclick="toggleMenu()">Audit & Conseil</a>
+            <a href="../Nos_services/installation.html" onclick="toggleMenu()">Installation</a>
+            <a href="../Nos_services/maintenance.html" onclick="toggleMenu()">Maintenance</a>
+            <a href="../Nos_services/formation.html" onclick="toggleMenu()">Formation</a>
+        </div>
+    </div>
+    <div class="mobile-dropdown">
+        <button class="mobile-dropdown-btn">
+            Produits
+            <span>+</span>
+        </button>
+        <div class="mobile-dropdown-content">
+            <a href="../Extincteurs_pages/Extincteur_eau.html">Extincteurs</a>
+            <a href="../Materiel_incendie_secours/Protection_extincteurs.html">Matériel incendie et secours</a>
+            <a href="../Signalisation/Plan_evacuation.html">Signalisation</a>
+            <a href="../Eclairage_de_secours/Eclairage_de_secours.html">Éclairage de secours</a>
+            <a href="../Systemes_Hydrants/ria.html">Systèmes Hydrants</a>
+            <a href="../Extinction_automatique/Extinction_automatique.html">Extinction automatique</a>
+            <a href="../Detection_incendie/categorie_a.html">Détection incendie (SSI)</a>
+            <a href="../Detecteur_de_fume/Detecteur_de_fume.html">Détecteur de fumée</a>
+            <a href="../Desenfumage_coupe_feu/Desenfumage.html">Désenfumage et portes coupe-feu</a>
+          </div>
+    </div>
+    <a href="../Qui_sommes_nous/Qui_sommes_nous.html" onclick="toggleMenu()">
+        Qui sommes nous ?
+    </a>
 
-  <a href="#contact" onclick="toggleMenu()" style="color:var(--red);margin-top:16px">→ Demande de devis</a>
+      <a href="#contact" onclick="toggleMenu()" style="color:var(--red);margin-top:16px">→ Demande de devis</a>
+
 </div>
 
 
