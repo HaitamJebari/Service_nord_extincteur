@@ -583,9 +583,206 @@
     transform: none !important;
   }
 }
- 
+
+
+
+
+
+
+
+
 
  
+/* PRODUCT DETAIL RESPONSIVE */
+.product-detail {
+  padding: 100px 0;
+}
+
+.product-detail-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.product-image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-image-box svg {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+}
+
+.product-info {
+  width: 100%;
+}
+
+.product-info h3 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 15px 0 20px;
+}
+
+.product-desc {
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+.product-specs {
+  display: grid;
+  gap: 18px;
+  margin: 35px 0;
+}
+
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+.spec-label {
+  font-weight: 600;
+}
+
+.spec-value {
+  text-align: right;
+}
+
+.product-features {
+  margin: 35px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.product-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+
+.product-features i {
+  color: var(--primary);
+  margin-top: 4px;
+}
+
+/* =======================
+   TABLET
+======================= */
+
+@media (max-width: 992px) {
+
+  .product-detail {
+    padding: 80px 0;
+  }
+
+  .product-detail-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .product-image-box {
+    order: 1;
+  }
+
+  .product-info {
+    order: 2;
+  }
+
+  .product-info h3 {
+    font-size: 2.3rem;
+  }
+
+  .product-image-box svg {
+    max-width: 220px;
+  }
+}
+
+/* =======================
+   MOBILE
+======================= */
+
+@media (max-width: 768px) {
+
+  .product-detail {
+    padding: 60px 20px;
+  }
+
+  .product-detail-container {
+    gap: 40px;
+  }
+
+  .product-info h3 {
+    font-size: 2rem;
+  }
+
+  .product-desc {
+    font-size: .95rem;
+  }
+
+  .spec-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .spec-value {
+    text-align: left;
+  }
+
+  .product-image-box svg {
+    max-width: 180px;
+  }
+
+  .product-features li {
+    font-size: .95rem;
+  }
+
+  .product-detail .nav-cta {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+  }
+}
+
+/* =======================
+   SMALL MOBILE
+======================= */
+
+@media (max-width: 480px) {
+
+  .product-detail {
+    padding: 50px 16px;
+  }
+
+  .product-info h3 {
+    font-size: 1.7rem;
+  }
+
+  .product-desc,
+  .product-features li,
+  .spec-item {
+    font-size: .9rem;
+  }
+
+  .product-image-box svg {
+    max-width: 150px;
+  }
+}
+
+ 
+
+
+
+
+
 
 /* ---------- Hero atmosphere: the "ignition" moment ---------- */
 
