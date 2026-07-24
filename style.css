@@ -144,12 +144,17 @@
     overflow: hidden;
 }
 .hero-bgMain{
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    z-index:-2;
+}
+
+.hero-bgMain video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
 }
 
 .hero-content{
@@ -235,6 +240,195 @@
 }
 .hero-stat-num span{color:var(--red)}
 .hero-stat-label{font-size:12px;color:var(--ash);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+
+/* ==========================================
+   HERO RESPONSIVE
+========================================== */
+
+/* Large laptops */
+@media (max-width: 1200px){
+
+    .hero{
+        padding: calc(var(--nav-h) + 30px) 4vw 60px;
+    }
+
+    .hero-content{
+        max-width: 560px;
+    }
+
+    .hero-stats{
+        gap:30px;
+    }
+
+}
+
+
+/* Tablets */
+@media (max-width: 992px){
+
+    .hero{
+        min-height: auto;
+        padding: calc(var(--nav-h) + 60px) 5vw 80px;
+    }
+
+    .hero-content{
+        max-width:100%;
+        margin:auto;
+    }
+
+    .hero-eyebrow{
+        margin-inline:auto;
+    }
+
+    .hero h1{
+        font-size: clamp(48px,9vw,72px);
+    }
+
+    .hero-desc{
+        margin:0 auto 40px;
+        max-width:650px;
+    }
+
+    .hero-actions{
+        justify-content:center;
+    }
+
+    .hero-stats{
+        justify-content:center;
+        gap:24px;
+        margin-top:45px;
+    }
+
+}
+
+
+/* Mobile */
+@media (max-width:768px){
+
+    .hero{
+        min-height:100vh;
+        padding: 60px;
+    }
+
+    .hero-eyebrow{
+        font-size:11px;
+        padding:6px 12px;
+        margin-bottom:20px;
+    }
+
+    .hero h1{
+        font-size: clamp(40px,12vw,56px);
+        line-height:1;
+        margin-bottom:20px;
+    }
+
+    .hero-desc{
+        font-size:15px;
+        line-height:1.7;
+        margin-bottom:30px;
+    }
+
+    .hero-actions{
+        gap:12px;
+    }
+
+    .btn-primary,
+    .btn-ghost{
+        width:100%;
+        max-width:340px;
+        justify-content:center;
+        padding:15px;
+    }
+
+    .hero-stats{
+        width:100%;
+        gap:15px;
+        margin-top:40px;
+    }
+
+    .hero-stat{
+        flex:1;
+        min-width:90px;
+        padding-left:12px;
+    }
+
+    .hero-stat-num{
+        font-size:30px;
+    }
+
+    .hero-stat-label{
+        font-size:11px;
+    }
+
+}
+
+
+/* Small phones */
+@media (max-width:480px){
+
+    .hero{
+        padding: calc(var(--nav-h) + 25px) 16px 50px;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .hero-desc{
+        font-size:14px;
+    }
+
+    .hero-actions{
+        gap:10px;
+    }
+
+    .btn-primary,
+    .btn-ghost{
+        font-size:14px;
+        padding:14px;
+    }
+
+    .hero-stats{
+        gap:18px;
+    }
+
+    .hero-stat{
+        width:100%;
+        max-width:220px;
+        text-align:center;
+        border-left:none;
+        border-top:2px solid var(--red);
+        padding:14px 0 0;
+    }
+
+    .hero-stat-num{
+        font-size:28px;
+    }
+
+}
+
+
+/* Very small devices */
+@media (max-width:360px){
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero-desc{
+        font-size:13px;
+    }
+
+    .hero-eyebrow{
+        font-size:10px;
+    }
+
+    .btn-primary,
+    .btn-ghost{
+        font-size:13px;
+    }
+
+}
 
 /* ── BAND ── */
 .band{

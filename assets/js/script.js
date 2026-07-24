@@ -62,6 +62,7 @@ if (timelineList) {
 }
 
 (function(){
+    
   try {
     // Show loader only once per browser tab/session
     if (sessionStorage.getItem("preloaderShown")) {
@@ -161,6 +162,7 @@ if (timelineList) {
 
 
 (() => {
+
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
  
   const targets = document.querySelectorAll(
@@ -651,5 +653,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
 
  
