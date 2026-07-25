@@ -10,144 +10,187 @@
 <link rel="stylesheet" href="/style.css">
 <style>
 
-        #temo {
-            position: relative;
-        }
-
-        /* Styles du Carrousel */
-        .testimonials-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            padding: 10px 0;
-        }
-
-        .testimonials-track {
-            display: flex;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 100%;
-        }
-
+       #temo {
+        position: relative;
+    }
+ 
+    /* Styles du Carrousel */
+    .testimonials-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+ 
+    .testimonials-track {
+        display: flex;
+        gap: 20px;
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 100%;
+    }
+ 
+    .testi-card {
+        flex: 0 0 100%;
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: clamp(20px, 4vw, 32px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 280px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease;
+    }
+ 
+    @media (min-width: 768px) {
         .testi-card {
-            flex: 0 0 100%;
-            padding: 30px;
-            box-sizing: border-box;
-            background: var(#f8f9fa);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 280px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            flex: 0 0 calc(50% - 10px);
         }
-
-        @media (min-width: 768px) {
-            .testi-card {
-                flex: 0 0 calc(33.333% - 20px);
-                margin-right: 30px;
-            }
+    }
+ 
+    @media (min-width: 1024px) {
+        .testi-card {
+            flex: 0 0 calc(33.333% - 13.33px);
         }
-
-        .testi-quote {
-            font-size: 3rem;
-            color: var(#e63946);
-            line-height: 1;
-            margin-bottom: -10px;
-            font-family: serif;
-        }
-
-        .testi-text {
-            font-style: italic;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .testi-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .testi-avatar {
-            width: 50px;
-            height: 50px;
-            background: var(#e63946);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        .testi-name {
-            font-weight: bold;
-            color: var(#333);
-        }
-
-        .testi-role {
-            font-size: 0.85rem;
-            color: #777;
-        }
-
-        /* Flèches de navigation */
+    }
+ 
+    .testi-quote {
+        font-size: clamp(2.25rem, 6vw, 3rem);
+        color: #e63946;
+        line-height: 1;
+        margin-bottom: -10px;
+        font-family: serif;
+    }
+ 
+    .testi-text {
+        font-style: italic;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        flex-grow: 1;
+    }
+ 
+    .testi-author {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+ 
+    .testi-avatar {
+        width: 50px;
+        height: 50px;
+        background: #e63946;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        flex-shrink: 0;
+    }
+ 
+    .testi-name {
+        font-weight: bold;
+        color: #333;
+    }
+ 
+    .testi-role {
+        font-size: 0.85rem;
+        color: #777;
+    }
+ 
+    /* Flèches de navigation */
+    .nav-arrow {
+        position: absolute;
+        top: 55%;
+        transform: translateY(-50%);
+        width: 45px;
+        height: 45px;
+        background: white;
+        border: 1px solid #ddd;
+        color: #333;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+ 
+    .nav-arrow:hover {
+        background: #e63946;
+        color: white;
+        border-color: #e63946;
+    }
+ 
+    .nav-arrow:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+    }
+ 
+    .nav-arrow:disabled:hover {
+        background: white;
+        color: #333;
+        border-color: #ddd;
+    }
+ 
+    .arrow-left { left: 5px; }
+    .arrow-right { right: 5px; }
+ 
+    @media (min-width: 1240px) {
+        .arrow-left { left: -20px; }
+        .arrow-right { right: -20px; }
+    }
+ 
+    @media (max-width: 768px) {
         .nav-arrow {
-            position: absolute;
-            top: 55%;
-            transform: translateY(-50%);
-            width: 45px;
-            height: 45px;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            width: 34px;
+            height: 34px;
         }
-
-        .nav-arrow:hover {
-            background: var(#e63946);
-            color: white;
-            border-color: var(#e63946);
-        }
-
-        .arrow-left { left: 5px; }
-        .arrow-right { right: 5px; }
-
-        @media (min-width: 1240px) {
-            .arrow-left { left: -20px; }
-            .arrow-right { right: -20px; }
-        }
-
-        /* Points de navigation */
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 30px;
-        }
-
+        .arrow-left { left: 2px; }
+        .arrow-right { right: 2px; }
+    }
+ 
+    /* Points de navigation */
+    .carousel-dots {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 30px;
+    }
+ 
+    .dot {
+        width: 10px;
+        height: 10px;
+        background: #ddd;
+        border: none;
+        padding: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.3s;
+    }
+ 
+    .dot.active {
+        background: #e63946;
+        transform: scale(1.3);
+    }
+ 
+    .nav-arrow:focus-visible,
+    .dot:focus-visible {
+        outline: 2px solid #e63946;
+        outline-offset: 2px;
+    }
+ 
+    @media (prefers-reduced-motion: reduce) {
+        .testimonials-track,
+        .testi-card,
+        .nav-arrow,
         .dot {
-            width: 10px;
-            height: 10px;
-            background: #ddd;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s;
+            transition: none;
         }
-
-        .dot.active {
-            background: var(#e63946);
-            transform: scale(1.3);
-        }
+    }
     </style>
 </head>
 <body>
@@ -540,96 +583,111 @@
 </section>
 
 <!-- TÉMOIGNAGES -->
-<section id="temo">
-  <div class="reveal">
-    <div class="section-tag">Ils nous font confiance</div>
-    <h2 class="section-h2">Ce que disent nos clients</h2>
-  </div>
-  
-  <button class="nav-arrow arrow-left" onclick="prevSlide()" aria-label="Précédent">&#10094;</button>
-  <button class="nav-arrow arrow-right" onclick="nextSlide()" aria-label="Suivant">&#10095;</button>
-
-  <div class="testimonials-container">
-    <div class="testimonials-track" id="carouselTrack">
-      <!-- Témoignage 1 -->
-      <div class="testi-card">
-        <div class="testi-quote">"</div>
-        <div class="testi-text">Passage de 3 sites industriels sous contrat PyroGuard. Le suivi est exemplaire, les rapports Apsad toujours disponibles en ligne. Nos assureurs apprécient la rigueur.</div>
-        <div class="testi-author">
-          <div class="testi-avatar">JM</div>
-          <div>
-            <div class="testi-name">Jean-Marc Berthier</div>
-            <div class="testi-role">Directeur technique — Groupe Berthier Industries</div>
-          </div>
-        </div>
-      </div>
-      <!-- Témoignage 2 -->
-      <div class="testi-card">
-        <div class="testi-quote">"</div>
-        <div class="testi-text">Formation évacuation très sérieuse, nos équipes se sentent vraiment préparées. Le formateur a su adapter le contenu à notre secteur hospitalier.</div>
-        <div class="testi-author">
-          <div class="testi-avatar">SL</div>
-          <div>
-            <div class="testi-name">Sophie Lelandais</div>
-            <div class="testi-role">Responsable sécurité — Clinique Saint-Éloi</div>
-          </div>
-        </div>
-      </div>
-      <!-- Témoignage 3 -->
-      <div class="testi-card">
-        <div class="testi-quote">"</div>
-        <div class="testi-text">Intervention d'urgence à 22h un samedi — technicien sur place en 3h. C'est ce genre de réactivité qui fait la différence quand on gère un ERP.</div>
-        <div class="testi-author">
-          <div class="testi-avatar">AR</div>
-          <div>
-            <div class="testi-name">Antoine Renard</div>
-            <div class="testi-role">Gérant — Hôtel Les Pins Dorés</div>
-          </div>
-        </div>
-      </div>
-      <!-- Témoignage 4 (Nouveau) -->
-      <div class="testi-card">
-        <div class="testi-quote">"</div>
-        <div class="testi-text">L'installation de notre nouveau système de détection incendie s'est faite sans perturber notre production. Un travail propre et professionnel.</div>
-        <div class="testi-author">
-          <div class="testi-avatar">MD</div>
-          <div>
-            <div class="testi-name">Marc Duprès</div>
-            <div class="testi-role">Responsable Maintenance — Usine Altra-Log</div>
-          </div>
-        </div>
-      </div>
-      <!-- Témoignage 5 (Nouveau) -->
-      <div class="testi-card">
-        <div class="testi-quote">"</div>
-        <div class="testi-text">Conseils précieux pour la mise aux normes de nos bureaux. PyroGuard nous a accompagnés de A à Z avec beaucoup de pédagogie.</div>
-        <div class="testi-author">
-          <div class="testi-avatar">CL</div>
-          <div>
-            <div class="testi-name">Claire Laurent</div>
-            <div class="testi-role">DRH — Start-up GreenWave</div>
-          </div>
-        </div>
-      </div>
-      <!-- Témoignage 6 (Nouveau) -->
-      <div class="testi-card">
-        <div class="testi-quote">"</div>
-        <div class="testi-text">La plateforme de suivi en ligne est un vrai gain de temps. Plus besoin de chercher les classeurs de sécurité, tout est centralisé.</div>
-        <div class="testi-author">
-          <div class="testi-avatar">PB</div>
-          <div>
-            <div class="testi-name">Pierre Bertrand</div>
-            <div class="testi-role">Propriétaire — Restaurant Le Gourmet</div>
-          </div>
-        </div>
-      </div>
+  <section id="temo">
+      <div class="reveal">
+      <div class="section-tag">Ils nous font confiance</div>
+      <h2 class="section-h2">Ce que disent nos clients</h2>
     </div>
-  </div>
-
-  <div class="carousel-dots" id="carouselDots">
-    <!-- Générés dynamiquement par JS -->
-  </div>
-</section>
+      <div class="testimonials-track reveal"></div>
+        <div class="testimonials-container">
+            <div class="testimonials-track" id="track">
+ 
+                <article class="testi-card">
+                    <div>
+                        <div class="testi-quote">"</div>
+                        <p class="testi-text">Switching to this platform cut our onboarding time in half. The support team actually listens.</p>
+                    </div>
+                    <div class="testi-author">
+                        <div class="testi-avatar">SM</div>
+                        <div>
+                            <div class="testi-name">Sarah Martin</div>
+                            <div class="testi-role">Head of Operations, Lumio</div>
+                        </div>
+                    </div>
+                </article>
+ 
+                <article class="testi-card">
+                    <div>
+                        <div class="testi-quote">"</div>
+                        <p class="testi-text">I was skeptical at first, but the results spoke for themselves within the first month.</p>
+                    </div>
+                    <div class="testi-author">
+                        <div class="testi-avatar">DK</div>
+                        <div>
+                            <div class="testi-name">David Kim</div>
+                            <div class="testi-role">Founder, Northloop</div>
+                        </div>
+                    </div>
+                </article>
+ 
+                <article class="testi-card">
+                    <div>
+                        <div class="testi-quote">"</div>
+                        <p class="testi-text">Clean interface, fast support, and it just works. Exactly what our small team needed.</p>
+                    </div>
+                    <div class="testi-author">
+                        <div class="testi-avatar">AT</div>
+                        <div>
+                            <div class="testi-name">Amara Touré</div>
+                            <div class="testi-role">Marketing Lead, Verdant</div>
+                        </div>
+                    </div>
+                </article>
+ 
+                <article class="testi-card">
+                    <div>
+                        <div class="testi-quote">"</div>
+                        <p class="testi-text">We tried three other tools before this one. Nothing else came close for our workflow.</p>
+                    </div>
+                    <div class="testi-author">
+                        <div class="testi-avatar">JL</div>
+                        <div>
+                            <div class="testi-name">Julien Laurent</div>
+                            <div class="testi-role">CTO, Presto Labs</div>
+                        </div>
+                    </div>
+                </article>
+ 
+                <article class="testi-card">
+                    <div>
+                        <div class="testi-quote">"</div>
+                        <p class="testi-text">Onboarding was smooth and the team was patient with all our questions.</p>
+                    </div>
+                    <div class="testi-author">
+                        <div class="testi-avatar">RP</div>
+                        <div>
+                            <div class="testi-name">Rosa Peña</div>
+                            <div class="testi-role">Ops Manager, Fielder</div>
+                        </div>
+                    </div>
+                </article>
+ 
+                <article class="testi-card">
+                    <div>
+                        <div class="testi-quote">"</div>
+                        <p class="testi-text">Great value, solid features, and a support team that responds within the hour.</p>
+                    </div>
+                    <div class="testi-author">
+                        <div class="testi-avatar">TN</div>
+                        <div>
+                            <div class="testi-name">Tom Nilsson</div>
+                            <div class="testi-role">CEO, Hearthstack</div>
+                        </div>
+                    </div>
+                </article>
+ 
+            </div>
+ 
+            <button type="button" class="nav-arrow arrow-left" id="prevBtn" aria-label="Previous testimonials">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button type="button" class="nav-arrow arrow-right" id="nextBtn" aria-label="Next testimonials">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+        </div>
+ 
+        <div class="carousel-dots" id="dots"></div>
+    </section>
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
@@ -762,87 +820,83 @@
   </div>
 </footer>
 <script>
-    const track = document.getElementById('carouselTrack');
-    const dotsContainer = document.getElementById('carouselDots');
-    const cards = document.querySelectorAll('.testi-card');
-    let currentIndex = 0;
-    const intervalTime = 10000;
-    let slideInterval;
-
-    // Initialisation des points de navigation
-    function initDots() {
+(function () {
+    const track = document.getElementById('track');
+    const cards = Array.from(track.children);
+    const dotsContainer = document.getElementById('dots');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const totalCards = cards.length;
+    let cardsPerView = getCardsPerView();
+    let currentPage = 0;
+ 
+    function getCardsPerView() {
+        const w = window.innerWidth;
+        if (w >= 1024) return 3;
+        if (w >= 768) return 2;
+        return 1;
+    }
+ 
+    function totalPages() {
+        return Math.max(1, Math.ceil(totalCards / cardsPerView));
+    }
+ 
+    function buildDots() {
         dotsContainer.innerHTML = '';
-        cards.forEach((_, index) => {
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            if (index === 0) dot.classList.add('active');
-            dot.onclick = () => goToSlide(index);
+        for (let i = 0; i < totalPages(); i++) {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'dot' + (i === currentPage ? ' active' : '');
+            dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+            dot.addEventListener('click', () => goToPage(i));
             dotsContainer.appendChild(dot);
-        });
-    }
-
-    function updateCarousel() {
-        const isDesktop = window.innerWidth >= 768;
-        let movePercentage;
-        
-        if (isDesktop) {
-            // Sur desktop, on affiche 3 cartes. On peut défiler jusqu'à (total - 2)
-            // Pour un défilement infini visuel, la logique serait plus complexe.
-            // Ici on limite l'index pour ne pas avoir de vide à droite sur desktop.
-            const maxIndex = cards.length - 3;
-            if (currentIndex > maxIndex) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = maxIndex;
-            movePercentage = currentIndex * (100 / 3);
-        } else {
-            if (currentIndex >= cards.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = cards.length - 1;
-            movePercentage = currentIndex * 100;
         }
-
-        track.style.transform = `translateX(-${movePercentage}%)`;
-        
-        // Update dots
-        const dots = document.querySelectorAll('.dot');
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
+    }
+ 
+   function offsetForPage(page) {
+        const startIndex = Math.min(page * cardsPerView, cards.length - 1);
+        return cards[startIndex].offsetLeft - track.offsetLeft;
+    }
+ 
+    function updateUI(instant) {
+        if (instant) track.style.transition = 'none';
+        track.style.transform = `translateX(-${offsetForPage(currentPage)}px)`;
+        if (instant) {
+            void track.offsetWidth; // force reflow before re-enabling the transition
+            track.style.transition = '';
+        }
+        Array.from(dotsContainer.children).forEach((d, i) => {
+            d.classList.toggle('active', i === currentPage);
         });
+        prevBtn.disabled = currentPage === 0;
+        nextBtn.disabled = currentPage === totalPages() - 1;
     }
-
-    function nextSlide() {
-        currentIndex++;
-        updateCarousel();
-        resetInterval();
+ 
+    function goToPage(i) {
+        currentPage = Math.max(0, Math.min(i, totalPages() - 1));
+        updateUI();
     }
-
-    function prevSlide() {
-        currentIndex--;
-        updateCarousel();
-        resetInterval();
-    }
-
-    function goToSlide(index) {
-        currentIndex = index;
-        updateCarousel();
-        resetInterval();
-    }
-
-    function startInterval() {
-        slideInterval = setInterval(nextSlide, intervalTime);
-    }
-
-    function resetInterval() {
-        clearInterval(slideInterval);
-        startInterval();
-    }
-
-    // Initialisation
-    initDots();
-    startInterval();
-    
-    // Gérer le redimensionnement
+ 
+    prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
+    nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
+ 
+    let resizeTimer;
     window.addEventListener('resize', () => {
-        updateCarousel();
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            const next = getCardsPerView();
+            if (next !== cardsPerView) {
+                cardsPerView = next;
+                currentPage = 0;
+                buildDots();
+            }
+            updateUI(true); // snap to the right spot without animating on resize
+        }, 100);
     });
+ 
+    buildDots();
+    updateUI(true);
+})();
 </script>
 <script src="/assets/js/script.js"></script>
 </body>
