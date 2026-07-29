@@ -199,7 +199,7 @@
        ============================================ */
 
     #products-carousel {
-        padding: 60px 20px;
+        padding: 60px 0;
         background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     }
 
@@ -207,6 +207,11 @@
          max-width: 100%; 
         margin: 0 auto;
         padding: 0 70px; 
+    }
+    @media (max-width: 768px) {
+        .products-carousel-inner {
+            padding: 0 20px; 
+        }
     }
 
     .products-carousel-header {
@@ -426,7 +431,7 @@
         right: -70px; 
     }
 
-    @media (max-width: 1240px) {
+    @media (max-width: 1024px) {
         .products-carousel-arrow-left { 
             left: 10px; 
         }
@@ -435,18 +440,26 @@
         }
     }
 
-    @media (max-width: 768px) {
+
+        @media (max-width: 768px) {
         .products-carousel-arrow {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
+            top: auto;
+            bottom: -50px; /* Move arrows lower */
+            transform: none;
         }
         .products-carousel-arrow-left { 
-            left: 5px; 
+            left: calc(50% - 60px); 
         }
         .products-carousel-arrow-right { 
-            right: 5px; 
+            right: calc(50% - 60px); 
+        }
+        .products-carousel-dots {
+            margin-top: 80px; /* Push dots even lower to be behind/below arrows */
         }
     }
+
 
     /* Points de navigation */
     .products-carousel-dots {
@@ -707,8 +720,7 @@
   <a href="#contact" class="band-link">Vérifier ma conformité →</a>
 </div>
 
-<!-- PRODUITS -->
-
+<!-- PRODUITS-CAROUSEL -->
 <section id="products-carousel">
   <div class="products-carousel-inner">
     <div class="products-carousel-header reveal">
@@ -1395,6 +1407,10 @@ class ProductsCarousel {
     return 1;
   }
 
+   getCards() {
+    return Array.from(this.track.querySelectorAll('.product-carousel-card'));
+  }
+  
   init() {
     this.createDots();
     this.attachEventListeners();
@@ -1430,18 +1446,32 @@ class ProductsCarousel {
     }
   }
 
-  updateCarousel() {
-    const offset = -this.currentIndex * (100 / this.itemsPerView);
-    this.track.style.transform = `translateX(${offset}%)`;
+  updateCarousel(instant = false) {
+    const cards = this.getCards();
+    if (cards.length === 0) return;
+
+    if (instant) this.track.style.transition = 'none';
+    
+   const itemsPerView = this.getItemsPerView();
+    const targetCardIndex = Math.min(this.currentIndex * itemsPerView, cards.length - 1);
+    const targetCard = cards[targetCardIndex];
+    
+    if (targetCard) {
+      // Offset relative to the start of the track
+      const offset = targetCard.offsetLeft - this.track.offsetLeft;
+      this.track.style.transform = `translateX(-${offset}px)`;
+    }
+    
+    if (instant) {
+      void this.track.offsetWidth;
+      this.track.style.transition = '';
+    }
     
     // Update dots
-    document.querySelectorAll('.products-carousel-dot').forEach((dot, i) => {
+    const dots = this.dotsContainer.querySelectorAll('.products-carousel-dot');
+    dots.forEach((dot, i) => {
       dot.classList.toggle('active', i === this.currentIndex);
     });
-
-    // Update button states
-    this.prevBtn.disabled = false;
-    this.nextBtn.disabled = false;
   }
 
   prev() {
