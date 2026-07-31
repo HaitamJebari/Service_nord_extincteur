@@ -300,6 +300,480 @@
             transition: none;
         }
     }
+
+  /* ============================================
+     UNIFIED CATALOGUE SECTION
+     ============================================ */
+  #unified-catalogue {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f1f3f5 100%);
+  }
+
+  .unified-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* --- Detail Carousel --- */
+  .detail-stage {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    background: white;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.03);
+    margin-bottom: 24px;
+  }
+
+  .detail-track {
+    display: flex;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .detail-slide {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    opacity: 0.3;
+    transform: scale(0.95);
+    transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .detail-slide.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @media (max-width: 900px) {
+    .detail-slide { grid-template-columns: 1fr; }
+  }
+
+  .detail-image-box {
+    background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+  }
+
+  .detail-image-box::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(230,57,70,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  }
+
+  .detail-image-box img {
+    max-width: 75%;
+    max-height: 360px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    z-index: 2;
+  }
+
+  .detail-slide.active .detail-image-box img {
+    animation: image-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes image-reveal {
+    from { transform: scale(0.8) rotate(-3deg); opacity: 0; }
+    to { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+
+  .detail-info {
+    padding: 50px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .detail-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 110px;
+    font-weight: 900;
+    color: rgba(230,57,70,0.06);
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .detail-slide.active .detail-number {
+    animation: number-slide 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes number-slide {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .detail-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #e63946;
+    margin-bottom: 14px;
+    background: rgba(230,57,70,0.06);
+    padding: 6px 14px;
+    border-radius: 50px;
+    width: fit-content;
+  }
+
+  .detail-info h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+
+  .detail-info .detail-desc {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .detail-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .detail-spec-item {
+    background: #f8f9fa;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+  }
+
+  .detail-spec-item:hover {
+    background: white;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+
+  .detail-spec-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+
+  .detail-spec-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .detail-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px 0;
+  }
+
+  .detail-features li {
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  .detail-slide.active .detail-features li {
+    animation: feature-stagger 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .detail-slide.active .detail-features li:nth-child(1) { animation-delay: 0.2s; }
+  .detail-slide.active .detail-features li:nth-child(2) { animation-delay: 0.3s; }
+  .detail-slide.active .detail-features li:nth-child(3) { animation-delay: 0.4s; }
+  .detail-slide.active .detail-features li:nth-child(4) { animation-delay: 0.5s; }
+
+  @keyframes feature-stagger {
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .detail-features li i {
+    color: #28a745;
+    font-size: 14px;
+    width: 18px;
+    text-align: center;
+  }
+
+  .detail-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #e63946;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .detail-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .detail-cta:hover::before { left: 100%; }
+
+  .detail-cta:hover {
+    background: #d62828;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(230,57,70,0.3);
+  }
+
+  /* Detail nav arrows */
+  .detail-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background: white;
+    border: 2px solid rgba(230,57,70,0.2);
+    color: #e63946;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  .detail-nav:hover {
+    background: #e63946;
+    color: white;
+    border-color: #e63946;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .detail-nav.prev { left: -24px; }
+  .detail-nav.next { right: -24px; }
+
+  @media (max-width: 1280px) {
+    .detail-nav.prev { left: 10px; }
+    .detail-nav.next { right: 10px; }
+  }
+
+  @media (max-width: 768px) {
+    .detail-nav { width: 40px; height: 40px; }
+    .detail-nav.prev { left: 5px; }
+    .detail-nav.next { right: 5px; }
+    .detail-image-box { min-height: 280px; padding: 30px 20px; }
+    .detail-info { padding: 30px 25px; }
+    .detail-number { font-size: 70px; }
+  }
+
+  /* Progress bars */
+  .detail-progress {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    flex: 1;
+    max-width: 60px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-bar.active { background: #e63946; }
+  .progress-bar:hover { background: #ccc; }
+  .progress-bar.active:hover { background: #d62828; }
+
+  /* --- Gallery Strip --- */
+  .gallery-strip {
+    background: white;
+    border-radius: 20px;
+    padding: 24px 30px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    position: relative;
+  }
+
+  .gallery-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .gallery-header h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+  }
+
+  .gallery-counter {
+    font-size: 12px;
+    color: #999;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .gallery-counter span { color: #e63946; font-weight: 700; }
+
+  .gallery-viewport {
+    overflow: hidden;
+    border-radius: 14px;
+  }
+
+  .gallery-track {
+    display: flex;
+    gap: 14px;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    padding: 6px 0;
+  }
+
+  .gallery-item {
+    flex: 0 0 calc(16.666% - 12px);
+    aspect-ratio: 1;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    background: #f0f0f0;
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    border: 3px solid transparent;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 16px;
+    transition: all 0.35s ease;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    border-color: rgba(230,57,70,0.25);
+  }
+
+  .gallery-item.active {
+    border-color: #e63946;
+    box-shadow: 0 10px 28px rgba(230,57,70,0.18);
+    transform: translateY(-4px) scale(1.06);
+  }
+
+  .gallery-item.active img { transform: scale(1.12); }
+
+  .gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 65%, rgba(0,0,0,0.04) 100%);
+    pointer-events: none;
+  }
+
+  @media (max-width: 1100px) {
+    .gallery-item { flex: 0 0 calc(20% - 12px); }
+  }
+  @media (max-width: 900px) {
+    .gallery-item { flex: 0 0 calc(25% - 11px); }
+  }
+  @media (max-width: 600px) {
+    .gallery-item { flex: 0 0 calc(33.333% - 10px); }
+    .gallery-strip { padding: 18px 20px; }
+  }
+
+  /* Gallery nav */
+  .gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    background: white;
+    border: 2px solid rgba(230,57,70,0.12);
+    color: #e63946;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+
+  .gallery-nav:hover {
+    background: #e63946;
+    color: white;
+    border-color: #e63946;
+  }
+
+  .gallery-nav.prev { left: -19px; }
+  .gallery-nav.next { right: -19px; }
+
+  @media (max-width: 1280px) {
+    .gallery-nav.prev { left: 8px; }
+    .gallery-nav.next { right: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .detail-track, .detail-slide, .gallery-track, .gallery-item,
+    .detail-nav, .gallery-nav, .progress-bar {
+      transition: none !important;
+      animation: none !important;
+    }
+    .detail-image-box::before { animation: none; }
+  }
+
 </style>
 </head>
 <body>
@@ -405,7 +879,7 @@
 
     <a href="../Qui_sommes_nous/Qui_sommes_nous.html">Qui sommes-nous ?</a>
 </div>
-  <a class="nav-cta" href="#contact">Demande de devis</a>
+  <!-- <!-- <a class="nav-cta" href="#contact"></a> --> -->
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
@@ -517,7 +991,7 @@
         <li><i class="fa-solid fa-check"></i> Support mural inclus de série</li>
       </ul>
 
-      <a href="index.html#contact" class="nav-cta" style="display:inline-block">Obtenir un devis personnalisé</a>
+      <!-- <a href="index.html#contact" class="nav-cta" style="display:inline-block">Obtenir un devis personnalisé</a> -->
     </div>
   </div>
 </section>
@@ -611,6 +1085,50 @@
 
     <!-- Points de navigation -->
     <div class="products-carousel-dots" id="productsCarouselDots"></div>
+  </div>
+</section>
+
+<section id="unified-catalogue">
+  <div class="unified-wrapper">
+
+    <!-- DETAIL CAROUSEL -->
+    <div style="position:relative;">
+      <button type="button" class="detail-nav prev" id="detailPrev" aria-label="Produit précédent">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button type="button" class="detail-nav next" id="detailNext" aria-label="Produit suivant">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <div class="detail-stage">
+        <div class="detail-track" id="detailTrack">
+          <!-- Slides injected by JS -->
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-progress" id="detailProgress"></div>
+
+    <!-- GALLERY STRIP -->
+    <div class="gallery-strip">
+      <div class="gallery-header">
+        <h3>Galerie Produits</h3>
+        <div class="gallery-counter"><span id="galleryCounter">1</span> / 9</div>
+      </div>
+
+      <button type="button" class="gallery-nav prev" id="galleryPrev" aria-label="Galerie précédente">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button type="button" class="gallery-nav next" id="galleryNext" aria-label="Galerie suivante">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <div class="gallery-viewport">
+        <div class="gallery-track" id="galleryTrack">
+          <!-- Gallery items injected by JS -->
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -764,6 +1282,297 @@
 document.addEventListener('DOMContentLoaded', () => {
   new ProductsCarousel();
 });
+
+ // ============================================
+  // DONNÉES PRODUITS
+  // ============================================
+  const products = [
+    {
+      id: 1,
+      name: "Extincteur ABC Poudre",
+      image: "../../assets/images/product_abc_powder.png",
+      desc: "Extincteur polyvalent à poudre ABC pour tous types de feux. Efficacité maximale et temps de réaction rapide. Idéal pour les environnements professionnels et industriels.",
+      capacity: "6L / 9L",
+      fireClass: "A / B / C",
+      certification: "NF / CE / EN3",
+      lifespan: "10-20 ans",
+      features: ["Polyvalent pour tous types de feux", "Poudre ABC haute performance", "Manomètre de contrôle intégré", "Support mural inclus de série"]
+    },
+    {
+      id: 2,
+      name: "Extincteur CO2",
+      image: "../../assets/images/product_co2_extinguisher.png",
+      desc: "Extincteur CO2 spécialisé pour les feux d'origine électrique et les locaux informatiques. Sans résidu ni dégâts secondaires sur vos équipements sensibles.",
+      capacity: "2kg / 5kg",
+      fireClass: "B / C",
+      certification: "NF / CE / EN3",
+      lifespan: "15-25 ans",
+      features: ["Idéal pour feux électriques", "Sans résidu ni dégâts secondaires", "Refroidissement rapide", "Tuyau d'extension inclus"]
+    },
+    {
+      id: 3,
+      name: "Détecteur de Fumée",
+      image: "../../assets/images/product_co2_extinguisher.png",
+      desc: "Détecteur de fumée haute sensibilité avec alarme intégrée. Conforme aux normes de sécurité actuelles. Détection précoce garantie pour une sécurité optimale.",
+      capacity: "N/A",
+      fireClass: "Détection",
+      certification: "NF / CE",
+      lifespan: "10 ans",
+      features: ["Détection précoce des incendies", "Alarme sonore 85dB", "Batterie longue durée", "Installation facile"]
+    },
+    {
+      id: 4,
+      name: "Alarme Incendie",
+      image: "../../assets/images/product_fire_alarm.png",
+      desc: "Système d'alarme incendie professionnel avec centrale de détection multi-zones. Connexion directe aux services d'urgence pour une réactivité maximale.",
+      capacity: "Multi-zones",
+      fireClass: "Détection & Alarme",
+      certification: "NF / CE / EN54",
+      lifespan: "20 ans",
+      features: ["Centrale multi-zones", "Connexion aux services d'urgence", "Interface utilisateur intuitive", "Maintenance programmée"]
+    },
+    {
+      id: 5,
+      name: "Tuyau Incendie",
+      image: "../../assets/images/product_fire_hose.png",
+      desc: "Tuyau incendie haute pression avec raccords certifiés. Flexible et résistant pour une intervention rapide et efficace en cas d'urgence.",
+      capacity: "20m / 30m",
+      fireClass: "Intervention",
+      certification: "NF / CE",
+      lifespan: "15 ans",
+      features: ["Haute pression 40 bars", "Raccords certifiés", "Flexible et résistant", "Facile à déployer"]
+    },
+    {
+      id: 6,
+      name: "RIA Robinet Armé",
+      image: "../../assets/images/product_fire_hose.png",
+      desc: "Robinet d'incendie armé pour bâtiments collectifs. Installation murale avec tuyau enroulé. Solution fiable pour les espaces communs et ERP.",
+      capacity: "20m / 30m",
+      fireClass: "A / B",
+      certification: "NF / CE / EN671",
+      lifespan: "20 ans",
+      features: ["Installation murale standard", "Tuyau enroulé 20m ou 30m", "Débit 60 L/min", "Maintenance simplifiée"]
+    },
+    {
+      id: 7,
+      name: "Couverture Anti-Feu",
+      image: "../../assets/images/product_fire_hose.png",
+      desc: "Couverture anti-feu pour étouffement rapide des flammes. Matériau ignifuge haute performance. Solution immédiate et réutilisable.",
+      capacity: "1m×1m / 2m×2m",
+      fireClass: "A / B",
+      certification: "NF / CE",
+      lifespan: "Illimitée",
+      features: ["Étouffement rapide des flammes", "Matériau ignifuge haute performance", "Réutilisable", "Plusieurs formats disponibles"]
+    },
+    {
+      id: 8,
+      name: "Panneau Signalisation",
+      image: "../../assets/images/product_fire_hose.png",
+      desc: "Panneaux de signalisation incendie conformes aux normes ISO 7010. Visibilité maximale jour et nuit pour une évacuation sécurisée.",
+      capacity: "Divers formats",
+      fireClass: "Signalisation",
+      certification: "ISO 7010 / NF",
+      lifespan: "Illimitée",
+      features: ["Conforme ISO 7010", "Visibilité maximale", "Matériau durable", "Installation rapide"]
+    },
+    {
+      id: 9,
+      name: "Éclairage de Secours",
+      image: "../../assets/images/product_fire_hose.png",
+      desc: "Éclairage de secours LED avec batterie intégrée. Autonomie 3 heures minimum. Éclairage fiable pour guider l'évacuation en cas de coupure de courant.",
+      capacity: "LED 3W",
+      fireClass: "Secours",
+      certification: "NF / CE / EN60598",
+      lifespan: "10 ans",
+      features: ["LED haute luminosité", "Batterie 3h minimum", "Charge automatique", "Longue durée de vie"]
+    }
+  ];
+
+  // ============================================
+  // UNIFIED CATALOGUE CONTROLLER
+  // ============================================
+  class UnifiedCatalogue {
+    constructor() {
+      this.detailTrack = document.getElementById('detailTrack');
+      this.galleryTrack = document.getElementById('galleryTrack');
+      this.progress = document.getElementById('detailProgress');
+      this.counter = document.getElementById('galleryCounter');
+      this.current = 0;
+      this.galleryPos = 0;
+      this.itemsPerGallery = this.getGalleryItems();
+      this.renderDetail();
+      this.renderGallery();
+      this.createProgress();
+      this.attachEvents();
+      this.update();
+      window.addEventListener('resize', () => this.handleResize());
+    }
+
+    getGalleryItems() {
+      const w = window.innerWidth;
+      if (w >= 1100) return 6;
+      if (w >= 900) return 5;
+      if (w >= 600) return 4;
+      return 3;
+    }
+
+    renderDetail() {
+      this.detailTrack.innerHTML = products.map((p, i) => `
+        <div class="detail-slide ${i === 0 ? 'active' : ''}" data-index="${i}">
+          <div class="detail-image-box">
+            <img src="${p.image}" alt="${p.name}" loading="${i < 2 ? 'eager' : 'lazy'}">
+          </div>
+          <div class="detail-info">
+            <div class="detail-number">0${i + 1}</div>
+            <div class="detail-tag">Détails Techniques</div>
+            <h2>${p.name}</h2>
+            <p class="detail-desc">${p.desc}</p>
+            <div class="detail-specs-grid">
+              <div class="detail-spec-item">
+                <div class="detail-spec-label">Capacité</div>
+                <div class="detail-spec-value">${p.capacity}</div>
+              </div>
+              <div class="detail-spec-item">
+                <div class="detail-spec-label">Classes de feu</div>
+                <div class="detail-spec-value">${p.fireClass}</div>
+              </div>
+              <div class="detail-spec-item">
+                <div class="detail-spec-label">Certification</div>
+                <div class="detail-spec-value">${p.certification}</div>
+              </div>
+              <div class="detail-spec-item">
+                <div class="detail-spec-label">Durée de vie</div>
+                <div class="detail-spec-value">${p.lifespan}</div>
+              </div>
+            </div>
+            <ul class="detail-features">
+              ${p.features.map(f => `<li><i class="fa-solid fa-check"></i> ${f}</li>`).join('')}
+            </ul>
+            <a href="../../index.html#contact" class="detail-cta">
+              Obtenir un devis
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      `).join('');
+      this.slides = this.detailTrack.querySelectorAll('.detail-slide');
+    }
+
+    renderGallery() {
+      this.galleryTrack.innerHTML = products.map((p, i) => `
+        <div class="gallery-item ${i === 0 ? 'active' : ''}" data-index="${i}">
+          <img src="${p.image}" alt="${p.name}" loading="${i < 6 ? 'eager' : 'lazy'}">
+        </div>
+      `).join('');
+      this.galleryItems = this.galleryTrack.querySelectorAll('.gallery-item');
+      this.galleryItems.forEach(item => {
+        item.addEventListener('click', () => this.select(parseInt(item.dataset.index)));
+      });
+    }
+
+    createProgress() {
+      this.progress.innerHTML = products.map((_, i) => `
+        <div class="progress-bar ${i === 0 ? 'active' : ''}" data-index="${i}"></div>
+      `).join('');
+      this.bars = this.progress.querySelectorAll('.progress-bar');
+      this.bars.forEach(bar => {
+        bar.addEventListener('click', () => this.goTo(parseInt(bar.dataset.index)));
+      });
+    }
+
+    attachEvents() {
+      document.getElementById('detailPrev').addEventListener('click', () => this.prev());
+      document.getElementById('detailNext').addEventListener('click', () => this.next());
+      document.getElementById('galleryPrev').addEventListener('click', () => this.galleryPrev());
+      document.getElementById('galleryNext').addEventListener('click', () => this.galleryNext());
+
+      // Keyboard
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') this.prev();
+        if (e.key === 'ArrowRight') this.next();
+      });
+
+      // Touch swipe on detail
+      let touchStartX = 0;
+      const stage = document.querySelector('.detail-stage');
+      stage.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      stage.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) diff > 0 ? this.next() : this.prev();
+      }, { passive: true });
+    }
+
+    update() {
+      // Detail track
+      this.detailTrack.style.transform = `translateX(-${this.current * 100}%)`;
+      this.slides.forEach((s, i) => s.classList.toggle('active', i === this.current));
+
+      // Progress bars
+      this.bars.forEach((b, i) => b.classList.toggle('active', i === this.current));
+
+      // Gallery highlight
+      this.galleryItems.forEach((item, i) => item.classList.toggle('active', i === this.current));
+
+      // Gallery scroll to center active
+      const maxStart = products.length - this.itemsPerGallery;
+      let target = this.current - Math.floor(this.itemsPerGallery / 2);
+      target = Math.max(0, Math.min(target, maxStart));
+      this.galleryPos = target;
+      const offset = this.galleryPos * (100 / this.itemsPerGallery);
+      this.galleryTrack.style.transform = `translateX(-${offset}%)`;
+
+      // Counter
+      this.counter.textContent = this.current + 1;
+    }
+
+    select(index) {
+      this.current = index;
+      this.update();
+    }
+
+    goTo(index) {
+      this.current = index;
+      this.update();
+    }
+
+    next() {
+      this.current = (this.current + 1) % products.length;
+      this.update();
+    }
+
+    prev() {
+      this.current = (this.current - 1 + products.length) % products.length;
+      this.update();
+    }
+
+    galleryNext() {
+      const maxStart = products.length - this.itemsPerGallery;
+      this.galleryPos = Math.min(this.galleryPos + 1, maxStart);
+      const offset = this.galleryPos * (100 / this.itemsPerGallery);
+      this.galleryTrack.style.transform = `translateX(-${offset}%)`;
+    }
+
+    galleryPrev() {
+      this.galleryPos = Math.max(this.galleryPos - 1, 0);
+      const offset = this.galleryPos * (100 / this.itemsPerGallery);
+      this.galleryTrack.style.transform = `translateX(-${offset}%)`;
+    }
+
+    handleResize() {
+      const newItems = this.getGalleryItems();
+      if (newItems !== this.itemsPerGallery) {
+        this.itemsPerGallery = newItems;
+        this.update();
+      }
+    }
+  }
+
+  // ============================================
+  // INITIALISATION
+  // ============================================
+  document.addEventListener('DOMContentLoaded', () => {
+    window.unifiedCatalogue = new UnifiedCatalogue();
+  });
 </script>
 <script src="/assets/js/script.js"></script>
 </body>
