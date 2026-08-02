@@ -4,302 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PyroGuard | Extincteurs, Alarmes Incendie & Maintenance au Maroc</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <link rel="stylesheet" href="../../assets/css/all.css">
 <link rel="stylesheet" href="../css/cssPages.css">
 <style>
-   /* ============================================
-       SECTION PRODUITS PHARES - CARROUSEL
-       ============================================ */
-
-    #products-carousel {
-        padding: 60px 20px;
-        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    }
-
-    .products-carousel-inner {
-        max-width: 100%; 
-        margin: 0 auto;
-        padding: 0 70px; 
-    }
-
-    .products-carousel-header {
-        text-align: center;
-        margin-bottom: 50px;
-    }
-
-    .products-carousel-header .section-tag {
-        display: inline-block;
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: #e63946;
-        margin-bottom: 15px;
-    }
-
-    .products-carousel-header h2 {
-        font-size: clamp(28px, 6vw, 42px);
-        font-weight: 700;
-        color: #1a1a1a;
-        margin-bottom: 15px;
-        font-family: "Barlow Condensed", sans-serif;
-    }
-
-    .products-carousel-header p {
-        font-size: 16px;
-        color: #666;
-        max-width: 600px;
-        margin: 0 auto;
-        line-height: 1.6;
-    }
-
-    /* Conteneur du carrousel */
-    .products-carousel-container {
-        position: relative;
-        width: 100%;
-        margin-top: 40px;
-    }
-
-    .products-carousel-viewport {
-        overflow: hidden;
-        width: 100%;
-        border-radius: 12px;
-    }
-
-    .products-carousel-track {
-        display: flex;
-        gap: 24px;
-        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        width: 100%;
-    }
-
-    /* Carte produit */
-    .product-carousel-card {
-        flex: 0 0 100%;
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .product-carousel-card:hover {
-        box-shadow: 0 8px 32px rgba(230, 57, 70, 0.15);
-        transform: translateY(-4px);
-    }
-
-    @media (min-width: 768px) {
-        .product-carousel-card {
-            flex: 0 0 calc(50% - 12px);
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .product-carousel-card {
-            flex: 0 0 calc(33.333% - 16px);
-        }
-    }
-
-    @media (min-width: 1440px) {
-        .product-carousel-card {
-            flex: 0 0 calc(25% - 18px);
-        }
-    }
-
-    @media (min-width: 1920px) {
-        .product-carousel-card {
-            flex: 0 0 calc(20% - 20px);
-        }
-    }
-
-    .product-carousel-image {
-        width: 100%;
-        height: 280px;
-        background: #f5f5f5;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .product-carousel-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        padding: 20px;
-        transition: transform 0.3s ease;
-    }
-
-    .product-carousel-card:hover .product-carousel-image img {
-        transform: scale(1.05);
-    }
-
-    .product-carousel-content {
-        padding: 24px;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-
-    .product-carousel-name {
-        font-size: 18px;
-        font-weight: 700;
-        color: #1a1a1a;
-        margin-bottom: 10px;
-        font-family: "Barlow Condensed", sans-serif;
-    }
-
-    .product-carousel-desc {
-        font-size: 14px;
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 16px;
-        flex-grow: 1;
-    }
-
-    .product-carousel-specs {
-        font-size: 13px;
-        color: #999;
-        margin-bottom: 16px;
-        padding-top: 12px;
-        border-top: 1px solid #eee;
-    }
-
-    .product-carousel-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 14px;
-        font-weight: 600;
-        color: #e63946;
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-
-    .product-carousel-link:hover {
-        gap: 12px;
-    }
-
-    .product-carousel-link svg {
-        width: 16px;
-        height: 16px;
-        transition: transform 0.3s ease;
-    }
-
-    .product-carousel-link:hover svg {
-        transform: translateX(4px);
-    }
-
-    /* Flèches de navigation */
-    .products-carousel-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 48px;
-        height: 48px;
-        background: white;
-        border: 2px solid #e63946;
-        color: #e63946;
-        border-radius: 50%;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 20;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(230, 57, 70, 0.1);
-    }
-
-    .products-carousel-arrow:hover {
-        background: #e63946;
-        color: white;
-        box-shadow: 0 6px 20px rgba(230, 57, 70, 0.25);
-    }
-
-    .products-carousel-arrow:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-        border-color: #ddd;
-        color: #ddd;
-    }
-
-    .products-carousel-arrow:disabled:hover {
-        background: white;
-        color: #ddd;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .products-carousel-arrow-left { 
-        left: -70px; 
-    }
-    .products-carousel-arrow-right { 
-        right: -70px; 
-    }
-
-    @media (max-width: 1240px) {
-        .products-carousel-arrow-left { 
-            left: 10px; 
-        }
-        .products-carousel-arrow-right { 
-            right: 10px; 
-        }
-    }
-
-    @media (max-width: 768px) {
-        .products-carousel-arrow {
-            width: 40px;
-            height: 40px;
-        }
-        .products-carousel-arrow-left { 
-            left: 5px; 
-        }
-        .products-carousel-arrow-right { 
-            right: 5px; 
-        }
-    }
-
-    /* Points de navigation */
-    .products-carousel-dots {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 40px;
-    }
-
-    .products-carousel-dot {
-        width: 12px;
-        height: 12px;
-        background: #ddd;
-        border: none;
-        padding: 0;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .products-carousel-dot.active {
-        background: #e63946;
-        transform: scale(1.4);
-    }
-
-    .products-carousel-dot:hover {
-        background: #e63946;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .products-carousel-track,
-        .product-carousel-card,
-        .products-carousel-arrow,
-        .products-carousel-dot {
-            transition: none;
-        }
-    }
 
   /* ============================================
      UNIFIED CATALOGUE SECTION
@@ -773,258 +482,16 @@
     }
     .detail-image-box::before { animation: none; }
   }
-
 </style>
+<base target="_blank">
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="navbar">
-  <a class="nav-logo" href="../../index.html">
-    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16 2C16 2 8 10 8 18C8 22.4 11.6 26 16 26C20.4 26 24 22.4 24 18C24 10 16 2 16 2Z" fill="#D62828" />
-      <path d="M16 10C16 10 12 14.5 12 18C12 20.2 13.8 22 16 22C18.2 22 20 20.2 20 18C20 14.5 16 10 16 10Z"
-        fill="#FF6B6B" />
-      <path d="M16 15C16 15 14 17 14 18.5C14 19.3 14.9 20 16 20C17.1 20 18 19.3 18 18.5C18 17 16 15 16 15Z"
-        fill="#FFE0E0" />
-    </svg>
-    <span class="nav-logo-text">PYRO<span>GUARD</span></span>
-  </a>
-  <div class="nav-links">
-    <a href="../../index.html">Accueil</a>
-    <div class="dropdown">
-      <a href="" class="dropdown-btn">Nos services</a>
-      <div class="dropdown-menu">
-        <a href="../Nos_services/audit_conseil.html" class="dropdown-item">Audit incendie</a>
-        <a href="../Nos_services/installation.html" class="dropdown-item">Installation</a>
-        <a href="../Nos_services/maintenance.html" class="dropdown-item">Maintenance</a>
-        <a href="../Nos_services/formation.html" class="dropdown-item">Formation</a>
-      </div>
-    </div>
-    <div class="dropdown">
-            <a href="../Products/products.html" >Produits</a>
-      <div class="dropdown-menu">
-
-        <div class="dropdown-item">
-          <a href="">Extincteurs <i class="fa-solid fa-angle-right" ></i></a>
-          <div class="submenu">
-            <a href="./Extincteur_eau.html">Extincteur à eau</a>
-            <a href="./Extincteur_poudre.html">Extincteur à poudre</a>
-            <a href="./Extincteur_co2.html">Extincteur CO2</a>
-            <a href="./Extincteur_sans_fluor.html">Extincteurs sans fluor</a>
-          </div>
-        </div>
-
-        <div class="dropdown-item">
-          <a href=""> Matériel incendie et secours <i class="fa-solid fa-angle-right" ></i></a>
-          <div class="submenu">
-            <a href="../Materiel_incendie_secours/Protection_extincteurs.html">Protection des extincteurs</a>
-            <a href="../Materiel_incendie_secours/Couverture_anti_feu.html">Couverture anti feu</a>
-            <a href="../Materiel_incendie_secours/Bac_sable.html">Bac à sable</a>
-            <a href="../Materiel_incendie_secours/Gondoles_armoires_solvants.html">Gondoles et armoires à solvants</a>
-            <a href="../Materiel_incendie_secours/Registre_boite_registre.html">Registre et boite à registre</a>
-            <a href="../Materiel_incendie_secours/Douches_portatives.html">Douches portatives</a>
-          </div>
-        </div>
-
-        <div class="dropdown-item">
-          <a href="">Signalisation <i class="fa-solid fa-angle-right"></i></a>
-          <div class="submenu">
-            <a href="../Signalisation/Plan_evacuation.html">Plan d'évacuation</a>
-            <a href="../Signalisation/Consignes_securite.html">Consignes de sécurité</a>
-            <a href="../Signalisation/Panneaux.html">Panneaux</a>
-          </div>
-        </div>
-
-        <div class="dropdown-item">
-          <a href="../Eclairage_de_secours/Eclairage_de_secours.html"> Éclairage de secours </a>
-        </div>
-
-        <div class="dropdown-item">
-          <a href="">Systèmes Hydrants <i class="fa-solid fa-angle-right"></i> </a>
-          <div class="submenu">
-            <a href="../Systemes_Hydrants/ria.html">RIA</a>
-            <a href="../Systemes_Hydrants/Poteaux_incendie.html">Poteaux incendie</a>
-            <a href="../Systemes_Hydrants/Emulseurs.html">Emulseurs</a>
-          </div>
-        </div>
-
-        <div class="dropdown-item">
-          <a href="../Extinction_automatique/Extinction_automatique.html">Extinction automatique</a>
-        </div>
-        <div class="dropdown-item">
-          <a href="">Détection incendie (SSI) <i class="fa-solid fa-angle-right" ></i></a>
-          <div class="submenu">
-            <a href="../Detection_incendie/categorie_a.html">Détection incendie catégorie A</a>
-            <a href="../Detection_incendie/categorie_b.html">Détection incendie categorie B</a>
-            <a href="../Detection_incendie/alarme_type_2b.html">Detection incendie alarme type 2b</a>
-            <a href="../Detection_incendie/alarme_type_3.html">Detection incendie alarme type 3</a>
-            <a href="../Detection_incendie/alarme_type_4.html">Detection incendie alarme type 4</a>
-          </div>
-        </div>
-        <div class="dropdown-item">
-          <a href="../Detecteur_de_fume/Detecteur_de_fume.html">Détecteur de fumée </a>
-        </div>
-        
-
-        <div class="dropdown-item">
-          <a href="">Désenfumage et portes coupe-feu <i class="fa-solid fa-angle-right" ></i> </a>
-          <div class="submenu">
-            <a href="../Desenfumage_coupe_feu/Desenfumage.html">Désenfumage</a>
-            <a href="../Desenfumage_coupe_feu/Portes_coupe_feu.html">Portes coupe-feu</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <a href="../Qui_sommes_nous/Qui_sommes_nous.html">Qui sommes-nous ?</a>
-</div>
-   <!-- <a class="nav-cta" href="#contact"></a> --> 
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
-</nav>   
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu active" id="mobileMenu">
-    <a href="../../index.html" onclick="toggleMenu()">Accueil</a>
-    <div class="mobile-dropdown">
-        <button class="mobile-dropdown-btn">
-            Nos services
-            <span>+</span>
-        </button>
-        <div class="mobile-dropdown-content">
-            <a href="../Nos_services/audit_conseil.html" onclick="toggleMenu()">Audit & Conseil</a>
-            <a href="../Nos_services/installation.html" onclick="toggleMenu()">Installation</a>
-            <a href="../Nos_services/maintenance.html" onclick="toggleMenu()">Maintenance</a>
-            <a href="../Nos_services/formation.html" onclick="toggleMenu()">Formation</a>
-        </div>
-    </div>
-    <div class="mobile-dropdown">
-        <button class="mobile-dropdown-btn">
-            Produits
-            <span>+</span>
-        </button>
-        <div class="mobile-dropdown-content">
-            <a href="./Extincteur_eau.html">Extincteurs</a>
-            <a href="../Materiel_incendie_secours/Protection_extincteurs.html">Matériel incendie et secours</a>
-            <a href="../Signalisation/Plan_evacuation.html">Signalisation</a>
-            <a href="../Eclairage_de_secours/Eclairage_de_secours.html">Éclairage de secours</a>
-            <a href="../Systemes_Hydrants/ria.html">Systèmes Hydrants</a>
-            <a href="../Extinction_automatique/Extinction_automatique.html">Extinction automatique</a>
-            <a href="../Detection_incendie/categorie_a.html">Détection incendie (SSI)</a>
-            <a href="../Detecteur_de_fume/Detecteur_de_fume.html">Détecteur de fumée</a>
-            <a href="../Desenfumage_coupe_feu/Desenfumage.html">Désenfumage et portes coupe-feu</a>
-          </div>
-    </div>
-    <a href="../Qui_sommes_nous/Qui_sommes_nous.html" onclick="toggleMenu()">
-        Qui sommes nous ?
-    </a>
-
-      
-
-</div>
-
-
-<section class="hero">
-  <div class="hero-effects">
-
-    <div class="smoke smoke1"></div>
-    <div class="smoke smoke2"></div>
-
-    <div class="red-glow"></div>
-
-    <div class="embers">
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-    </div>
-
-  </div>
-  <div class="hero-content reveal">
-    <div class="hero-eyebrow">Produits & Équipements</div>
-    <h1>Extincteur<br>à <em>Eau Pulvérisée</em></h1>
-    <p class="section-lead">La solution standard pour les feux de classe A (solides) et classe B (liquides), idéale pour
-      les bureaux et les milieux tertiaires.</p>
-  </div>
-</section> 
-
-<section class="product-detail">
-  <div class="product-detail-container">
-    <div class="product-image-box">
-      <!-- Placeholder for fire extinguisher image -->
-      <svg width="200" height="400" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="30" y="40" width="40" height="140" rx="20" fill="#D62828"/>
-        <path d="M40 40V20H60V40" stroke="#333" stroke-width="5"/>
-        <circle cx="50" cy="110" r="15" fill="white" fill-opacity="0.1"/>
-        <text x="50" y="115" font-family="Barlow Condensed" font-size="8" fill="white" text-anchor="middle">EAU</text>
-      </svg>
-    </div>
-
-    
-    <div class="product-info">
-      <div class="section-tag">Détails Techniques</div>
-      <h3>Performance & Fiabilité</h3>
-      <p class="product-desc">Nos extincteurs à eau avec additif sont conçus pour une efficacité maximale sur les feux de bois, papier, tissus et hydrocarbures. Certifiés NF et conformes aux nouvelles réglementations PFAS 2025.</p>
-      
-      <div class="product-specs">
-        <div class="spec-item">
-          <span class="spec-label">Capacité</span>
-          <span class="spec-value">6 Litres / 9 Litres</span>
-        </div>
-        <div class="spec-item">
-          <span class="spec-label">Classes de feu</span>
-          <span class="spec-value">A (Solides) & B (Liquides)</span>
-        </div>
-        <div class="spec-item">
-          <span class="spec-label">Certification</span>
-          <span class="spec-value">NF / CE / EN3</span>
-        </div>
-        <div class="spec-item">
-          <span class="spec-label">Durée de vie</span>
-          <span class="spec-value">10-20 ans (avec maintenance)</span>
-        </div>
-      </div>
-
-      <ul class="product-features">
-        <li><i class="fa-solid fa-check"></i> Additif haute performance pour une extinction rapide</li>
-        <li><i class="fa-solid fa-check"></i> Cuve avec revêtement intérieur anti-corrosion</li>
-        <li><i class="fa-solid fa-check"></i> Manomètre de contrôle de pression intégré</li>
-        <li><i class="fa-solid fa-check"></i> Support mural inclus de série</li>
-      </ul>
-
-      <!-- <a href="index.html#contact" class="nav-cta" style="display:inline-block">Obtenir un devis personnalisé</a> -->
-    </div>
-  </div>
-</section>
-
-
-
-
-<!-- <section class="product-detail" style="background-color: red;">
-  <div class="product-detail-container" style="background-color: yellow;">
-      <div class="product-image-box">
-      <svg width="200" height="400" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="30" y="40" width="40" height="140" rx="20" fill="#D62828"/>
-        <path d="M40 40V20H60V40" stroke="#333" stroke-width="5"/>
-        <circle cx="50" cy="110" r="15" fill="white" fill-opacity="0.1"/>
-        <text x="50" y="115" font-family="Barlow Condensed" font-size="8" fill="white" text-anchor="middle">EAU</text>
-      </svg>
-      </div>
-      
-
-    
-  </div>
-</section> -->
-
-
-<!-- PRODUITS-CAROUSEL -->
-
-
-
-<section id="unified-catalogue">
-  <div class="unified-wrapper">
-
+<!-- ============================================
+     UNIFIED CATALOGUE & GALLERY
+     ============================================ -->
+ <section id="unified-catalogue"> <!-- //product-detail -->
+  <div class="unified-wrapper">   <!--product-detail-container-->
     <!-- DETAIL CAROUSEL -->
     <div style="position:relative;">
       <button type="button" class="detail-nav prev" id="detailPrev" aria-label="Produit précédent">
@@ -1041,6 +508,7 @@
       </div>
     </div>
 
+    
     <div class="detail-progress" id="detailProgress"></div>
 
     <!-- GALLERY STRIP -->
@@ -1066,158 +534,8 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <a class="nav-logo" href="#">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px">
-          <path d="M16 2C16 2 8 10 8 18C8 22.4 11.6 26 16 26C20.4 26 24 22.4 24 18C24 10 16 2 16 2Z" fill="#D62828"/>
-          <path d="M16 10C16 10 12 14.5 12 18C12 20.2 13.8 22 16 22C18.2 22 20 20.2 20 18C20 14.5 16 10 16 10Z" fill="#FF6B6B"/>
-        </svg>
-        <span class="nav-logo-text">PYRO<span>GUARD</span></span>
-      </a>
-      <p>Votre partenaire global en sécurité incendie depuis 1987. Fabricant français, réseau national, certifications Apsad.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <a href="../Nos_services/audit_conseil.html">Audit & Conseil</a>
-      <a href="../Nos_services/installation.html">Installation</a>
-      <a href="../Nos_services/maintenance.html">Maintenance</a>
-      <a href="../Nos_services/formation.html">Formation</a>
-      <a href="#">Urgences 24h/24</a>
-    </div>
-    <div class="footer-col">
-      <h4>Produits</h4>
-      <a href="../Extincteurs_pages/Extincteur_eau.html">Extincteurs</a>
-      <a href="../Detection_incendie/categorie_a.html">Détection incendie</a>
-      <a href="../Systemes_Hydrants/ria.html">Systèmes hydrants</a>
-      <a href="../Desenfumage_coupe_feu/Desenfumage.html">Désenfumage</a>
-      <a href="../Eclairage_de_secours/Eclairage_de_secours.html">Éclairage de secours</a>
-    </div>
-    <div class="footer-col">
-      <h4>Groupe</h4>
-      <a href="#">Qui sommes-nous</a>
-      <a href="#">Fabrication française</a>
-      <a href="#">Certifications</a>
-      <a href="#">Recrutement</a>
-      <a href="#">Contact</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 PyroGuard — Template créé par Claude. Tous droits réservés.</p>
-    <div class="certifs">
-      <div class="certif-badge">APSAD R1</div>
-      <div class="certif-badge">NF SERVICE</div>
-      <div class="certif-badge">QUALIOPI</div>
-      <div class="certif-badge">ISO 9001</div>
-    </div>
-  </div>
-</footer>
 <script>
-  class ProductsCarousel {
-  constructor() {
-    this.track = document.getElementById('productsCarouselTrack');
-    this.prevBtn = document.getElementById('productsCarouselPrevBtn');
-    this.nextBtn = document.getElementById('productsCarouselNextBtn');
-    this.dotsContainer = document.getElementById('productsCarouselDots');
-    
-    this.currentIndex = 0;
-    this.itemsPerView = this.getItemsPerView();
-    this.totalItems = this.track.querySelectorAll('.product-carousel-card').length;
-    this.totalSlides = Math.ceil(this.totalItems / this.itemsPerView);
-    
-    this.init();
-  }
-
-  getItemsPerView() {
-    const w = window.innerWidth;
-    if (w >= 1920) return 5; 
-    if (w >= 1440) return 4;
-    if (w >= 1024) return 3;
-    if (w >= 768) return 2;
-    return 1;
-  }
-
-  init() {
-    this.createDots();
-    this.attachEventListeners();
-    this.updateCarousel();
-    window.addEventListener('resize', () => this.handleResize());
-  }
-
-  createDots() {
-    this.dotsContainer.innerHTML = '';
-    for (let i = 0; i < this.totalSlides; i++) {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = `products-carousel-dot ${i === 0 ? 'active' : ''}`;
-      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-      dot.addEventListener('click', () => this.goToSlide(i));
-      this.dotsContainer.appendChild(dot);
-    }
-  }
-
-  attachEventListeners() {
-    this.prevBtn.addEventListener('click', () => this.prev());
-    this.nextBtn.addEventListener('click', () => this.next());
-  }
-
-  handleResize() {
-    const newItemsPerView = this.getItemsPerView();
-    if (newItemsPerView !== this.itemsPerView) {
-      this.itemsPerView = newItemsPerView;
-      this.totalSlides = Math.ceil(this.totalItems / this.itemsPerView);
-      this.currentIndex = 0;
-      this.createDots();
-      this.updateCarousel();
-    }
-  }
-
-  updateCarousel() {
-    const offset = -this.currentIndex * (100 / this.itemsPerView);
-    this.track.style.transform = `translateX(${offset}%)`;
-    
-    // Update dots
-    document.querySelectorAll('.products-carousel-dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === this.currentIndex);
-    });
-
-    // Update button states
-    this.prevBtn.disabled = false;
-    this.nextBtn.disabled = false;
-  }
-
-  prev() {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-    } else {
-      this.currentIndex = this.totalSlides - 1;
-    }
-    this.updateCarousel();
-  }
-
-  next() {
-    if (this.currentIndex < this.totalSlides - 1) {
-      this.currentIndex++;
-    } else {
-      this.currentIndex = 0;
-    }
-    this.updateCarousel();
-  }
-
-  goToSlide(index) {
-    this.currentIndex = index;
-    this.updateCarousel();
-  }
-}
-
-// Initialize products carousel when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  new ProductsCarousel();
-});
-
- // ============================================
+  // ============================================
   // DONNÉES PRODUITS
   // ============================================
   const products = [
@@ -1508,7 +826,111 @@ document.addEventListener('DOMContentLoaded', () => {
     window.unifiedCatalogue = new UnifiedCatalogue();
   });
 </script>
+
 <script src="/assets/js/script.js"></script>
 </body>
-
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="products-carousel">
+  <div class="products-carousel-inner">
+
+    <div class="products-carousel-container reveal">
+      <div class="products-carousel-viewport">
+        <div class="products-carousel-track" id="productsCarouselTrack">
+          
+          <!-- Produit 1 -->
+          <div class="product-carousel-card">
+            <div class="product-carousel-image">
+              <img src="../../assets/images/product_abc_powder.png" alt="Extincteur ABC Poudre">
+            </div>
+            
+          </div>
+
+          <!-- Produit 2 -->
+          <div class="product-carousel-card">
+            <div class="product-carousel-image">
+              <img src="../../assets/images/product_co2_extinguisher.png" alt="Extincteur CO2">
+            </div>
+            
+          </div>
+
+          <!-- Produit 3 -->
+          <div class="product-carousel-card">
+            <div class="product-carousel-image">
+              <img src="../../assets/images/product_co2_extinguisher.png" alt="Détecteur de Fumée">
+            </div>
+            
+          </div>
+
+          <!-- Produit 4 -->
+          <div class="product-carousel-card">
+            <div class="product-carousel-image">
+              <img src="../../assets/images/product_fire_alarm.png" alt="Alarme Incendie">
+            </div>
+            
+          </div>
+
+          <!-- Produit 5 -->
+          <div class="product-carousel-card">
+            <div class="product-carousel-image">
+              <img src="../../assets/images/product_fire_hose.png" alt="Tuyau Incendie">
+            </div>
+            
+          </div>
+          <!-- Produit 6 -->
+          <div class="product-carousel-card">
+            <div class="product-carousel-image">
+              <img src="../../assets/images/product_fire_hose.png" alt="Tuyau Incendie">
+            </div>
+           
+          </div>
+          <!-- Produit 7 -->
+          <div class="product-carousel-card">
+            <div class="product-carousel-image">
+              <img src="../../assets/images/product_fire_hose.png" alt="Tuyau Incendie">
+            </div>
+          </div>
+
+          <!-- Produit 8 -->
+          <div class="product-carousel-card">
+            <div class="product-carousel-image">
+              <img src="../../assets/images/product_fire_hose.png" alt="Tuyau Incendie">
+            </div>
+           
+          </div>
+          <!-- Produit 9 -->
+          <div class="product-carousel-card">
+            <div class="product-carousel-image">
+              <img src="../../assets/images/product_fire_hose.png" alt="Tuyau Incendie">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Flèches de navigation -->
+      <button type="button" class="products-carousel-arrow products-carousel-arrow-left" id="productsCarouselPrevBtn" aria-label="Produit précédent">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button type="button" class="products-carousel-arrow products-carousel-arrow-right" id="productsCarouselNextBtn" aria-label="Produit suivant">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+
+    <!-- Points de navigation -->
+    <div class="products-carousel-dots" id="productsCarouselDots"></div>
+  </div>
+</section>
