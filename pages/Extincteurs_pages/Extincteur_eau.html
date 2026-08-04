@@ -304,14 +304,34 @@
   /* ============================================
      UNIFIED CATALOGUE SECTION
      ============================================ */
+/* .detail-image-box,
+.detail-info img,
+.detail-desc ,
+.detail-spec-item,
+.detail-tag h2,
+.detail-desc,
+.detail-specs-grid {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.detail-image-box .reveal-in,
+.detail-info img  .reveal-in,
+.detail-desc  .reveal-in,
+.detail-spec-item .reveal-in,
+.detail-tag h2 .reveal-in,
+.detail-desc .reveal-in,
+.detail-specs-grid .reveal-in{
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+} */
+
   #unified-catalogue {
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f1f3f5 100%);
   }
 
-  .unified-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
+  .unified-wrapper {  
   }
 
   /* --- Detail Carousel --- */
@@ -947,7 +967,7 @@
     <p class="section-lead">La solution standard pour les feux de classe A (solides) et classe B (liquides), idéale pour
       les bureaux et les milieux tertiaires.</p>
   </div>
-</section> 
+</section>
 
 <section class="product-detail">
   <div class="product-detail-container">
@@ -1001,7 +1021,7 @@
 
 
 
-<!-- <section class="product-detail" style="background-color: red;">
+<!-- <section class="product-detail" style="background-color: red;">  
   <div class="product-detail-container" style="background-color: yellow;">
       <div class="product-image-box">
       <svg width="200" height="400" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1016,6 +1036,7 @@
     
   </div>
 </section> -->
+
 
 
 <!-- PRODUITS-CAROUSEL -->
@@ -1105,7 +1126,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 PyroGuard — Template créé par Claude. Tous droits réservés.</p>
+    <p>© 2025 Service Nord Exctinteurs — Template créé par Claude. Tous droits réservés.</p>
     <div class="certifs">
       <div class="certif-badge">APSAD R1</div>
       <div class="certif-badge">NF SERVICE</div>
@@ -1115,6 +1136,45 @@
   </div>
 </footer>
 <script>
+//   (() => {
+
+//   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ 
+//   const targets = document.querySelectorAll(
+//     [
+//       ".detail-image-box",
+//       ".detail-info-tag",
+//       ".detail-desc ",
+//       ".detail-spec-item",
+//       ".detail-tag h2",
+//       ".detail-desc",
+//       ".detail-specs-grid"
+//     ].join(", ")
+//   );
+ 
+//   if (!targets.length) return;
+ 
+//   // No JS-driven motion needed: show everything immediately.
+//   if (prefersReduced || !("IntersectionObserver" in window)) {
+//     targets.forEach((el) => el.classList.add("reveal-in"));
+//     return;
+//   }
+ 
+//   const io = new IntersectionObserver(
+//     (entries) => {
+//       entries.forEach((entry) => {
+//         if (entry.isIntersecting) {
+//           entry.target.classList.add("reveal-in");
+//           io.unobserve(entry.target);
+//         }
+//       });
+//     },
+//     { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+//   );
+ 
+//   targets.forEach((el) => io.observe(el));
+// })();
+
   class ProductsCarousel {
   constructor() {
     this.track = document.getElementById('productsCarouselTrack');
