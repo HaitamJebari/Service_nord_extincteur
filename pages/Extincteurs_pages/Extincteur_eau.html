@@ -9,791 +9,944 @@
 <link rel="stylesheet" href="../../assets/css/all.css">
 <link rel="stylesheet" href="../css/cssPages.css">
 <style>
-   /* ============================================
-       SECTION PRODUITS PHARES - CARROUSEL
-       ============================================ */
+ /* ============================================
+   UNIFIED CATALOGUE SECTION — SCROLL ENHANCED
+   ============================================ */
 
-    #products-carousel {
-        padding: 60px 20px;
-        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    }
-
-    .products-carousel-inner {
-        max-width: 100%; 
-        margin: 0 auto;
-        padding: 0 70px; 
-    }
-
-    .products-carousel-header {
-        text-align: center;
-        margin-bottom: 50px;
-    }
-
-    .products-carousel-header .section-tag {
-        display: inline-block;
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: #e63946;
-        margin-bottom: 15px;
-    }
-
-    .products-carousel-header h2 {
-        font-size: clamp(28px, 6vw, 42px);
-        font-weight: 700;
-        color: #1a1a1a;
-        margin-bottom: 15px;
-        font-family: "Barlow Condensed", sans-serif;
-    }
-
-    .products-carousel-header p {
-        font-size: 16px;
-        color: #666;
-        max-width: 600px;
-        margin: 0 auto;
-        line-height: 1.6;
-    }
-
-    /* Conteneur du carrousel */
-    .products-carousel-container {
-        position: relative;
-        width: 100%;
-        margin-top: 40px;
-    }
-
-    .products-carousel-viewport {
-        overflow: hidden;
-        width: 100%;
-        border-radius: 12px;
-    }
-
-    .products-carousel-track {
-        display: flex;
-        gap: 24px;
-        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        width: 100%;
-    }
-
-    /* Carte produit */
-    .product-carousel-card {
-        flex: 0 0 100%;
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .product-carousel-card:hover {
-        box-shadow: 0 8px 32px rgba(230, 57, 70, 0.15);
-        transform: translateY(-4px);
-    }
-
-    @media (min-width: 768px) {
-        .product-carousel-card {
-            flex: 0 0 calc(50% - 12px);
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .product-carousel-card {
-            flex: 0 0 calc(33.333% - 16px);
-        }
-    }
-
-    @media (min-width: 1440px) {
-        .product-carousel-card {
-            flex: 0 0 calc(25% - 18px);
-        }
-    }
-
-    @media (min-width: 1920px) {
-        .product-carousel-card {
-            flex: 0 0 calc(20% - 20px);
-        }
-    }
-
-    .product-carousel-image {
-        width: 100%;
-        height: 280px;
-        background: #f5f5f5;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .product-carousel-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        padding: 20px;
-        transition: transform 0.3s ease;
-    }
-
-    .product-carousel-card:hover .product-carousel-image img {
-        transform: scale(1.05);
-    }
-
-    .product-carousel-content {
-        padding: 24px;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-
-    .product-carousel-name {
-        font-size: 18px;
-        font-weight: 700;
-        color: #1a1a1a;
-        margin-bottom: 10px;
-        font-family: "Barlow Condensed", sans-serif;
-    }
-
-    .product-carousel-desc {
-        font-size: 14px;
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 16px;
-        flex-grow: 1;
-    }
-
-    .product-carousel-specs {
-        font-size: 13px;
-        color: #999;
-        margin-bottom: 16px;
-        padding-top: 12px;
-        border-top: 1px solid #eee;
-    }
-
-    .product-carousel-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 14px;
-        font-weight: 600;
-        color: #e63946;
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-
-    .product-carousel-link:hover {
-        gap: 12px;
-    }
-
-    .product-carousel-link svg {
-        width: 16px;
-        height: 16px;
-        transition: transform 0.3s ease;
-    }
-
-    .product-carousel-link:hover svg {
-        transform: translateX(4px);
-    }
-
-    /* Flèches de navigation */
-    .products-carousel-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 48px;
-        height: 48px;
-        background: white;
-        border: 2px solid #e63946;
-        color: #e63946;
-        border-radius: 50%;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 20;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(230, 57, 70, 0.1);
-    }
-
-    .products-carousel-arrow:hover {
-        background: #e63946;
-        color: white;
-        box-shadow: 0 6px 20px rgba(230, 57, 70, 0.25);
-    }
-
-    .products-carousel-arrow:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-        border-color: #ddd;
-        color: #ddd;
-    }
-
-    .products-carousel-arrow:disabled:hover {
-        background: white;
-        color: #ddd;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .products-carousel-arrow-left { 
-        left: -70px; 
-    }
-    .products-carousel-arrow-right { 
-        right: -70px; 
-    }
-
-    @media (max-width: 1240px) {
-        .products-carousel-arrow-left { 
-            left: 10px; 
-        }
-        .products-carousel-arrow-right { 
-            right: 10px; 
-        }
-    }
-
-    @media (max-width: 768px) {
-        .products-carousel-arrow {
-            width: 40px;
-            height: 40px;
-        }
-        .products-carousel-arrow-left { 
-            left: 5px; 
-        }
-        .products-carousel-arrow-right { 
-            right: 5px; 
-        }
-    }
-
-    /* Points de navigation */
-    .products-carousel-dots {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 40px;
-    }
-
-    .products-carousel-dot {
-        width: 12px;
-        height: 12px;
-        background: #ddd;
-        border: none;
-        padding: 0;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .products-carousel-dot.active {
-        background: #e63946;
-        transform: scale(1.4);
-    }
-
-    .products-carousel-dot:hover {
-        background: #e63946;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .products-carousel-track,
-        .product-carousel-card,
-        .products-carousel-arrow,
-        .products-carousel-dot {
-            transition: none;
-        }
-    }
-
-  /* ============================================
-     UNIFIED CATALOGUE SECTION
-     ============================================ */
-/* .detail-image-box,
-.detail-info img,
-.detail-desc ,
-.detail-spec-item,
-.detail-tag h2,
-.detail-desc,
-.detail-specs-grid {
+/* ---- Scroll Reveal Base ---- */
+.scroll-reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(60px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.detail-image-box .reveal-in,
-.detail-info img  .reveal-in,
-.detail-desc  .reveal-in,
-.detail-spec-item .reveal-in,
-.detail-tag h2 .reveal-in,
-.detail-desc .reveal-in,
-.detail-specs-grid .reveal-in{
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-} */
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  #unified-catalogue {
-  }
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-80px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-  .unified-wrapper {  
-  }
+.scroll-reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
 
-  /* --- Detail Carousel --- */
-  .detail-stage {
-    position: relative;
-    overflow: hidden;
-    border-radius: 24px;
-    background: white;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.03);
-    margin-bottom: 24px;
-  }
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(80px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-  .detail-track {
-    display: flex;
-    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  }
+.scroll-reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
 
-  .detail-slide {
-    min-width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    opacity: 0.3;
-    transform: scale(0.95);
-    transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  }
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-  .detail-slide.active {
-    opacity: 1;
-    transform: scale(1);
-  }
+.scroll-reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
 
-  @media (max-width: 900px) {
-    .detail-slide { grid-template-columns: 1fr; }
-  }
+/* Stagger delays */
+.stagger-1 { transition-delay: 0.08s; }
+.stagger-2 { transition-delay: 0.16s; }
+.stagger-3 { transition-delay: 0.24s; }
+.stagger-4 { transition-delay: 0.32s; }
+.stagger-5 { transition-delay: 0.40s; }
+.stagger-6 { transition-delay: 0.48s; }
+.stagger-7 { transition-delay: 0.56s; }
+.stagger-8 { transition-delay: 0.64s; }
 
-  .detail-image-box {
-    background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 40px;
-    position: relative;
-    overflow: hidden;
-    min-height: 420px;
-  }
+/* ---- Section Entrance ---- */
+#unified-catalogue {
+  padding: 100px 20px 80px;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 40%, #f8f9fa 100%);
+  position: relative;
+  overflow: hidden;
+}
 
-  .detail-image-box::before {
+#unified-catalogue::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(230,57,70,0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+#unified-catalogue::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(230,57,70,0.03) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.unified-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---- Section Header (added for scroll context) ---- */
+.unified-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.unified-header .section-tag {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e63946;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.unified-header .section-tag::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: #e63946;
+  margin: 10px auto 0;
+  transform: scaleX(0);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.unified-header.revealed .section-tag::after {
+  transform: scaleX(1);
+}
+
+.unified-header h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.unified-header p {
+  font-size: 16px;
+  color: #666;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ---- Detail Carousel ---- */
+.detail-stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.03);
+  margin-bottom: 24px;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+.detail-track {
+  display: flex;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.detail-slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  opacity: 0.3;
+  transform: scale(0.95);
+  transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.detail-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 900px) {
+  .detail-slide { grid-template-columns: 1fr; }
+}
+
+/* ---- Image Box with Scroll Parallax ---- */
+.detail-image-box {
+  background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+}
+
+.detail-image-box::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(230,57,70,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+}
+
+/* Parallax image container */
+.detail-image-box .img-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s linear;
+}
+
+.detail-image-box img {
+  max-width: 75%;
+  max-height: 360px;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  z-index: 2;
+}
+
+/* Scroll-driven image reveal */
+.detail-slide.active .detail-image-box img {
+  animation: image-reveal-scroll 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes image-reveal-scroll {
+  0% { transform: scale(0.7) rotate(-5deg) translateY(40px); opacity: 0; }
+  60% { transform: scale(1.02) rotate(0.5deg) translateY(-5px); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg) translateY(0); opacity: 1; }
+}
+
+/* ---- Info Panel Scroll Animations ---- */
+.detail-info {
+  padding: 50px 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background accent */
+.detail-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(230,57,70,0.03) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(30%, -30%) scale(0);
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+}
+
+.detail-slide.active .detail-info::before {
+  transform: translate(30%, -30%) scale(1);
+}
+
+/* Number with count-up animation */
+.detail-number {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 110px;
+  font-weight: 900;
+  color: rgba(230,57,70,0.06);
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  line-height: 1;
+  user-select: none;
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.detail-slide.active .detail-number {
+  animation: number-slide-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes number-slide-in {
+  from { transform: translateY(30px) scale(0.8); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Tag with typewriter-like reveal */
+.detail-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e63946;
+  margin-bottom: 14px;
+  background: rgba(230,57,70,0.06);
+  padding: 6px 14px;
+  border-radius: 50px;
+  width: fit-content;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+.detail-slide.active .detail-tag {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Title with character stagger effect (simulated via clip) */
+.detail-info h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  line-height: 1.15;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.detail-slide.active .detail-info h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Description fade */
+.detail-info .detail-desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 28px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+
+.detail-slide.active .detail-info .detail-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Specs grid with staggered card reveal */
+.detail-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.detail-spec-item {
+  background: #f8f9fa;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+}
+
+.detail-spec-item:hover {
+  background: white;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transform: translateY(-2px) scale(1);
+}
+
+.detail-slide.active .detail-spec-item {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.detail-slide.active .detail-spec-item:nth-child(1) { transition-delay: 0.30s; }
+.detail-slide.active .detail-spec-item:nth-child(2) { transition-delay: 0.38s; }
+.detail-slide.active .detail-spec-item:nth-child(3) { transition-delay: 0.46s; }
+.detail-slide.active .detail-spec-item:nth-child(4) { transition-delay: 0.54s; }
+
+.detail-spec-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+
+.detail-spec-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* Features with line-by-line stagger */
+.detail-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+}
+
+.detail-features li {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateX(-15px);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.detail-slide.active .detail-features li {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.detail-slide.active .detail-features li:nth-child(1) { transition-delay: 0.50s; }
+.detail-slide.active .detail-features li:nth-child(2) { transition-delay: 0.58s; }
+.detail-slide.active .detail-features li:nth-child(3) { transition-delay: 0.66s; }
+.detail-slide.active .detail-features li:nth-child(4) { transition-delay: 0.74s; }
+
+.detail-features li i {
+  color: #28a745;
+  font-size: 14px;
+  width: 18px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.detail-features li:hover i {
+  transform: scale(1.3);
+}
+
+/* CTA with magnetic glow and shimmer */
+.detail-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #e63946;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.detail-slide.active .detail-cta {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.80s;
+}
+
+.detail-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: left 0.6s ease;
+}
+
+.detail-cta:hover::before { left: 100%; }
+
+.detail-cta:hover {
+  background: #d62828;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(230,57,70,0.35), 0 0 0 1px rgba(230,57,70,0.1);
+}
+
+/* ---- Navigation Arrows ---- */
+.detail-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: white;
+  border: 2px solid rgba(230,57,70,0.2);
+  color: #e63946;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.detail-nav:hover {
+  background: #e63946;
+  color: white;
+  border-color: #e63946;
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 8px 24px rgba(230,57,70,0.25);
+}
+
+.detail-nav:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.detail-nav.prev { left: -24px; }
+.detail-nav.next { right: -24px; }
+
+@media (max-width: 1280px) {
+  .detail-nav.prev { left: 10px; }
+  .detail-nav.next { right: 10px; }
+}
+
+@media (max-width: 768px) {
+  /* Hide arrows on mobile — swipe replaces them */
+  .detail-nav { display: none !important; }
+
+  .detail-image-box { min-height: 280px; padding: 30px 20px; }
+  .detail-info { padding: 30px 25px; }
+  .detail-number { font-size: 70px; }
+
+  /* Mobile swipe hint */
+  .detail-stage::after {
     content: '';
     position: absolute;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(230,57,70,0.08) 0%, transparent 70%);
-    border-radius: 50%;
-    top: 50%;
+    bottom: 16px;
     left: 50%;
-    transform: translate(-50%, -50%);
-    animation: pulse-glow 3s ease-in-out infinite;
-  }
-
-  @keyframes pulse-glow {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
-  }
-
-  .detail-image-box img {
-    max-width: 75%;
-    max-height: 360px;
-    object-fit: contain;
-    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
-    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    position: relative;
-    z-index: 2;
-  }
-
-  .detail-slide.active .detail-image-box img {
-    animation: image-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-
-  @keyframes image-reveal {
-    from { transform: scale(0.8) rotate(-3deg); opacity: 0; }
-    to { transform: scale(1) rotate(0deg); opacity: 1; }
-  }
-
-  .detail-info {
-    padding: 50px 45px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-  }
-
-  .detail-number {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 110px;
-    font-weight: 900;
-    color: rgba(230,57,70,0.06);
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    line-height: 1;
-    user-select: none;
-  }
-
-  .detail-slide.active .detail-number {
-    animation: number-slide 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-
-  @keyframes number-slide {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-
-  .detail-tag {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #e63946;
-    margin-bottom: 14px;
-    background: rgba(230,57,70,0.06);
-    padding: 6px 14px;
-    border-radius: 50px;
-    width: fit-content;
-  }
-
-  .detail-info h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(26px, 4vw, 40px);
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 16px;
-    line-height: 1.15;
-  }
-
-  .detail-info .detail-desc {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.7;
-    margin-bottom: 28px;
-  }
-
-  .detail-specs-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 28px;
-  }
-
-  .detail-spec-item {
-    background: #f8f9fa;
-    padding: 12px 16px;
-    border-radius: 10px;
-    border: 1px solid rgba(0,0,0,0.04);
-    transition: all 0.3s ease;
-  }
-
-  .detail-spec-item:hover {
-    background: white;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    transform: translateY(-2px);
-  }
-
-  .detail-spec-label {
-    font-size: 10px;
-    font-weight: 600;
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 3px;
-  }
-
-  .detail-spec-value {
-    font-size: 14px;
-    font-weight: 600;
-    color: #1a1a1a;
-  }
-
-  .detail-features {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 28px 0;
-  }
-
-  .detail-features li {
-    font-size: 13px;
-    color: #444;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-
-  .detail-slide.active .detail-features li {
-    animation: feature-stagger 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-
-  .detail-slide.active .detail-features li:nth-child(1) { animation-delay: 0.2s; }
-  .detail-slide.active .detail-features li:nth-child(2) { animation-delay: 0.3s; }
-  .detail-slide.active .detail-features li:nth-child(3) { animation-delay: 0.4s; }
-  .detail-slide.active .detail-features li:nth-child(4) { animation-delay: 0.5s; }
-
-  @keyframes feature-stagger {
-    to { opacity: 1; transform: translateX(0); }
-  }
-
-  .detail-features li i {
-    color: #28a745;
-    font-size: 14px;
-    width: 18px;
-    text-align: center;
-  }
-
-  .detail-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #e63946;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 13px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: fit-content;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .detail-cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s ease;
-  }
-
-  .detail-cta:hover::before { left: 100%; }
-
-  .detail-cta:hover {
-    background: #d62828;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(230,57,70,0.3);
-  }
-
-  /* Detail nav arrows */
-  .detail-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
-    background: white;
-    border: 2px solid rgba(230,57,70,0.2);
-    color: #e63946;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  }
-
-  .detail-nav:hover {
-    background: #e63946;
-    color: white;
-    border-color: #e63946;
-    transform: translateY(-50%) scale(1.1);
-  }
-
-  .detail-nav.prev { left: -24px; }
-  .detail-nav.next { right: -24px; }
-
-  @media (max-width: 1280px) {
-    .detail-nav.prev { left: 10px; }
-    .detail-nav.next { right: 10px; }
-  }
-
-  @media (max-width: 768px) {
-    .detail-nav { width: 40px; height: 40px; }
-    .detail-nav.prev { left: 5px; }
-    .detail-nav.next { right: 5px; }
-    .detail-image-box { min-height: 280px; padding: 30px 20px; }
-    .detail-info { padding: 30px 25px; }
-    .detail-number { font-size: 70px; }
-  }
-
-  /* Progress bars */
-  .detail-progress {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 30px;
-  }
-
-  .progress-bar {
+    transform: translateX(-50%);
+    width: 40px;
     height: 4px;
-    background: #e0e0e0;
+    background: rgba(0,0,0,0.08);
     border-radius: 2px;
-    flex: 1;
-    max-width: 60px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    z-index: 5;
   }
 
-  .progress-bar.active { background: #e63946; }
-  .progress-bar:hover { background: #ccc; }
-  .progress-bar.active:hover { background: #d62828; }
-
-  /* --- Gallery Strip --- */
-  .gallery-strip {
-    background: white;
-    border-radius: 20px;
-    padding: 24px 30px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
-    position: relative;
+  /* Mobile dots pagination (replaces arrows) */
+  .mobile-dots {
+    display: flex !important;
   }
 
-  .gallery-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .detail-progress {
+    gap: 6px;
     margin-bottom: 20px;
   }
 
-  .gallery-header h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin: 0;
+  .progress-bar {
+    height: 6px;
+    border-radius: 3px;
+    max-width: 30px;
   }
+}
 
-  .gallery-counter {
-    font-size: 12px;
-    color: #999;
-    font-weight: 500;
-    letter-spacing: 1px;
-  }
-  .gallery-counter span { color: #e63946; font-weight: 700; }
+/* ---- Progress Bars with Animated Fill ---- */
+.detail-progress {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 30px;
+}
 
-  .gallery-viewport {
-    overflow: hidden;
-    border-radius: 14px;
-  }
+.progress-bar {
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  flex: 1;
+  max-width: 60px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
 
-  .gallery-track {
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: #e63946;
+  border-radius: 2px;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.progress-bar.active::after {
+  width: 100%;
+}
+
+.progress-bar:hover { background: #ccc; }
+.progress-bar.active:hover::after { background: #d62828; }
+
+/* ---- Gallery Strip with Scroll Cascade ---- */
+.gallery-strip {
+  background: white;
+  border-radius: 20px;
+  padding: 24px 30px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.gallery-strip.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.gallery-header h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.gallery-counter {
+  font-size: 12px;
+  color: #999;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.gallery-counter span { color: #e63946; font-weight: 700; }
+
+.gallery-viewport {
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 14px;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  padding: 6px 0;
+}
+
+.gallery-item {
+  flex: 0 0 calc(16.666% - 12px);
+  aspect-ratio: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  background: #f0f0f0;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  border: 3px solid transparent;
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+}
+
+.gallery-strip.revealed .gallery-item {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Stagger gallery items on scroll reveal */
+.gallery-strip.revealed .gallery-item:nth-child(1) { transition-delay: 0.10s; }
+.gallery-strip.revealed .gallery-item:nth-child(2) { transition-delay: 0.18s; }
+.gallery-strip.revealed .gallery-item:nth-child(3) { transition-delay: 0.26s; }
+.gallery-strip.revealed .gallery-item:nth-child(4) { transition-delay: 0.34s; }
+.gallery-strip.revealed .gallery-item:nth-child(5) { transition-delay: 0.42s; }
+.gallery-strip.revealed .gallery-item:nth-child(6) { transition-delay: 0.50s; }
+.gallery-strip.revealed .gallery-item:nth-child(7) { transition-delay: 0.58s; }
+.gallery-strip.revealed .gallery-item:nth-child(8) { transition-delay: 0.66s; }
+.gallery-strip.revealed .gallery-item:nth-child(9) { transition-delay: 0.74s; }
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 16px;
+  transition: all 0.35s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+  border-color: rgba(230,57,70,0.25);
+}
+
+.gallery-item.active {
+  border-color: #e63946;
+  box-shadow: 0 10px 28px rgba(230,57,70,0.18);
+  transform: translateY(-4px) scale(1.06);
+}
+
+.gallery-item.active img { transform: scale(1.12); }
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 65%, rgba(0,0,0,0.04) 100%);
+  pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+  .gallery-item { flex: 0 0 calc(20% - 12px); }
+}
+@media (max-width: 900px) {
+  .gallery-item { flex: 0 0 calc(25% - 11px); }
+}
+@media (max-width: 600px) {
+  .gallery-item { flex: 0 0 calc(33.333% - 10px); }
+  .gallery-strip { padding: 18px 20px; }
+}
+
+/* Gallery nav */
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  background: white;
+  border: 2px solid rgba(230,57,70,0.12);
+  color: #e63946;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.gallery-nav:hover {
+  background: #e63946;
+  color: white;
+  border-color: #e63946;
+}
+
+.gallery-nav.prev { left: -19px; }
+.gallery-nav.next { right: -19px; }
+
+@media (max-width: 1280px) {
+  .gallery-nav.prev { left: 8px; }
+  .gallery-nav.next { right: 8px; }
+}
+
+/* ---- Scroll Progress Indicator (vertical line) ---- */
+.scroll-progress-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, rgba(230,57,70,0.1), transparent);
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ---- Floating particles for atmosphere ---- */
+.unified-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.unified-particles span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(230,57,70,0.15);
+  border-radius: 50%;
+  animation: particle-float 8s ease-in-out infinite;
+}
+
+.unified-particles span:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 7s; }
+.unified-particles span:nth-child(2) { left: 25%; top: 60%; animation-delay: 1s; animation-duration: 9s; width: 6px; height: 6px; }
+.unified-particles span:nth-child(3) { left: 70%; top: 30%; animation-delay: 2s; animation-duration: 8s; }
+.unified-particles span:nth-child(4) { left: 85%; top: 70%; animation-delay: 0.5s; animation-duration: 10s; width: 5px; height: 5px; }
+.unified-particles span:nth-child(5) { left: 45%; top: 80%; animation-delay: 3s; animation-duration: 7.5s; }
+
+@keyframes particle-float {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+  25% { transform: translateY(-20px) translateX(10px); opacity: 0.6; }
+  50% { transform: translateY(-40px) translateX(-5px); opacity: 0.4; }
+  75% { transform: translateY(-20px) translateX(15px); opacity: 0.7; }
+}
+
+/* ---- Scroll-driven section fade border ---- */
+#unified-catalogue .section-border-top,
+#unified-catalogue .section-border-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(230,57,70,0.15), transparent);
+  transform: scaleX(0);
+  transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#unified-catalogue .section-border-top { top: 0; transform-origin: left; }
+#unified-catalogue .section-border-bottom { bottom: 0; transform-origin: right; }
+
+#unified-catalogue.revealed-section .section-border-top,
+#unified-catalogue.revealed-section .section-border-bottom {
+  transform: scaleX(1);
+}
+
+/* ---- Mobile Dots Pagination ---- */
+.mobile-dots {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0 8px;
+}
+
+.mobile-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ddd;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-dot.active {
+  background: #e63946;
+  transform: scale(1.3);
+}
+
+/* Swipe hint overlay (fades out after first interaction) */
+.swipe-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.swipe-hint.visible {
+  opacity: 1;
+}
+
+.swipe-hint.faded {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.swipe-hint-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  animation: swipe-hint-pulse 2s ease-in-out infinite;
+}
+
+.swipe-hint-icon svg {
+  width: 20px;
+  height: 20px;
+  color: #e63946;
+}
+
+.swipe-hint-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  background: rgba(255,255,255,0.95);
+  padding: 6px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  white-space: nowrap;
+}
+
+@keyframes swipe-hint-pulse {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+@media (max-width: 768px) {
+  .swipe-hint {
     display: flex;
-    gap: 14px;
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    padding: 6px 0;
   }
+}
 
-  .gallery-item {
-    flex: 0 0 calc(16.666% - 12px);
-    aspect-ratio: 1;
-    border-radius: 14px;
-    overflow: hidden;
-    cursor: pointer;
-    position: relative;
-    background: #f0f0f0;
-    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-    border: 3px solid transparent;
+/* ---- Reduced Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale,
+  .gallery-item, .detail-slide, .detail-track, .gallery-track,
+  .detail-nav, .gallery-nav, .progress-bar,
+  .detail-spec-item, .detail-features li, .detail-cta,
+  .detail-info h2, .detail-info .detail-desc, .detail-tag {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
-
-  .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 16px;
-    transition: all 0.35s ease;
-  }
-
-  .gallery-item:hover {
-    transform: translateY(-6px) scale(1.04);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-    border-color: rgba(230,57,70,0.25);
-  }
-
-  .gallery-item.active {
-    border-color: #e63946;
-    box-shadow: 0 10px 28px rgba(230,57,70,0.18);
-    transform: translateY(-4px) scale(1.06);
-  }
-
-  .gallery-item.active img { transform: scale(1.12); }
-
-  .gallery-item::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 65%, rgba(0,0,0,0.04) 100%);
-    pointer-events: none;
-  }
-
-  @media (max-width: 1100px) {
-    .gallery-item { flex: 0 0 calc(20% - 12px); }
-  }
-  @media (max-width: 900px) {
-    .gallery-item { flex: 0 0 calc(25% - 11px); }
-  }
-  @media (max-width: 600px) {
-    .gallery-item { flex: 0 0 calc(33.333% - 10px); }
-    .gallery-strip { padding: 18px 20px; }
-  }
-
-  /* Gallery nav */
-  .gallery-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 38px;
-    height: 38px;
-    background: white;
-    border: 2px solid rgba(230,57,70,0.12);
-    color: #e63946;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  }
-
-  .gallery-nav:hover {
-    background: #e63946;
-    color: white;
-    border-color: #e63946;
-  }
-
-  .gallery-nav.prev { left: -19px; }
-  .gallery-nav.next { right: -19px; }
-
-  @media (max-width: 1280px) {
-    .gallery-nav.prev { left: 8px; }
-    .gallery-nav.next { right: 8px; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .detail-track, .detail-slide, .gallery-track, .gallery-item,
-    .detail-nav, .gallery-nav, .progress-bar {
-      transition: none !important;
-      animation: none !important;
-    }
-    .detail-image-box::before { animation: none; }
-  }
-
+  .detail-image-box::before, .unified-particles span { animation: none; }
+  .progress-bar::after { width: 100%; }
+}
 </style>
 </head>
 <body>
@@ -969,85 +1122,30 @@
   </div>
 </section>
 
-<section class="product-detail">
-  <div class="product-detail-container">
-    <div class="product-image-box">
-      <!-- Placeholder for fire extinguisher image -->
-      <svg width="200" height="400" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="30" y="40" width="40" height="140" rx="20" fill="#D62828"/>
-        <path d="M40 40V20H60V40" stroke="#333" stroke-width="5"/>
-        <circle cx="50" cy="110" r="15" fill="white" fill-opacity="0.1"/>
-        <text x="50" y="115" font-family="Barlow Condensed" font-size="8" fill="white" text-anchor="middle">EAU</text>
-      </svg>
-    </div>
-
-    
-    <div class="product-info">
-      <div class="section-tag">Détails Techniques</div>
-      <h3>Performance & Fiabilité</h3>
-      <p class="product-desc">Nos extincteurs à eau avec additif sont conçus pour une efficacité maximale sur les feux de bois, papier, tissus et hydrocarbures. Certifiés NF et conformes aux nouvelles réglementations PFAS 2025.</p>
-      
-      <div class="product-specs">
-        <div class="spec-item">
-          <span class="spec-label">Capacité</span>
-          <span class="spec-value">6 Litres / 9 Litres</span>
-        </div>
-        <div class="spec-item">
-          <span class="spec-label">Classes de feu</span>
-          <span class="spec-value">A (Solides) & B (Liquides)</span>
-        </div>
-        <div class="spec-item">
-          <span class="spec-label">Certification</span>
-          <span class="spec-value">NF / CE / EN3</span>
-        </div>
-        <div class="spec-item">
-          <span class="spec-label">Durée de vie</span>
-          <span class="spec-value">10-20 ans (avec maintenance)</span>
-        </div>
-      </div>
-
-      <ul class="product-features">
-        <li><i class="fa-solid fa-check"></i> Additif haute performance pour une extinction rapide</li>
-        <li><i class="fa-solid fa-check"></i> Cuve avec revêtement intérieur anti-corrosion</li>
-        <li><i class="fa-solid fa-check"></i> Manomètre de contrôle de pression intégré</li>
-        <li><i class="fa-solid fa-check"></i> Support mural inclus de série</li>
-      </ul>
-
-      <!-- <a href="index.html#contact" class="nav-cta" style="display:inline-block">Obtenir un devis personnalisé</a> -->
-    </div>
-  </div>
-</section>
-
-
-
-
-<!-- <section class="product-detail" style="background-color: red;">  
-  <div class="product-detail-container" style="background-color: yellow;">
-      <div class="product-image-box">
-      <svg width="200" height="400" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="30" y="40" width="40" height="140" rx="20" fill="#D62828"/>
-        <path d="M40 40V20H60V40" stroke="#333" stroke-width="5"/>
-        <circle cx="50" cy="110" r="15" fill="white" fill-opacity="0.1"/>
-        <text x="50" y="115" font-family="Barlow Condensed" font-size="8" fill="white" text-anchor="middle">EAU</text>
-      </svg>
-      </div>
-      
-
-    
-  </div>
-</section> -->
-
-
 
 <!-- PRODUITS-CAROUSEL -->
-
-
-
 <section id="unified-catalogue">
+
+  <!-- Atmospheric particles -->
+  <div class="unified-particles">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- Animated border lines -->
+  <div class="section-border-top"></div>
+  <div class="section-border-bottom"></div>
+
   <div class="unified-wrapper">
 
+    <!-- Section Header -->
+    <div class="unified-header scroll-reveal">
+      <div class="section-tag">Notre Catalogue</div>
+      <h2>Équipements de Sécurité Incendie</h2>
+      <p>Découvrez notre gamme complète de produits certifiés, conçus pour protéger vos locaux et vos collaborateurs avec la plus haute fiabilité.</p>
+    </div>
+
     <!-- DETAIL CAROUSEL -->
-    <div style="position:relative;">
+    <div style="position:relative;" class="scroll-reveal-scale stagger-1">
       <button type="button" class="detail-nav prev" id="detailPrev" aria-label="Produit précédent">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
       </button>
@@ -1055,7 +1153,16 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </button>
 
-      <div class="detail-stage">
+      <div class="detail-stage" id="detailStage">
+        <!-- Swipe hint for mobile -->
+        <div class="swipe-hint" id="swipeHint">
+          <div class="swipe-hint-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+          <span class="swipe-hint-text">Glissez pour naviguer</span>
+        </div>
         <div class="detail-track" id="detailTrack">
           <!-- Slides injected by JS -->
         </div>
@@ -1064,8 +1171,11 @@
 
     <div class="detail-progress" id="detailProgress"></div>
 
+    <!-- Mobile pagination dots (visible only on mobile) -->
+    <div class="mobile-dots" id="mobileDots"></div>
+
     <!-- GALLERY STRIP -->
-    <div class="gallery-strip">
+    <div class="gallery-strip scroll-reveal stagger-3">
       <div class="gallery-header">
         <h3>Galerie Produits</h3>
         <div class="gallery-counter"><span id="galleryCounter">1</span> / 9</div>
@@ -1086,6 +1196,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- FOOTER -->
 <footer>
@@ -1136,437 +1247,583 @@
   </div>
 </footer>
 <script>
-//   (() => {
+ /* ============================================
+   SCROLL ANIMATION ENGINE
+   ============================================ */
 
-//   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
- 
-//   const targets = document.querySelectorAll(
-//     [
-//       ".detail-image-box",
-//       ".detail-info-tag",
-//       ".detail-desc ",
-//       ".detail-spec-item",
-//       ".detail-tag h2",
-//       ".detail-desc",
-//       ".detail-specs-grid"
-//     ].join(", ")
-//   );
- 
-//   if (!targets.length) return;
- 
-//   // No JS-driven motion needed: show everything immediately.
-//   if (prefersReduced || !("IntersectionObserver" in window)) {
-//     targets.forEach((el) => el.classList.add("reveal-in"));
-//     return;
-//   }
- 
-//   const io = new IntersectionObserver(
-//     (entries) => {
-//       entries.forEach((entry) => {
-//         if (entry.isIntersecting) {
-//           entry.target.classList.add("reveal-in");
-//           io.unobserve(entry.target);
-//         }
-//       });
-//     },
-//     { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
-//   );
- 
-//   targets.forEach((el) => io.observe(el));
-// })();
-
-  class ProductsCarousel {
+class ScrollAnimator {
   constructor() {
-    this.track = document.getElementById('productsCarouselTrack');
-    this.prevBtn = document.getElementById('productsCarouselPrevBtn');
-    this.nextBtn = document.getElementById('productsCarouselNextBtn');
-    this.dotsContainer = document.getElementById('productsCarouselDots');
-    
-    this.currentIndex = 0;
-    this.itemsPerView = this.getItemsPerView();
-    this.totalItems = this.track.querySelectorAll('.product-carousel-card').length;
-    this.totalSlides = Math.ceil(this.totalItems / this.itemsPerView);
-    
+    this.prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     this.init();
   }
 
-  getItemsPerView() {
-    const w = window.innerWidth;
-    if (w >= 1920) return 5; 
-    if (w >= 1440) return 4;
-    if (w >= 1024) return 3;
-    if (w >= 768) return 2;
-    return 1;
-  }
-
   init() {
-    this.createDots();
-    this.attachEventListeners();
-    this.updateCarousel();
-    window.addEventListener('resize', () => this.handleResize());
-  }
-
-  createDots() {
-    this.dotsContainer.innerHTML = '';
-    for (let i = 0; i < this.totalSlides; i++) {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = `products-carousel-dot ${i === 0 ? 'active' : ''}`;
-      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-      dot.addEventListener('click', () => this.goToSlide(i));
-      this.dotsContainer.appendChild(dot);
+    if (this.prefersReduced || !('IntersectionObserver' in window)) {
+      // Show everything immediately
+      document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale, .gallery-strip')
+        .forEach(el => el.classList.add('revealed'));
+      document.getElementById('unified-catalogue')?.classList.add('revealed-section');
+      return;
     }
-  }
 
-  attachEventListeners() {
-    this.prevBtn.addEventListener('click', () => this.prev());
-    this.nextBtn.addEventListener('click', () => this.next());
-  }
+    // Main reveal observer
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
 
-  handleResize() {
-    const newItemsPerView = this.getItemsPerView();
-    if (newItemsPerView !== this.itemsPerView) {
-      this.itemsPerView = newItemsPerView;
-      this.totalSlides = Math.ceil(this.totalItems / this.itemsPerView);
-      this.currentIndex = 0;
-      this.createDots();
-      this.updateCarousel();
-    }
-  }
+          // Special handling for section
+          if (entry.target.id === 'unified-catalogue') {
+            entry.target.classList.add('revealed-section');
+          }
 
-  updateCarousel() {
-    const offset = -this.currentIndex * (100 / this.itemsPerView);
-    this.track.style.transform = `translateX(${offset}%)`;
-    
-    // Update dots
-    document.querySelectorAll('.products-carousel-dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === this.currentIndex);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
     });
 
-    // Update button states
-    this.prevBtn.disabled = false;
-    this.nextBtn.disabled = false;
-  }
+    // Observe all reveal elements
+    document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale')
+      .forEach(el => revealObserver.observe(el));
 
-  prev() {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-    } else {
-      this.currentIndex = this.totalSlides - 1;
+    // Observe gallery strip separately
+    const galleryStrip = document.querySelector('.gallery-strip');
+    if (galleryStrip) {
+      const galleryObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            galleryObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+      galleryObserver.observe(galleryStrip);
     }
-    this.updateCarousel();
-  }
 
-  next() {
-    if (this.currentIndex < this.totalSlides - 1) {
-      this.currentIndex++;
-    } else {
-      this.currentIndex = 0;
+    // Observe the section itself for border animation
+    const section = document.getElementById('unified-catalogue');
+    if (section) {
+      revealObserver.observe(section);
     }
-    this.updateCarousel();
+
+    // Parallax effect on images
+    this.initParallax();
   }
 
-  goToSlide(index) {
-    this.currentIndex = index;
-    this.updateCarousel();
+  initParallax() {
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          this.updateParallax();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  updateParallax() {
+    const activeSlide = document.querySelector('.detail-slide.active');
+    if (!activeSlide) return;
+
+    const imgWrapper = activeSlide.querySelector('.img-wrapper');
+    if (!imgWrapper) return;
+
+    const rect = activeSlide.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // Only apply parallax when slide is in view
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+      const offset = (progress - 0.5) * 20; // -10px to +10px
+      imgWrapper.style.transform = `translateY(${offset}px)`;
+    }
   }
 }
 
-// Initialize products carousel when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  new ProductsCarousel();
-});
+/* ============================================
+   NUMBER COUNTER ANIMATION
+   ============================================ */
 
- // ============================================
-  // DONNÉES PRODUITS
-  // ============================================
-  const products = [
-    {
-      id: 1,
-      name: "Extincteur ABC Poudre",
-      image: "../../assets/images/product_abc_powder.png",
-      desc: "Extincteur polyvalent à poudre ABC pour tous types de feux. Efficacité maximale et temps de réaction rapide. Idéal pour les environnements professionnels et industriels.",
-      capacity: "6L / 9L",
-      fireClass: "A / B / C",
-      certification: "NF / CE / EN3",
-      lifespan: "10-20 ans",
-      features: ["Polyvalent pour tous types de feux", "Poudre ABC haute performance", "Manomètre de contrôle intégré", "Support mural inclus de série"]
-    },
-    {
-      id: 2,
-      name: "Extincteur CO2",
-      image: "../../assets/images/product_co2_extinguisher.png",
-      desc: "Extincteur CO2 spécialisé pour les feux d'origine électrique et les locaux informatiques. Sans résidu ni dégâts secondaires sur vos équipements sensibles.",
-      capacity: "2kg / 5kg",
-      fireClass: "B / C",
-      certification: "NF / CE / EN3",
-      lifespan: "15-25 ans",
-      features: ["Idéal pour feux électriques", "Sans résidu ni dégâts secondaires", "Refroidissement rapide", "Tuyau d'extension inclus"]
-    },
-    {
-      id: 3,
-      name: "Détecteur de Fumée",
-      image: "../../assets/images/product_co2_extinguisher.png",
-      desc: "Détecteur de fumée haute sensibilité avec alarme intégrée. Conforme aux normes de sécurité actuelles. Détection précoce garantie pour une sécurité optimale.",
-      capacity: "N/A",
-      fireClass: "Détection",
-      certification: "NF / CE",
-      lifespan: "10 ans",
-      features: ["Détection précoce des incendies", "Alarme sonore 85dB", "Batterie longue durée", "Installation facile"]
-    },
-    {
-      id: 4,
-      name: "Alarme Incendie",
-      image: "../../assets/images/product_fire_alarm.png",
-      desc: "Système d'alarme incendie professionnel avec centrale de détection multi-zones. Connexion directe aux services d'urgence pour une réactivité maximale.",
-      capacity: "Multi-zones",
-      fireClass: "Détection & Alarme",
-      certification: "NF / CE / EN54",
-      lifespan: "20 ans",
-      features: ["Centrale multi-zones", "Connexion aux services d'urgence", "Interface utilisateur intuitive", "Maintenance programmée"]
-    },
-    {
-      id: 5,
-      name: "Tuyau Incendie",
-      image: "../../assets/images/product_fire_hose.png",
-      desc: "Tuyau incendie haute pression avec raccords certifiés. Flexible et résistant pour une intervention rapide et efficace en cas d'urgence.",
-      capacity: "20m / 30m",
-      fireClass: "Intervention",
-      certification: "NF / CE",
-      lifespan: "15 ans",
-      features: ["Haute pression 40 bars", "Raccords certifiés", "Flexible et résistant", "Facile à déployer"]
-    },
-    {
-      id: 6,
-      name: "RIA Robinet Armé",
-      image: "../../assets/images/product_fire_hose.png",
-      desc: "Robinet d'incendie armé pour bâtiments collectifs. Installation murale avec tuyau enroulé. Solution fiable pour les espaces communs et ERP.",
-      capacity: "20m / 30m",
-      fireClass: "A / B",
-      certification: "NF / CE / EN671",
-      lifespan: "20 ans",
-      features: ["Installation murale standard", "Tuyau enroulé 20m ou 30m", "Débit 60 L/min", "Maintenance simplifiée"]
-    },
-    {
-      id: 7,
-      name: "Couverture Anti-Feu",
-      image: "../../assets/images/product_fire_hose.png",
-      desc: "Couverture anti-feu pour étouffement rapide des flammes. Matériau ignifuge haute performance. Solution immédiate et réutilisable.",
-      capacity: "1m×1m / 2m×2m",
-      fireClass: "A / B",
-      certification: "NF / CE",
-      lifespan: "Illimitée",
-      features: ["Étouffement rapide des flammes", "Matériau ignifuge haute performance", "Réutilisable", "Plusieurs formats disponibles"]
-    },
-    {
-      id: 8,
-      name: "Panneau Signalisation",
-      image: "../../assets/images/product_fire_hose.png",
-      desc: "Panneaux de signalisation incendie conformes aux normes ISO 7010. Visibilité maximale jour et nuit pour une évacuation sécurisée.",
-      capacity: "Divers formats",
-      fireClass: "Signalisation",
-      certification: "ISO 7010 / NF",
-      lifespan: "Illimitée",
-      features: ["Conforme ISO 7010", "Visibilité maximale", "Matériau durable", "Installation rapide"]
-    },
-    {
-      id: 9,
-      name: "Éclairage de Secours",
-      image: "../../assets/images/product_fire_hose.png",
-      desc: "Éclairage de secours LED avec batterie intégrée. Autonomie 3 heures minimum. Éclairage fiable pour guider l'évacuation en cas de coupure de courant.",
-      capacity: "LED 3W",
-      fireClass: "Secours",
-      certification: "NF / CE / EN60598",
-      lifespan: "10 ans",
-      features: ["LED haute luminosité", "Batterie 3h minimum", "Charge automatique", "Longue durée de vie"]
-    }
-  ];
+class NumberCounter {
+  constructor(element, target, duration = 800) {
+    this.element = element;
+    this.target = target;
+    this.duration = duration;
+    this.startTime = null;
+    this.startValue = 0;
+  }
 
-  // ============================================
-  // UNIFIED CATALOGUE CONTROLLER
-  // ============================================
-  class UnifiedCatalogue {
-    constructor() {
-      this.detailTrack = document.getElementById('detailTrack');
-      this.galleryTrack = document.getElementById('galleryTrack');
-      this.progress = document.getElementById('detailProgress');
-      this.counter = document.getElementById('galleryCounter');
-      this.current = 0;
-      this.galleryPos = 0;
-      this.itemsPerGallery = this.getGalleryItems();
-      this.renderDetail();
-      this.renderGallery();
-      this.createProgress();
-      this.attachEvents();
-      this.update();
-      window.addEventListener('resize', () => this.handleResize());
-    }
+  animate(timestamp) {
+    if (!this.startTime) this.startTime = timestamp;
+    const progress = Math.min((timestamp - this.startTime) / this.duration, 1);
 
-    getGalleryItems() {
-      const w = window.innerWidth;
-      if (w >= 1100) return 6;
-      if (w >= 900) return 5;
-      if (w >= 600) return 4;
-      return 3;
-    }
+    // Easing: easeOutExpo
+    const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+    const current = Math.floor(this.startValue + (this.target - this.startValue) * eased);
 
-    renderDetail() {
-      this.detailTrack.innerHTML = products.map((p, i) => `
-        <div class="detail-slide ${i === 0 ? 'active' : ''}" data-index="${i}">
-          <div class="detail-image-box">
-            <img src="${p.image}" alt="${p.name}" loading="${i < 2 ? 'eager' : 'lazy'}">
-          </div>
-          <div class="detail-info">
-            <div class="detail-number">0${i + 1}</div>
-            <div class="detail-tag">Détails Techniques</div>
-            <h2>${p.name}</h2>
-            <p class="detail-desc">${p.desc}</p>
-            <div class="detail-specs-grid">
-              <div class="detail-spec-item">
-                <div class="detail-spec-label">Capacité</div>
-                <div class="detail-spec-value">${p.capacity}</div>
-              </div>
-              <div class="detail-spec-item">
-                <div class="detail-spec-label">Classes de feu</div>
-                <div class="detail-spec-value">${p.fireClass}</div>
-              </div>
-              <div class="detail-spec-item">
-                <div class="detail-spec-label">Certification</div>
-                <div class="detail-spec-value">${p.certification}</div>
-              </div>
-              <div class="detail-spec-item">
-                <div class="detail-spec-label">Durée de vie</div>
-                <div class="detail-spec-value">${p.lifespan}</div>
-              </div>
-            </div>
-            <ul class="detail-features">
-              ${p.features.map(f => `<li><i class="fa-solid fa-check"></i> ${f}</li>`).join('')}
-            </ul>
-            <a href="../../index.html#contact" class="detail-cta">
-              Obtenir un devis
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </a>
-          </div>
-        </div>
-      `).join('');
-      this.slides = this.detailTrack.querySelectorAll('.detail-slide');
-    }
+    this.element.textContent = current.toString().padStart(2, '0');
 
-    renderGallery() {
-      this.galleryTrack.innerHTML = products.map((p, i) => `
-        <div class="gallery-item ${i === 0 ? 'active' : ''}" data-index="${i}">
-          <img src="${p.image}" alt="${p.name}" loading="${i < 6 ? 'eager' : 'lazy'}">
-        </div>
-      `).join('');
-      this.galleryItems = this.galleryTrack.querySelectorAll('.gallery-item');
-      this.galleryItems.forEach(item => {
-        item.addEventListener('click', () => this.select(parseInt(item.dataset.index)));
-      });
-    }
-
-    createProgress() {
-      this.progress.innerHTML = products.map((_, i) => `
-        <div class="progress-bar ${i === 0 ? 'active' : ''}" data-index="${i}"></div>
-      `).join('');
-      this.bars = this.progress.querySelectorAll('.progress-bar');
-      this.bars.forEach(bar => {
-        bar.addEventListener('click', () => this.goTo(parseInt(bar.dataset.index)));
-      });
-    }
-
-    attachEvents() {
-      document.getElementById('detailPrev').addEventListener('click', () => this.prev());
-      document.getElementById('detailNext').addEventListener('click', () => this.next());
-      document.getElementById('galleryPrev').addEventListener('click', () => this.galleryPrev());
-      document.getElementById('galleryNext').addEventListener('click', () => this.galleryNext());
-
-      // Keyboard
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') this.prev();
-        if (e.key === 'ArrowRight') this.next();
-      });
-
-      // Touch swipe on detail
-      let touchStartX = 0;
-      const stage = document.querySelector('.detail-stage');
-      stage.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-      stage.addEventListener('touchend', e => {
-        const diff = touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 50) diff > 0 ? this.next() : this.prev();
-      }, { passive: true });
-    }
-
-    update() {
-      // Detail track
-      this.detailTrack.style.transform = `translateX(-${this.current * 100}%)`;
-      this.slides.forEach((s, i) => s.classList.toggle('active', i === this.current));
-
-      // Progress bars
-      this.bars.forEach((b, i) => b.classList.toggle('active', i === this.current));
-
-      // Gallery highlight
-      this.galleryItems.forEach((item, i) => item.classList.toggle('active', i === this.current));
-
-      // Gallery scroll to center active
-      const maxStart = products.length - this.itemsPerGallery;
-      let target = this.current - Math.floor(this.itemsPerGallery / 2);
-      target = Math.max(0, Math.min(target, maxStart));
-      this.galleryPos = target;
-      const offset = this.galleryPos * (100 / this.itemsPerGallery);
-      this.galleryTrack.style.transform = `translateX(-${offset}%)`;
-
-      // Counter
-      this.counter.textContent = this.current + 1;
-    }
-
-    select(index) {
-      this.current = index;
-      this.update();
-    }
-
-    goTo(index) {
-      this.current = index;
-      this.update();
-    }
-
-    next() {
-      this.current = (this.current + 1) % products.length;
-      this.update();
-    }
-
-    prev() {
-      this.current = (this.current - 1 + products.length) % products.length;
-      this.update();
-    }
-
-    galleryNext() {
-      const maxStart = products.length - this.itemsPerGallery;
-      this.galleryPos = Math.min(this.galleryPos + 1, maxStart);
-      const offset = this.galleryPos * (100 / this.itemsPerGallery);
-      this.galleryTrack.style.transform = `translateX(-${offset}%)`;
-    }
-
-    galleryPrev() {
-      this.galleryPos = Math.max(this.galleryPos - 1, 0);
-      const offset = this.galleryPos * (100 / this.itemsPerGallery);
-      this.galleryTrack.style.transform = `translateX(-${offset}%)`;
-    }
-
-    handleResize() {
-      const newItems = this.getGalleryItems();
-      if (newItems !== this.itemsPerGallery) {
-        this.itemsPerGallery = newItems;
-        this.update();
-      }
+    if (progress < 1) {
+      requestAnimationFrame((t) => this.animate(t));
     }
   }
 
-  // ============================================
-  // INITIALISATION
-  // ============================================
-  document.addEventListener('DOMContentLoaded', () => {
-    window.unifiedCatalogue = new UnifiedCatalogue();
-  });
+  start() {
+    requestAnimationFrame((t) => this.animate(t));
+  }
+}
+
+/* ============================================
+   DONNÉES PRODUITS
+   ============================================ */
+const products = [
+  {
+    id: 1,
+    name: "Extincteur ABC Poudre",
+    image: "../../assets/images/product_abc_powder.png",
+    desc: "Extincteur polyvalent à poudre ABC pour tous types de feux. Efficacité maximale et temps de réaction rapide. Idéal pour les environnements professionnels et industriels.",
+    capacity: "6L / 9L",
+    fireClass: "A / B / C",
+    certification: "NF / CE / EN3",
+    lifespan: "10-20 ans",
+    features: ["Polyvalent pour tous types de feux", "Poudre ABC haute performance", "Manomètre de contrôle intégré", "Support mural inclus de série"]
+  },
+  {
+    id: 2,
+    name: "Extincteur CO2",
+    image: "../../assets/images/product_co2_extinguisher.png",
+    desc: "Extincteur CO2 spécialisé pour les feux d'origine électrique et les locaux informatiques. Sans résidu ni dégâts secondaires sur vos équipements sensibles.",
+    capacity: "2kg / 5kg",
+    fireClass: "B / C",
+    certification: "NF / CE / EN3",
+    lifespan: "15-25 ans",
+    features: ["Idéal pour feux électriques", "Sans résidu ni dégâts secondaires", "Refroidissement rapide", "Tuyau d'extension inclus"]
+  },
+  {
+    id: 3,
+    name: "Détecteur de Fumée",
+    image: "../../assets/images/product_co2_extinguisher.png",
+    desc: "Détecteur de fumée haute sensibilité avec alarme intégrée. Conforme aux normes de sécurité actuelles. Détection précoce garantie pour une sécurité optimale.",
+    capacity: "N/A",
+    fireClass: "Détection",
+    certification: "NF / CE",
+    lifespan: "10 ans",
+    features: ["Détection précoce des incendies", "Alarme sonore 85dB", "Batterie longue durée", "Installation facile"]
+  },
+  {
+    id: 4,
+    name: "Alarme Incendie",
+    image: "../../assets/images/product_fire_alarm.png",
+    desc: "Système d'alarme incendie professionnel avec centrale de détection multi-zones. Connexion directe aux services d'urgence pour une réactivité maximale.",
+    capacity: "Multi-zones",
+    fireClass: "Détection & Alarme",
+    certification: "NF / CE / EN54",
+    lifespan: "20 ans",
+    features: ["Centrale multi-zones", "Connexion aux services d'urgence", "Interface utilisateur intuitive", "Maintenance programmée"]
+  },
+  {
+    id: 5,
+    name: "Tuyau Incendie",
+    image: "../../assets/images/product_fire_hose.png",
+    desc: "Tuyau incendie haute pression avec raccords certifiés. Flexible et résistant pour une intervention rapide et efficace en cas d'urgence.",
+    capacity: "20m / 30m",
+    fireClass: "Intervention",
+    certification: "NF / CE",
+    lifespan: "15 ans",
+    features: ["Haute pression 40 bars", "Raccords certifiés", "Flexible et résistant", "Facile à déployer"]
+  },
+  {
+    id: 6,
+    name: "RIA Robinet Armé",
+    image: "../../assets/images/product_fire_hose.png",
+    desc: "Robinet d'incendie armé pour bâtiments collectifs. Installation murale avec tuyau enroulé. Solution fiable pour les espaces communs et ERP.",
+    capacity: "20m / 30m",
+    fireClass: "A / B",
+    certification: "NF / CE / EN671",
+    lifespan: "20 ans",
+    features: ["Installation murale standard", "Tuyau enroulé 20m ou 30m", "Débit 60 L/min", "Maintenance simplifiée"]
+  },
+  {
+    id: 7,
+    name: "Couverture Anti-Feu",
+    image: "../../assets/images/product_fire_hose.png",
+    desc: "Couverture anti-feu pour étouffement rapide des flammes. Matériau ignifuge haute performance. Solution immédiate et réutilisable.",
+    capacity: "1m×1m / 2m×2m",
+    fireClass: "A / B",
+    certification: "NF / CE",
+    lifespan: "Illimitée",
+    features: ["Étouffement rapide des flammes", "Matériau ignifuge haute performance", "Réutilisable", "Plusieurs formats disponibles"]
+  },
+  {
+    id: 8,
+    name: "Panneau Signalisation",
+    image: "../../assets/images/product_fire_hose.png",
+    desc: "Panneaux de signalisation incendie conformes aux normes ISO 7010. Visibilité maximale jour et nuit pour une évacuation sécurisée.",
+    capacity: "Divers formats",
+    fireClass: "Signalisation",
+    certification: "ISO 7010 / NF",
+    lifespan: "Illimitée",
+    features: ["Conforme ISO 7010", "Visibilité maximale", "Matériau durable", "Installation rapide"]
+  },
+  {
+    id: 9,
+    name: "Éclairage de Secours",
+    image: "../../assets/images/product_fire_hose.png",
+    desc: "Éclairage de secours LED avec batterie intégrée. Autonomie 3 heures minimum. Éclairage fiable pour guider l'évacuation en cas de coupure de courant.",
+    capacity: "LED 3W",
+    fireClass: "Secours",
+    certification: "NF / CE / EN60598",
+    lifespan: "10 ans",
+    features: ["LED haute luminosité", "Batterie 3h minimum", "Charge automatique", "Longue durée de vie"]
+  }
+];
+
+/* ============================================
+   UNIFIED CATALOGUE CONTROLLER (ENHANCED)
+   ============================================ */
+class UnifiedCatalogue {
+  constructor() {
+    this.detailTrack = document.getElementById('detailTrack');
+    this.galleryTrack = document.getElementById('galleryTrack');
+    this.progress = document.getElementById('detailProgress');
+    this.counter = document.getElementById('galleryCounter');
+    this.current = 0;
+    this.galleryPos = 0;
+    this.itemsPerGallery = this.getGalleryItems();
+    this.numberCounters = new Map();
+    this.swipeHintShown = false;
+    this.isMobile = window.innerWidth <= 768;
+    this.renderDetail();
+    this.renderGallery();
+    this.createProgress();
+    this.createMobileDots();
+    this.attachEvents();
+    this.update();
+    this.initSwipeHint();
+    window.addEventListener('resize', () => this.handleResize());
+  }
+
+  getGalleryItems() {
+    const w = window.innerWidth;
+    if (w >= 1100) return 6;
+    if (w >= 900) return 5;
+    if (w >= 600) return 4;
+    return 3;
+  }
+
+  renderDetail() {
+    this.detailTrack.innerHTML = products.map((p, i) => `
+      <div class="detail-slide ${i === 0 ? 'active' : ''}" data-index="${i}">
+        <div class="detail-image-box">
+          <div class="img-wrapper">
+            <img src="${p.image}" alt="${p.name}" loading="${i < 2 ? 'eager' : 'lazy'}">
+          </div>
+        </div>
+        <div class="detail-info">
+          <div class="detail-number" data-target="${i + 1}">00</div>
+          <div class="detail-tag">Détails Techniques</div>
+          <h2>${p.name}</h2>
+          <p class="detail-desc">${p.desc}</p>
+          <div class="detail-specs-grid">
+            <div class="detail-spec-item">
+              <div class="detail-spec-label">Capacité</div>
+              <div class="detail-spec-value">${p.capacity}</div>
+            </div>
+            <div class="detail-spec-item">
+              <div class="detail-spec-label">Classes de feu</div>
+              <div class="detail-spec-value">${p.fireClass}</div>
+            </div>
+            <div class="detail-spec-item">
+              <div class="detail-spec-label">Certification</div>
+              <div class="detail-spec-value">${p.certification}</div>
+            </div>
+            <div class="detail-spec-item">
+              <div class="detail-spec-label">Durée de vie</div>
+              <div class="detail-spec-value">${p.lifespan}</div>
+            </div>
+          </div>
+          <ul class="detail-features">
+            ${p.features.map(f => `<li><i class="fa-solid fa-check"></i> ${f}</li>`).join('')}
+          </ul>
+          <a href="../../index.html#contact" class="detail-cta">
+            Obtenir un devis
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    `).join('');
+    this.slides = this.detailTrack.querySelectorAll('.detail-slide');
+  }
+
+  renderGallery() {
+    this.galleryTrack.innerHTML = products.map((p, i) => `
+      <div class="gallery-item ${i === 0 ? 'active' : ''}" data-index="${i}">
+        <img src="${p.image}" alt="${p.name}" loading="${i < 6 ? 'eager' : 'lazy'}">
+      </div>
+    `).join('');
+    this.galleryItems = this.galleryTrack.querySelectorAll('.gallery-item');
+    this.galleryItems.forEach(item => {
+      item.addEventListener('click', () => this.select(parseInt(item.dataset.index)));
+    });
+  }
+
+  createProgress() {
+    this.progress.innerHTML = products.map((_, i) => `
+      <div class="progress-bar ${i === 0 ? 'active' : ''}" data-index="${i}"></div>
+    `).join('');
+    this.bars = this.progress.querySelectorAll('.progress-bar');
+    this.bars.forEach(bar => {
+      bar.addEventListener('click', () => this.goTo(parseInt(bar.dataset.index)));
+    });
+  }
+
+  createMobileDots() {
+    const container = document.getElementById('mobileDots');
+    if (!container) return;
+    container.innerHTML = products.map((_, i) => `
+      <button type="button" class="mobile-dot ${i === 0 ? 'active' : ''}" data-index="${i}" aria-label="Produit ${i + 1}"></button>
+    `).join('');
+    this.mobileDots = container.querySelectorAll('.mobile-dot');
+    this.mobileDots.forEach(dot => {
+      dot.addEventListener('click', () => this.goTo(parseInt(dot.dataset.index)));
+    });
+  }
+
+  initSwipeHint() {
+    const hint = document.getElementById('swipeHint');
+    if (!hint) return;
+
+    // Only show on mobile
+    if (window.innerWidth > 768) return;
+
+    // Show hint after a short delay
+    setTimeout(() => {
+      if (!this.swipeHintShown) {
+        hint.classList.add('visible');
+      }
+    }, 1200);
+
+    // Auto-hide after 4 seconds
+    setTimeout(() => {
+      this.hideSwipeHint();
+    }, 5000);
+  }
+
+  hideSwipeHint() {
+    const hint = document.getElementById('swipeHint');
+    if (!hint || this.swipeHintShown) return;
+    this.swipeHintShown = true;
+    hint.classList.remove('visible');
+    hint.classList.add('faded');
+    setTimeout(() => {
+      hint.style.display = 'none';
+    }, 1200);
+  }
+
+  attachEvents() {
+    // Desktop arrows (hidden on mobile via CSS)
+    const prevBtn = document.getElementById('detailPrev');
+    const nextBtn = document.getElementById('detailNext');
+    if (prevBtn) prevBtn.addEventListener('click', () => this.prev());
+    if (nextBtn) nextBtn.addEventListener('click', () => this.next());
+
+    document.getElementById('galleryPrev').addEventListener('click', () => this.galleryPrev());
+    document.getElementById('galleryNext').addEventListener('click', () => this.galleryNext());
+
+    // Keyboard
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') this.prev();
+      if (e.key === 'ArrowRight') this.next();
+    });
+
+    // Touch swipe on detail stage — ENHANCED
+    this.initDetailSwipe();
+
+    // Touch swipe on gallery strip
+    this.initGallerySwipe();
+  }
+
+  initDetailSwipe() {
+    const stage = document.getElementById('detailStage') || document.querySelector('.detail-stage');
+    if (!stage) return;
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+
+    stage.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
+    }, { passive: true });
+
+    stage.addEventListener('touchend', e => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const touchEndY = e.changedTouches[0].clientY;
+      const diffX = touchStartX - touchEndX;
+      const diffY = touchStartY - touchEndY;
+      const elapsed = Date.now() - touchStartTime;
+
+      // Hide swipe hint on first interaction
+      this.hideSwipeHint();
+
+      // Detect horizontal swipe (ignore vertical scrolls)
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+        // Velocity check: fast swipe or long distance
+        const velocity = Math.abs(diffX) / elapsed;
+        if (Math.abs(diffX) > 50 || velocity > 0.3) {
+          e.preventDefault ? e.preventDefault() : null;
+          if (diffX > 0) {
+            this.next(); // swipe left = next product
+          } else {
+            this.prev(); // swipe right = previous product
+          }
+        }
+      }
+    }, { passive: false });
+  }
+
+  initGallerySwipe() {
+    const viewport = document.querySelector('.gallery-viewport');
+    if (!viewport) return;
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    viewport.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', e => {
+      const diffX = touchStartX - e.changedTouches[0].clientX;
+      const diffY = touchStartY - e.changedTouches[0].clientY;
+
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+        if (diffX > 0) {
+          this.galleryNext();
+        } else {
+          this.galleryPrev();
+        }
+      }
+    }, { passive: true });
+  }
+
+  animateNumber(slide, index) {
+    const numEl = slide.querySelector('.detail-number');
+    if (!numEl) return;
+
+    numEl.textContent = '00';
+
+    setTimeout(() => {
+      const counter = new NumberCounter(numEl, index + 1, 700);
+      counter.start();
+    }, 200);
+  }
+
+  update() {
+    // Detail track
+    this.detailTrack.style.transform = `translateX(-${this.current * 100}%)`;
+
+    // Update active states
+    this.slides.forEach((s, i) => {
+      const wasActive = s.classList.contains('active');
+      s.classList.toggle('active', i === this.current);
+
+      if (i === this.current && !wasActive) {
+        this.animateNumber(s, i);
+      }
+    });
+
+    // Progress bars
+    this.bars.forEach((b, i) => b.classList.toggle('active', i === this.current));
+
+    // Mobile dots
+    if (this.mobileDots) {
+      this.mobileDots.forEach((d, i) => d.classList.toggle('active', i === this.current));
+    }
+
+    // Gallery highlight
+    this.galleryItems.forEach((item, i) => item.classList.toggle('active', i === this.current));
+
+    // Gallery scroll to center active
+    const maxStart = products.length - this.itemsPerGallery;
+    let target = this.current - Math.floor(this.itemsPerGallery / 2);
+    target = Math.max(0, Math.min(target, maxStart));
+    this.galleryPos = target;
+    const offset = this.galleryPos * (100 / this.itemsPerGallery);
+    this.galleryTrack.style.transform = `translateX(-${offset}%)`;
+
+    // Counter
+    this.counter.textContent = this.current + 1;
+  }
+
+  select(index) {
+    this.current = index;
+    this.update();
+  }
+
+  goTo(index) {
+    this.current = index;
+    this.update();
+  }
+
+  next() {
+    this.current = (this.current + 1) % products.length;
+    this.update();
+  }
+
+  prev() {
+    this.current = (this.current - 1 + products.length) % products.length;
+    this.update();
+  }
+
+  galleryNext() {
+    const maxStart = products.length - this.itemsPerGallery;
+    this.galleryPos = Math.min(this.galleryPos + 1, maxStart);
+    const offset = this.galleryPos * (100 / this.itemsPerGallery);
+    this.galleryTrack.style.transform = `translateX(-${offset}%)`;
+  }
+
+  galleryPrev() {
+    this.galleryPos = Math.max(this.galleryPos - 1, 0);
+    const offset = this.galleryPos * (100 / this.itemsPerGallery);
+    this.galleryTrack.style.transform = `translateX(-${offset}%)`;
+  }
+
+  handleResize() {
+    const newIsMobile = window.innerWidth <= 768;
+    if (newIsMobile !== this.isMobile) {
+      this.isMobile = newIsMobile;
+      if (this.isMobile) {
+        this.initSwipeHint();
+      }
+    }
+
+    const newItems = this.getGalleryItems();
+    if (newItems !== this.itemsPerGallery) {
+      this.itemsPerGallery = newItems;
+      this.update();
+    }
+  }
+}
+
+/* ============================================
+   INITIALISATION
+   ============================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize scroll animator first
+  window.scrollAnimator = new ScrollAnimator();
+
+  // Then initialize catalogue
+  window.unifiedCatalogue = new UnifiedCatalogue();
+});
 </script>
 <script src="/assets/js/script.js"></script>
 </body>
